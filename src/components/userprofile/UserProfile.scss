@@ -1,0 +1,30 @@
+.user-profile-container {
+  border-radius: 10px;
+  width: 79%;
+  background-color: #fff;
+  height: 100%;
+  .info-container {
+    margin: 20px;
+    display: flex;
+    .info-label {
+      p {
+        margin: 20px 0;
+        font-weight: bold;
+      }
+    }
+    .user-info {
+      p {
+        margin: 20px 0;
+        margin-left: 20px;
+      }
+    }
+  }
+  .no-login{
+    height: auto;
+    h1{
+      color:#ea5867;
+      text-align: center;
+      padding: 20px 0;
+    }
+  }
+}

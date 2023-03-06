@@ -1,15 +1,14 @@
-import './App.css';
+import './App.scss';
 import { Route, Routes } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import { db } from './firebase'
-import { addDoc, doc, getDocs, collection, deleteDoc } from "firebase/firestore";
+import { getDocs, collection } from "firebase/firestore";
 
 //pages
 import Header from './common/Header/Header';
 import Footer from './common/Footer/Footer'
 import Homepage from './pages/homepage/Homepage'
 import Cartpage from './pages/cartpage/Cartpage'
-import Contact from './pages/contactpage/Contact'
 import Profile from './pages/profilepage/Profile';
 import Product from './pages/productpage/Product';
 import TopScroll from './common/TopScroll/TopScroll';
@@ -23,17 +22,28 @@ function App() {
   const [products, setProducts] = useState([])
   const [slides, setSlides] = useState([])
   const [categories, setCategories] = useState([])
+  const [categoriesLoading, setCategoriesLoading] = useState(true)
   const [orders, setOrders] = useState([]);
+  const [brands, setBrands] = useState([])
   const [cartItem, setCartItem] = useState([])
   const [productFilter, setProductFilter] = useState(products)
 
   useEffect(() => {
-    getCategories()
-    getProducts()
-    getSliders()
-    getUsers()
-    getOrders()
+      getCategories()
+      getProducts()
+      getSliders()
+      getUsers()
+      getOrders()
+      getBrands()
   }, [])
+  async function getBrands() {
+    const brandRef = await getDocs(collection(db, "brands"));
+    const brandss = brandRef.docs.map(doc => ({
+      data: doc.data(),
+      id: doc.id
+    }))
+    setBrands(brandss)
+  }
   async function getOrders() {
     const orderRef = await getDocs(collection(db, "orders"));
     const orderss = orderRef.docs.map(doc => ({
@@ -57,6 +67,7 @@ function App() {
       id: doc.id
     }))
     setCategories(categoriess)
+    setCategoriesLoading(false)
   }
   async function getSliders() {
     const sliderRef = await getDocs(collection(db, "sliders"));
@@ -109,9 +120,9 @@ function App() {
   }
   // add to cart with quantity value
   const addToCartQty = (product, quantity) => {
-    const productExit = cartItem.find((item) => item.id === product.id)
-    if (productExit) {
-      setCartItem(cartItem.map((item) => (item.id === product.id ? { ...productExit, qty: productExit.qty + quantity } : item)))
+    const productExist = cartItem.find((item) => item.id === product.id)
+    if (productExist) {
+      setCartItem(cartItem.map((item) => (item.id === product.id ? { ...productExist, qty: productExist.qty + quantity } : item)))
     }
     else {
       setCartItem([...cartItem, { ...product, qty: quantity }])
@@ -121,45 +132,53 @@ function App() {
   return (
     <>
       <Header cartItem={cartItem} setProductFilter={setProductFilter} products={products} />
-      <Routes>
-        <Route path='/' element={<Homepage
-          products={products}
-          categories={categories}
-          slides={slides}
-          addToCart={addToCart}
-          setProductFilter={setProductFilter}
-          filterResult={filterResult}
-        />} />
-        <Route path='cart' element={<Cartpage
-          addToCart={addToCart}
-          descreaseQty={descreaseQty}
-          deteteCart={deleteCart}
-          cartItem={cartItem}
-          setCartItem={setCartItem}
-        />}
-        />
-        <Route path='profile' element={<Profile users={users} />} >
-          <Route path="userprofile" element={<UserProfile users={users} />} />
-          <Route
-            path="purchasehistory"
-            element={<PurchaseHistory orders={orders} />}
+      <div className='page-container'>
+        <Routes>
+          <Route path='/' element={<Homepage
+            products={products}
+            categories={categories}
+            slides={slides}
+            brands={brands}
+            addToCart={addToCart}
+            setProductFilter={setProductFilter}
+            filterResult={filterResult}
+            categoriesLoading={categoriesLoading}
+          />} />
+          <Route path='cart' element={<Cartpage
+            addToCart={addToCart}
+            descreaseQty={descreaseQty}
+            deteteCart={deleteCart}
+            cartItem={cartItem}
+            setCartItem={setCartItem}
+          />}
           />
-        </Route>
-        <Route path='/purchasehistory/:orderId' element={<OrderDetail orders={orders} products={products} />} />
-        <Route path='product' element={<Product
-          categories={categories}
-          addToCart={addToCart}
-          filterResult={filterResult}
-          setProductFilter={setProductFilter}
-          products={products}
-          productFilter={productFilter} />}
-        />
-        <Route path='/product/:productId' element={<SingleProduct products={products} categories={categories} addToCartQty={addToCartQty} />} />
-        <Route path='login' element={<LoginPage users={users} />} />
-        <Route path='contact' element={<Contact />} />
-      </Routes>
-      <Footer />
-      <TopScroll />
+          <Route path='profile' element={<Profile users={users} />} >
+            <Route path="userprofile" element={<UserProfile users={users} />} />
+            <Route
+              path="purchasehistory"
+              element={<PurchaseHistory orders={orders} />}
+            />
+          </Route>
+          <Route path='/purchasehistory/:orderId' element={<OrderDetail orders={orders} products={products} />} />
+          <Route path='product' element={<Product
+            categories={categories}
+            addToCart={addToCart}
+            filterResult={filterResult}
+            setProductFilter={setProductFilter}
+            products={products}
+            productFilter={productFilter} />}
+          />
+          <Route path='/product/:productId'
+            element={<SingleProduct
+              products={products}
+              brands={brands}
+              categories={categories}
+              addToCartQty={addToCartQty} />} />
+          <Route path='login' element={<LoginPage users={users} />} />
+        </Routes>
+        <Footer />
+        <TopScroll />
+      </div>
     </>
   );
 }

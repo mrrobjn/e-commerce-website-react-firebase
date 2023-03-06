@@ -1,5 +1,5 @@
 {
-  "name": "bookstore",
+  "name": "e-commerce-website",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -13,6 +13,7 @@
     "react-admin": "^4.6.2",
     "react-dom": "^18.2.0",
     "react-hook-form": "^7.43.2",
+    "react-loading-skeleton": "^3.2.0",
     "react-router": "^6.5.0",
     "react-router-dom": "^6.8.2",
     "react-scripts": "5.0.1",

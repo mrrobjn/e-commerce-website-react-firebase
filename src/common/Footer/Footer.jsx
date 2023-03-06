@@ -20,13 +20,13 @@ const Footer = () => {
         <footer className="footer">
           <div className="left-box">
             <div className="logo">
-              OBS.Com <i className="fa-solid fa-book-open-reader"></i>
+              EC<i className="fa-solid fa-cart-shopping"></i>
             </div>
             <div className="footer-note">
               <p>
-                OBS.com nhận đặt hàng trực tuyến và giao hàng tận nơi. KHÔNG hỗ
+                ECW.com nhận đặt hàng trực tuyến và giao hàng tận nơi. KHÔNG hỗ
                 trợ đặt mua và nhận hàng trực tiếp tại văn phòng cũng như tất cả
-                Hệ Thống OBS trên toàn quốc.{" "}
+                Hệ Thống ECW trên toàn quốc.{" "}
               </p>
             </div>
             <div className="footer-icons">
@@ -59,30 +59,30 @@ const Footer = () => {
               <div className="box">
                 <h2>Dịch Vụ</h2>
                 <div className="sub-box">
-                  <a>Điều khoản sử dụng</a>
-                  <a>Chính sách bảo mật thông tin cá nhân</a>
-                  <a>Chính sách bảo mật thanh toán</a>
-                  <a>Giới thiệu OBS</a>
-                  <a>Hệ thống trung tâm - nhà sách</a>
+                  <a> Điều khoản sử dụng</a>
+                  <a> Chính sách bảo mật thông tin cá nhân</a>
+                  <a> Chính sách bảo mật thanh toán</a>
+                  <a> Giới thiệu ECW</a>
+                  <a> Hệ thống trung tâm</a>
                 </div>
               </div>
               <div className="box">
                 <h2>Hỗ Trợ</h2>
                 <div className="sub-box">
-                  <a>Chính sách đổi - trả - hoàn tiền</a>
-                  <a>Chính sách bảo hành - bồi hoàn</a>
-                  <a>Chính sách vận chuyển</a>
-                  <a>Chính sách khách sỉ</a>
-                  <a>Phương thức thanh toán và xuất HĐ</a>
+                  <a> Chính sách đổi - trả - hoàn tiền</a>
+                  <a> Chính sách bảo hành - bồi hoàn</a>
+                  <a> Chính sách vận chuyển</a>
+                  <a> Chính sách khách sỉ</a>
+                  <a> Phương thức thanh toán và xuất HĐ</a>
                 </div>
               </div>
               <div className="box">
                 <h2>Tài Khoản Của Tôi</h2>
                 <div className="sub-box">
-                  <a>Đăng nhập/Tạo mới tài khoản</a>
-                  <a>Thay đổi địa chỉ khách hàng</a>
-                  <a>Chi tiết tài khoản</a>
-                  <a>Lịch sử mua hàng </a>
+                  <a> Đăng nhập/Tạo mới tài khoản</a>
+                  <a> Thay đổi địa chỉ khách hàng</a>
+                  <a> Chi tiết tài khoản</a>
+                  <a> Lịch sử mua hàng </a>
                 </div>
               </div>
             </div>

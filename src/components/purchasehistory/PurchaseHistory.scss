@@ -1,0 +1,88 @@
+.order-history-section {
+  width: 79%;
+  .order-container {
+    .order-title {
+      border-radius: 10px;
+      display: flex;
+      text-align: center;
+      background-color: #fff;
+      padding: 15px 0;
+      font-weight: bold;
+      .payment-method {
+        width: 15%;
+        border-right: 1px solid #333;
+      }
+      .date {
+        width: 15%;
+        border-right: 1px solid #333;
+      }
+      .address {
+        width: 45%;
+        border-right: 1px solid #333;
+      }
+      .total {
+        width: 10%;
+        border-right: 1px solid #333;
+      }
+      .status {
+        width: 15%;
+      }
+    }
+    .order-history {
+      margin-top: 10px;
+      height: auto;
+      overflow: scroll;
+      li {
+        display: flex;
+        box-shadow: rgb(3 0 71 / 9%) 0 1px 3px;
+        text-align: center;
+        background-color: #fff;
+        padding: 15px 0;
+        border-radius: 10px;
+        margin-bottom: 10px;
+        .payment-method {
+          border-right: 1px solid #333;
+          width: 15%;
+        }
+        .date {
+          width: 15%;
+          border-right: 1px solid #333;
+        }
+        .address {
+          width: 45%;
+          text-align: left;
+          padding: 0 20px;
+          border-right: 1px solid #333;
+        }
+        .total {
+          width: 10%;
+          color: #ea5867;
+          font-weight: bold;
+          border-right: 1px solid #333;
+        }
+        .status {
+          width: 15%;
+        }
+        p {
+          padding: 0 5px;
+        }
+      }
+    }
+  }
+  .no-login{
+    background-color: #fff;
+    height: auto;
+    border-radius: 10px;
+    h1{
+      color:#ea5867;
+      text-align: center;
+      padding: 20px 0;
+    }
+  } 
+}
+.not-confirm {
+  color: red;
+}
+.confirm {
+  color: green;
+}
