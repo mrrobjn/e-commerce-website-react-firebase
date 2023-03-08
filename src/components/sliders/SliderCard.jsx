@@ -4,9 +4,7 @@ import { useEffect, useState } from "react";
 const SliderCard = ({ slide }) => {
   const [slideEmulator, setSlide] = useState("");
   useEffect(() => {
-    setTimeout(() => {
       setSlide(slide.data.url);
-    }, 1000);
   }, []);
   return (
     <>
@@ -14,9 +12,7 @@ const SliderCard = ({ slide }) => {
         {slideEmulator ? (
           <img src={slideEmulator} alt="" />
         ) : (
-          <Skeleton height={400}>
-            <img src={slideEmulator} alt="" />
-          </Skeleton>
+          <Skeleton height={400}/>
         )}
       </div>
     </>

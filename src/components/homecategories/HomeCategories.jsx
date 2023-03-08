@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import HomeCategoriesCard from "./HomeCategoriesCard";
+import './HomeCategories.scss'
 const HomeCategories = ({
   categories,
   filterResult,

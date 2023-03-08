@@ -28,31 +28,31 @@
     }
   }
   .control-btn .next,
-.control-btn .prev {
-  position: absolute;
-  top: 0;
-  width: 50px;
-  height: 50px;
-  background-color: #0f3460;
-  border-radius: 50px;
-  transition: 0.5s;
-  z-index: 5;
-  border: none;
-  outline-style: none;
-  i {
-    font-size: 20px;
-    color: #fff;
+  .control-btn .prev {
+    position: absolute;
+    top: 0;
+    width: 40px;
+    height: 40px;
+    background-color: #316bb3;
+    border-radius: 50px;
     transition: 0.5s;
+    z-index: 5;
+    border: none;
+    outline-style: none;
+    i {
+      font-size: 20px;
+      color: #fff;
+      transition: 0.5s;
+    }
+    &:hover {
+      cursor: pointer;
+      background-color: #ea5867;
+    }
   }
-  &:hover {
-    cursor: pointer;
-    background-color: #ea5867;
+  .control-btn .next {
+    right: -40px;
   }
-}
-.control-btn .next {
-  right: -50px;
-}
-.control-btn .prev {
-  left: -50px;
-}
+  .control-btn .prev {
+    left: -40px;
+  }
 }

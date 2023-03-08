@@ -11,7 +11,7 @@ root.render(
   // <React.StrictMode>
   <SkeletonTheme >
     <Router >
-      <App />
+        <App />
     </Router>
   </SkeletonTheme>
   // </React.StrictMode>

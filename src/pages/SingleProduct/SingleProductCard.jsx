@@ -9,11 +9,9 @@ const SingleProductCard = ({ product, brand, category,addToCartQty }) => {
   useEffect(() => {
     window.scrollTo(0, 0);
     const { image, title, price } = product.data;
-    setTimeout(() => {
       setProductName(title);
       setProductImg(image);
       setProductPrice(price);
-    }, 1000);
   }, []);
   // change quantity
   const increaseQty = () => {

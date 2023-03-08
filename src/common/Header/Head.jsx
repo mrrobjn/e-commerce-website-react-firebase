@@ -1,12 +1,13 @@
 import React from "react";
+import { useAuthState } from "react-firebase-hooks/auth";
 import { Link, useNavigate } from "react-router-dom";
-
+import { logout, auth } from "../../firebase";
 const Head = () => {
   const navigate = useNavigate();
-  const isLogin = localStorage.getItem("isLogin");
-  const signOut = () => {
-    localStorage.clear();
-    window.location.reload();
+  const [user, loading, error] = useAuthState(auth);
+
+  const signOutBtn = () => {
+    logout(auth);
   };
 
   return (
@@ -22,8 +23,8 @@ const Head = () => {
         </a>
       </div>
       <div className="right-head">
-        {isLogin === "true" ? (
-          <a onClick={signOut}>Đăng xuất</a>
+        {user ? (
+          <a onClick={signOutBtn}>Đăng xuất</a>
         ) : (
           <a onClick={() => navigate("/login")}>Đăng nhập</a>
         )}

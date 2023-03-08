@@ -1,9 +1,10 @@
-import {useEffect} from "react";
+import { useEffect, useState } from "react";
 import Slider from "../../components/sliders/Slider";
 import FlashDeal from "../../components/flashDeals/FlashDeal";
 import HomeCategories from "../../components/homecategories/HomeCategories";
 import "./Homepage.scss";
 import OfficialBrands from "../../components/officialbrands/OfficialBrands";
+import { useNavigate } from "react-router";
 
 const Homepage = ({
   products,
@@ -13,14 +14,16 @@ const Homepage = ({
   addToCart,
   setProductFilter,
   filterResult,
-  categoriesLoading
+  categoriesLoading,
 }) => {
+  const navigate = useNavigate();
   useEffect(() => {
-    window.scrollTo(0, 0)
-  }, [])
+    window.scrollTo(0, 0);
+  });
+
   return (
-    <section id="homepage">
-      <div className="container">
+    <>
+      <section id="homepage">
         <HomeCategories
           categories={categories}
           products={products}
@@ -28,11 +31,13 @@ const Homepage = ({
           filterResult={filterResult}
           categoriesLoading={categoriesLoading}
         />
-        <Slider slides={slides} />
-      </div>
-      <FlashDeal products={products} addToCart={addToCart} />
-      <OfficialBrands brands={brands} />
-    </section>
+        <div className="container">
+          <Slider slides={slides} />
+          <FlashDeal products={products} addToCart={addToCart} />
+          <OfficialBrands brands={brands} />
+        </div>
+      </section>
+    </>
   );
 };
 

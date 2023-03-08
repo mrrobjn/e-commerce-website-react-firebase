@@ -1,8 +1,9 @@
 import React from "react";
 import { Link } from "react-router-dom";
-
-const Search = ({ cartItem, setProductFilter, products }) => {
-
+import {useAuthState} from 'react-firebase-hooks/auth'
+import { auth } from "../../firebase";
+const Search = ({ cartItem}) => {
+  const [user, loading, error] = useAuthState(auth);
   return (
     <div className="search">
       <div className="logo">
@@ -27,7 +28,7 @@ const Search = ({ cartItem, setProductFilter, products }) => {
             </Link>
           </li>
           <li className="nav-btn ">
-            <Link to="/profile/userprofile">
+            <Link to={user ? "/profile/userprofile" : "/login"}>
               <i className="fa-solid fa-user"></i>Tài khoản
             </Link>
           </li>

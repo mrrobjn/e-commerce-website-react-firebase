@@ -6,9 +6,7 @@ const HomeCategoriesCard = ({ category, filterResult }) => {
   const [emulatorCategory, setEmulatorCategory] = useState("");
   useEffect(() => {
     const { name } = category.data;
-    setTimeout(() => {
       setEmulatorCategory(name);
-    }, 1000);
   }, []);
   return (
     <>

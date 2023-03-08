@@ -9,12 +9,10 @@ const FlashCard = ({ product, addToCart }) => {
   const [productDiscount, setProductDiscount] = useState("");
   useEffect(() => {
     const { discount, image, title, price } = product.data;
-    setTimeout(() => {
       setProductName(title);
       setProductImage(image);
       setProductPrice(price);
       setProductDiscount(discount);
-    }, 1000);
   }, []);
   return (
     <>
@@ -46,12 +44,18 @@ const FlashCard = ({ product, addToCart }) => {
               <i className="fa-solid fa-star"></i> (2)
             </div>
             <div className="price">
+              {productPrice ? (
                 <h4>
                   {productPrice.toLocaleString("vi-VN", {
                     style: "currency",
                     currency: "VND",
-                  })  ||<Skeleton/>}
+                  })}
                 </h4>
+              ) : (
+                <h4>
+                  <Skeleton width={90} />
+                </h4>
+              )}
               <button onClick={() => addToCart(product)}>
                 <i className="fa-solid fa-plus"></i>
               </button>

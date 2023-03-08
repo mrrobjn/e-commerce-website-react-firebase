@@ -1,9 +1,8 @@
 import './App.scss';
 import { Route, Routes } from 'react-router-dom';
 import { useEffect, useState } from 'react';
-import { db } from './firebase'
+import { db, auth } from './firebase'
 import { getDocs, collection } from "firebase/firestore";
-
 //pages
 import Header from './common/Header/Header';
 import Footer from './common/Footer/Footer'
@@ -17,6 +16,8 @@ import LoginPage from './pages/loginpage/LoginPage';
 import PurchaseHistory from './components/purchasehistory/PurchaseHistory'
 import UserProfile from './components/userprofile/UserProfile';
 import OrderDetail from './components/orderdetails/OrderDetail.jsx'
+import RegisterPage from './pages/signuppage/RegisterPage';
+import { useAuthState } from 'react-firebase-hooks/auth';
 function App() {
   const [users, setUsers] = useState()
   const [products, setProducts] = useState([])
@@ -29,12 +30,12 @@ function App() {
   const [productFilter, setProductFilter] = useState(products)
 
   useEffect(() => {
-      getCategories()
-      getProducts()
-      getSliders()
-      getUsers()
-      getOrders()
-      getBrands()
+    getCategories()
+    getProducts()
+    getSliders()
+    getUsers()
+    getOrders()
+    getBrands()
   }, [])
   async function getBrands() {
     const brandRef = await getDocs(collection(db, "brands"));
@@ -128,56 +129,61 @@ function App() {
       setCartItem([...cartItem, { ...product, qty: quantity }])
     }
   }
+  const [user, loading, error] = useAuthState(auth);
 
   return (
     <>
-      <Header cartItem={cartItem} setProductFilter={setProductFilter} products={products} />
+      <Header cartItem={cartItem} />
       <div className='page-container'>
         <Routes>
-          <Route path='/' element={<Homepage
-            products={products}
-            categories={categories}
-            slides={slides}
-            brands={brands}
-            addToCart={addToCart}
-            setProductFilter={setProductFilter}
-            filterResult={filterResult}
-            categoriesLoading={categoriesLoading}
-          />} />
-          <Route path='cart' element={<Cartpage
-            addToCart={addToCart}
-            descreaseQty={descreaseQty}
-            deteteCart={deleteCart}
-            cartItem={cartItem}
-            setCartItem={setCartItem}
-          />}
-          />
-          <Route path='profile' element={<Profile users={users} />} >
-            <Route path="userprofile" element={<UserProfile users={users} />} />
-            <Route
-              path="purchasehistory"
-              element={<PurchaseHistory orders={orders} />}
-            />
-          </Route>
-          <Route path='/purchasehistory/:orderId' element={<OrderDetail orders={orders} products={products} />} />
-          <Route path='product' element={<Product
-            categories={categories}
-            addToCart={addToCart}
-            filterResult={filterResult}
-            setProductFilter={setProductFilter}
-            products={products}
-            productFilter={productFilter} />}
-          />
-          <Route path='/product/:productId'
-            element={<SingleProduct
+          <Route path='/login' element={<LoginPage users={users} />} />
+          <Route path='/register' element={<RegisterPage />} />
+          <Route>
+            <Route path='/' element={<Homepage
               products={products}
-              brands={brands}
               categories={categories}
-              addToCartQty={addToCartQty} />} />
-          <Route path='login' element={<LoginPage users={users} />} />
+              slides={slides}
+              brands={brands}
+              addToCart={addToCart}
+              setProductFilter={setProductFilter}
+              filterResult={filterResult}
+              categoriesLoading={categoriesLoading}
+              cartItem={cartItem}
+            />} />
+            <Route path='cart' element={<Cartpage
+              addToCart={addToCart}
+              descreaseQty={descreaseQty}
+              deteteCart={deleteCart}
+              cartItem={cartItem}
+              setCartItem={setCartItem}
+            />}
+            />
+            <Route path='profile' element={<Profile users={users} />} >
+              <Route path="userprofile" element={<UserProfile users={users} />} />
+              <Route
+                path="purchasehistory"
+                element={<PurchaseHistory orders={orders} />}
+              />
+            </Route>
+            <Route path='/purchasehistory/:orderId' element={<OrderDetail orders={orders} products={products} />} />
+            <Route path='product' element={<Product
+              categories={categories}
+              addToCart={addToCart}
+              filterResult={filterResult}
+              setProductFilter={setProductFilter}
+              products={products}
+              productFilter={productFilter} />}
+            />
+            <Route path='/product/:productId'
+              element={<SingleProduct
+                products={products}
+                brands={brands}
+                categories={categories}
+                addToCartQty={addToCartQty} />} />
+          </Route>
         </Routes>
-        <Footer />
         <TopScroll />
+        <Footer />
       </div>
     </>
   );

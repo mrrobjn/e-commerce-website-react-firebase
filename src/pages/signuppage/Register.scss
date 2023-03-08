@@ -1,28 +1,26 @@
-.login-section {
-  .login-container {
+.register-section {
+  .register-container {
     margin-top: 150px;
     border-radius: 10px;
     height: auto;
     display: flex;
     background-color: #ea5867;
-    .login-cover {
+    .register-cover {
       width: 60%;
       background-color: #333;
       border-top-left-radius: 10px;
       border-bottom-left-radius: 10px;
     }
     .form-container {
-      width: 40%;
+      width:40%;
       display: flex;
       justify-content: center;
-      border-top-right-radius: 10px;
-      border-bottom-right-radius: 10px;
-
+      border-radius: 10px;
       form {
         background-color: #fff;
-        margin: 50px;
         width: 100%;
         padding: 20px;
+        margin: 50px;
         border-radius: 10px;
         h1 {
           text-align: center;
@@ -35,7 +33,6 @@
           label {
             font-size: 14px;
             color: #333;
-            margin: 10px 0;
           }
           input {
             width: 100%;
@@ -44,40 +41,39 @@
             outline: none;
           }
         }
-        .save-forgot-password {
+        .box-2{
           display: flex;
+          flex-direction: row;
           justify-content: space-between;
-          margin-top: 10px;
-          font-size: 12px;
-          .forgot-password{
-
-            color: blue;
+          input{
+            width: 49%;
           }
         }
         .form-btn {
-          display: flex;
-          justify-content: space-between;
-          margin: 10px 0;
-          button {
-            width: 49%;
-            font-size: 14px;
-            height: 40px;
-            background-color: #ea5867;
-            color: #fff;
-            border: none;
-          }
-          .to-sign-up-btn {
-            border: 2px solid #ea5867;
-            color: #ea5867;
-            font-size: 14px;
-            width: 49%;
-            border-radius: 5px;
             display: flex;
-            justify-content: center;
-            align-items: center;
-            cursor: pointer;
+            justify-content: space-between;
+            margin: 20px 0;
+            button {
+              width: 49%;
+              font-size: 14px;
+              height: 40px;
+              background-color: #ea5867;
+              color: #fff;
+              border: none;
+            }
+            .back-to-login {
+              border: 2px solid #ea5867;
+              color: #ea5867;
+              font-size: 14px;
+              width: 49%;
+              border-radius: 5px;
+              display: flex;
+              justify-content: center;
+              align-items: center;
+              cursor: pointer;
+              
+            }
           }
-        }
       }
     }
   }

@@ -7,7 +7,7 @@
 .head {
   display: flex;
   justify-content: space-between;
-  background-color: #0f3460;
+  background-color: #316bb3;
   padding: 10px 15%;
 }
 .left-head a {
@@ -73,8 +73,9 @@
         line-height: 43px;
         padding: 0 10px;
         a {
-          color: #ea5867;
+          color: #316bb3;
           font-weight: bold;
+         
           i {
             margin-right: 5px;
           }
@@ -100,6 +101,7 @@
   }
   .nav-btn:hover {
     background-color: #e9f2fa;
+   
   }
 }
 

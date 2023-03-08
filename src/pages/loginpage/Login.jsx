@@ -1,25 +1,28 @@
-import React, {  useState } from "react";
+import React, { useState, useEffect } from "react";
+import { useAuthState } from "react-firebase-hooks/auth";
 import { useNavigate } from "react-router";
-const Login = ({ users }) => {
+import { signIn, auth } from "../../firebase";
+const Login = () => {
   const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const signIn = (e) => {
+  const [user, loading, error] = useAuthState(auth);
+  const handleSubmit = (e) => {
     e.preventDefault();
-    const user =users&& users.find((user) => user.data.email === email);
-    if (user && user.data.password === password) {
-      navigate("/");
-      localStorage.setItem("logUser", user.id);
-      localStorage.setItem("isLogin", true);
-    } else {
-      alert("Tài khoản hoặc mật khẩu không đúng");
-    }
+    signIn(auth, email, password);
   };
+  useEffect(() => {
+    if (loading) {
+      // maybe trigger a loading screen
+      return;
+    }
+    if (user) navigate("/");
+  }, [user, loading]);
 
   return (
     <>
-      <div className="form">
-        <form className="form-container" onSubmit={signIn}>
+      <div className="form-container">
+        <form onSubmit={handleSubmit}>
           <h1>Đăng nhập</h1>
           <div className="box">
             <label>Địa chỉ email</label>
@@ -39,7 +42,28 @@ const Login = ({ users }) => {
               autoComplete="off"
             />
           </div>
-          <button>Đăng nhập</button>
+          <div className="save-forgot-password">
+            <div className="save-password">
+              <input type="checkbox" /> Nhớ mật khẩu
+            </div>
+            <a
+              className="forgot-password"
+              onClick={() => {
+                navigate("/resetpassword");
+              }}
+            >
+              Quên mật khẩu?
+            </a>
+          </div>
+          <div className="form-btn">
+            <button>Đăng nhập</button>
+            <div
+              className="to-sign-up-btn"
+              onClick={() => navigate("/register")}
+            >
+              Đăng ký
+            </div>
+          </div>
         </form>
       </div>
     </>

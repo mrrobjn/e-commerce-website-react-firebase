@@ -2,7 +2,7 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Sliders from "react-slick";
 import SliderCard from "./SliderCard";
-
+import './Slider.scss'
 const Slider = ({ slides }) => {
   const settings = {
     arrow: false,
