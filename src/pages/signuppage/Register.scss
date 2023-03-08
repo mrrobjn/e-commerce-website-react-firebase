@@ -7,12 +7,14 @@
     background-color: #ea5867;
     .register-cover {
       width: 60%;
-      background-color: #333;
       border-top-left-radius: 10px;
       border-bottom-left-radius: 10px;
-    }
+      background-size: cover;
+      background-image: url("../../../public/assets/images/shopping.jpg");
+      background-size: 100%;
+      }
     .form-container {
-      width:40%;
+      width: 40%;
       display: flex;
       justify-content: center;
       border-radius: 10px;
@@ -41,39 +43,38 @@
             outline: none;
           }
         }
-        .box-2{
+        .box-2 {
           display: flex;
           flex-direction: row;
           justify-content: space-between;
-          input{
+          input {
             width: 49%;
           }
         }
         .form-btn {
-            display: flex;
-            justify-content: space-between;
-            margin: 20px 0;
-            button {
-              width: 49%;
-              font-size: 14px;
-              height: 40px;
-              background-color: #ea5867;
-              color: #fff;
-              border: none;
-            }
-            .back-to-login {
-              border: 2px solid #ea5867;
-              color: #ea5867;
-              font-size: 14px;
-              width: 49%;
-              border-radius: 5px;
-              display: flex;
-              justify-content: center;
-              align-items: center;
-              cursor: pointer;
-              
-            }
+          display: flex;
+          justify-content: space-between;
+          margin: 20px 0;
+          button {
+            width: 49%;
+            font-size: 14px;
+            height: 40px;
+            background-color: #ea5867;
+            color: #fff;
+            border: none;
           }
+          .back-to-login {
+            border: 2px solid #ea5867;
+            color: #ea5867;
+            font-size: 14px;
+            width: 49%;
+            border-radius: 5px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+          }
+        }
       }
     }
   }

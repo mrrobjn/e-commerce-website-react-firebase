@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import ReactDOM from 'react-dom/client';
 import { BrowserRouter as Router } from 'react-router-dom'
 import './index.css';
@@ -7,11 +7,12 @@ import reportWebVitals from './reportWebVitals';
 import { SkeletonTheme } from 'react-loading-skeleton';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
+
 root.render(
   // <React.StrictMode>
   <SkeletonTheme >
     <Router >
-        <App />
+      <App />
     </Router>
   </SkeletonTheme>
   // </React.StrictMode>

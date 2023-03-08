@@ -1,6 +1,9 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "./Cartpage.scss";
 import CartTotal from "./CartTotal";
+import { useAuthState } from "react-firebase-hooks/auth";
+import { auth, db } from "../../firebase";
+import { useNavigate } from "react-router";
 const Cartpage = ({
   cartItem,
   addToCart,
@@ -9,6 +12,12 @@ const Cartpage = ({
   setCartItem,
   showDate,
 }) => {
+  const [user, loading, error] = useAuthState(auth);
+  const navigate = useNavigate();
+  useEffect(() => {
+    window.scrollTo(0, 0);
+    if (!user) return navigate("/login");
+  }, [user, loading]);
   return (
     <>
       <section className="cart-items" style={{ paddingTop: 150 }}>

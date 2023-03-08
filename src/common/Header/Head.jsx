@@ -1,26 +1,36 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { Link, useNavigate } from "react-router-dom";
-import { logout, auth } from "../../firebase";
+import { logout, auth, db } from "../../firebase";
+import { collection, getDoc, where, getDocs, query } from "firebase/firestore";
 const Head = () => {
   const navigate = useNavigate();
+  const [name, setName] = useState("");
   const [user, loading, error] = useAuthState(auth);
-
+  useEffect(() => {
+    fetchUser();
+  }, [user, loading]);
   const signOutBtn = () => {
     logout(auth);
+    navigate("/");
   };
-
+  const fetchUser = async () => {
+    const q = query(collection(db, "users"), where("uid", "==", user?.uid));
+    const doc = await getDocs(q);
+    const data = doc.docs[0].data();
+    setName(data.name);
+  };
   return (
     <div className="head">
       <div className="left-head">
-        <a href="#">
-          <i className="fa-solid fa-phone"></i>
-          +84 905 109 563
-        </a>
-        <a href="#">
-          <i className="fa-solid fa-envelope"></i>
-          ECW@gmail.com
-        </a>
+        {user ? (
+          <>
+            <i className="fa-solid fa-user"></i>
+            <p>{name}</p>
+          </>
+        ) : (
+          ""
+        )}
       </div>
       <div className="right-head">
         {user ? (

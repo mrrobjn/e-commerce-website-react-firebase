@@ -17,11 +17,11 @@
         border-right: 1px solid #333;
       }
       .address {
-        width: 45%;
+        width: 40%;
         border-right: 1px solid #333;
       }
       .total {
-        width: 10%;
+        width: 15%;
         border-right: 1px solid #333;
       }
       .status {
@@ -31,7 +31,6 @@
     .order-history {
       margin-top: 10px;
       height: auto;
-      overflow: scroll;
       li {
         display: flex;
         box-shadow: rgb(3 0 71 / 9%) 0 1px 3px;
@@ -49,13 +48,13 @@
           border-right: 1px solid #333;
         }
         .address {
-          width: 45%;
+          width: 40%;
           text-align: left;
           padding: 0 20px;
           border-right: 1px solid #333;
         }
         .total {
-          width: 10%;
+          width: 15%;
           color: #ea5867;
           font-weight: bold;
           border-right: 1px solid #333;

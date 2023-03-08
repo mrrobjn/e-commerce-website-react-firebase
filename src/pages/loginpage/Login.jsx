@@ -1,24 +1,14 @@
 import React, { useState, useEffect } from "react";
-import { useAuthState } from "react-firebase-hooks/auth";
 import { useNavigate } from "react-router";
 import { signIn, auth } from "../../firebase";
 const Login = () => {
   const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [user, loading, error] = useAuthState(auth);
   const handleSubmit = (e) => {
     e.preventDefault();
     signIn(auth, email, password);
   };
-  useEffect(() => {
-    if (loading) {
-      // maybe trigger a loading screen
-      return;
-    }
-    if (user) navigate("/");
-  }, [user, loading]);
-
   return (
     <>
       <div className="form-container">

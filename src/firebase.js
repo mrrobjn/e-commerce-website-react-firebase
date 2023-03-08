@@ -22,7 +22,8 @@ export const signUp = async (name, email, phoneNo, password, age) => {
       email,
       phoneNo,
       name,
-      age,
+      age, 
+      authProvider: "local",
     });
   } catch (err) {
     alert(err.message);

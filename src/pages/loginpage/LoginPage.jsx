@@ -1,23 +1,30 @@
-import {useEffect} from 'react'
-import Login from './Login'
-import './LoginPage.scss'
+import { useEffect } from "react";
+import Login from "./Login";
+import "./LoginPage.scss";
+import { useAuthState } from "react-firebase-hooks/auth";
+import { useNavigate } from "react-router";
+import { auth } from "../../firebase";
 
-const LoginPage = ({ users}) => {
+const LoginPage = ({ users }) => {
+  const [user, loading, error] = useAuthState(auth);
+  const navigate = useNavigate();
+
   useEffect(() => {
-    window.scrollTo(0, 0)
-  }, [])
+    window.scrollTo(0, 0);
+    if (user) navigate("/");
+  }, [user, loading]);
   return (
     <>
-    <section className="login-section" >
+      <section className="login-section">
         <div className="login-container">
           <div className="login-cover">
-            {/* <img src="" alt=""/> */}
+            
           </div>
-            <Login users={users}/>
+          <Login users={users} />
         </div>
-    </section>
+      </section>
     </>
-  )
-}
+  );
+};
 
-export default LoginPage
+export default LoginPage;

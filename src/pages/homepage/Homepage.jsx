@@ -16,10 +16,9 @@ const Homepage = ({
   filterResult,
   categoriesLoading,
 }) => {
-  const navigate = useNavigate();
   useEffect(() => {
     window.scrollTo(0, 0);
-  });
+  },[]);
 
   return (
     <>

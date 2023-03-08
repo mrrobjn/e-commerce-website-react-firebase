@@ -5,13 +5,18 @@
 
 // head
 .head {
+  padding: 10px 15%;
   display: flex;
   justify-content: space-between;
   background-color: #316bb3;
-  padding: 10px 15%;
 }
-.left-head a {
-  margin-right: 20px;
+.left-head {
+  display: flex;
+  color: #fff;
+  font-size: 14px;
+  p{
+    margin-left: 10px;
+  }
 }
 .right-head a {
   margin-left: 20px;
@@ -30,8 +35,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 20px 15%;
-  .logo {
+    .logo {
     a {
       color: #ea5867;
       font-weight: bolder;

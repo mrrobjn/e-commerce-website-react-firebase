@@ -1,9 +1,10 @@
 import React, { useState } from "react";
-import { db } from "../../firebase";
+import { db,auth } from "../../firebase";
 import { addDoc, collection } from "firebase/firestore";
+import { useAuthState } from "react-firebase-hooks/auth";
 const CartTotal = ({ cartItem, setCartItem }) => {
-  const isLogin = localStorage.getItem("isLogin");
-  const user_id = localStorage.getItem("logUser");
+  const [user, loading, error] = useAuthState(auth);
+
   const [paymentMethod, setPaymentMethod] = useState("VNPAY");
   const [cardOwner, setCardOwner] = useState("");
   const [cardNumber, setCardNumber] = useState("");
@@ -43,11 +44,11 @@ const CartTotal = ({ cartItem, setCartItem }) => {
     e.preventDefault();
     if (cartItem.length === 0) {
       alert("Giỏ hàng trống");
-    } else if (isLogin !== "true") {
+    } else if (!user) {
       alert("Vui lòng đăng nhập");
     } else {
       await addDoc(collection(db, "orders"), {
-        user_id: user_id,
+        user_id: user?.uid,
         paymentMethod: paymentMethod,
         cardOwner: cardOwner,
         cardNumber: cardNumber,

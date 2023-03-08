@@ -5,11 +5,14 @@
     height: auto;
     display: flex;
     background-color: #ea5867;
+    
     .login-cover {
+      background-image: url("../../../public/assets/images/shopping.jpg");
+      background-size: 100%;
       width: 60%;
-      background-color: #333;
       border-top-left-radius: 10px;
       border-bottom-left-radius: 10px;
+      position: relative;
     }
     .form-container {
       width: 40%;
@@ -17,9 +20,9 @@
       justify-content: center;
       border-top-right-radius: 10px;
       border-bottom-right-radius: 10px;
-
       form {
         background-color: #fff;
+        // z-index: 2;
         margin: 50px;
         width: 100%;
         padding: 20px;
@@ -34,7 +37,6 @@
           flex-direction: column;
           label {
             font-size: 14px;
-            color: #333;
             margin: 10px 0;
           }
           input {
@@ -42,15 +44,19 @@
             border: 2px solid #ea5867;
             padding: 10px;
             outline: none;
+            background: transparent;
           }
         }
         .save-forgot-password {
           display: flex;
           justify-content: space-between;
+          align-items: center;
           margin-top: 10px;
-          font-size: 12px;
-          .forgot-password{
-
+          font-size: 12px;  
+          .save-password{
+            display: flex;
+          }
+          .forgot-password {
             color: blue;
           }
         }

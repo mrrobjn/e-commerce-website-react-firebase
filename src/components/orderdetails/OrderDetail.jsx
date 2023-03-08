@@ -1,12 +1,17 @@
-import {useEffect} from "react";
-import { Link, useParams } from "react-router-dom";
+import { useEffect } from "react";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import ProfileMenu from "../profilemenu/ProfileMenu";
 import "./OrderDetail.scss";
-
-const OrderDetail = ({ orders, products }) => {
+import { useAuthState } from "react-firebase-hooks/auth";
+import { auth } from "../../firebase";
+const OrderDetail = ({ orders }) => {
+  const [user, loading, error] = useAuthState(auth);
+  const navigate = useNavigate();
   useEffect(() => {
-    window.scrollTo(0, 0)
-  }, [])
+    window.scrollTo(0, 0);
+    if (!user) return navigate("/login");
+  }, [user, loading]);
+
   const { orderId } = useParams();
   const orderInfo = orders.find((order) => order.id === orderId);
   // map array trong order
