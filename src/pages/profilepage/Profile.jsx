@@ -4,7 +4,7 @@ import { useAuthState } from "react-firebase-hooks/auth";
 import { auth } from "../../firebase";
 import "./Profile.scss";
 import ProfileMenu from "../../components/profilemenu/ProfileMenu";
-const Profile = () => {
+const Profile = ({users}) => {
   const [user, loading, error] = useAuthState(auth);
   const navigate = useNavigate();
   useEffect(() => {
@@ -13,10 +13,10 @@ const Profile = () => {
   }, [user,loading]);
   return (
     <>
-      <section className="profile-section" style={{ paddingTop: 150 }}>
+      <section className="profile-section" style={{ paddingTop: 140 }}>
         <div className="profile-container">
-          <ProfileMenu />
-          <Outlet />
+          <ProfileMenu users={users}/>
+          <Outlet users={users}/>
         </div>
       </section>
     </>

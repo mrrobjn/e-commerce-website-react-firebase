@@ -129,11 +129,10 @@ function App() {
       setCartItem([...cartItem, { ...product, qty: quantity }])
     }
   }
-  const [user, loading, error] = useAuthState(auth);
 
   return (
     <>
-      <Header cartItem={cartItem} />
+      <Header cartItem={cartItem} users={users}/>
       <div className='page-container'>
         <Routes>
           <Route path='/login' element={<LoginPage users={users} />} />
@@ -183,8 +182,8 @@ function App() {
           </Route>
         </Routes>
         <TopScroll />
-        <Footer />
       </div>
+        <Footer />
     </>
   );
 }

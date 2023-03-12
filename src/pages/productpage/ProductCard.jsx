@@ -13,7 +13,7 @@ const ProductCard = ({ addToCart, productFilter }) => {
               <div className="product">
                 <Link to={`/product/${product.id}`}>
                   <div className="product-img">
-                    <img src={product.data.image} alt=""/>
+                    <img src={product.data.image} alt="" />
                   </div>
                 </Link>
                 <div className="product-detail">
@@ -26,11 +26,13 @@ const ProductCard = ({ addToCart, productFilter }) => {
                     <i className="fa-solid fa-star"></i> (2)
                   </div>
                   <div className="price">
-                    <h4>{(product.data.price).toLocaleString("vi-VN", {
-                      style: "currency",
-                      currency: "VND",
-                    })}</h4>
-                    <button onClick={() => addToCart(product)}>
+                    <h4>
+                      {product.data.price.toLocaleString("vi-VN", {
+                        style: "currency",
+                        currency: "VND",
+                      })}
+                    </h4>
+                    <button className="btn" onClick={() => addToCart(product)}>
                       <i className="fa-solid fa-plus"></i>
                     </button>
                   </div>

@@ -1,87 +1,141 @@
 .login-section {
   .login-container {
-    margin-top: 150px;
-    border-radius: 10px;
+    // padding-top: 150px;
+    padding: 140px 0;
     height: auto;
+    justify-content: center;
     display: flex;
-    background-color: #ea5867;
-    
-    .login-cover {
-      background-image: url("../../../public/assets/images/shopping.jpg");
-      background-size: 100%;
-      width: 60%;
-      border-top-left-radius: 10px;
-      border-bottom-left-radius: 10px;
-      position: relative;
-    }
+    background: linear-gradient(120deg, #298079, #8e44ad);
     .form-container {
-      width: 40%;
+      width: 30%;
       display: flex;
       justify-content: center;
       border-top-right-radius: 10px;
       border-bottom-right-radius: 10px;
-      form {
-        background-color: #fff;
-        // z-index: 2;
-        margin: 50px;
-        width: 100%;
-        padding: 20px;
+      position: relative;
+      .background {
+        position: absolute;
+        background: #000;
+        top: 0;
+        bottom: 0;
+        right: 0;
+        left: 0;
+        opacity: 0.4;
         border-radius: 10px;
+      }
+      form {
+        margin: 30px 50px;
+        width: 100%;
+        padding: 10px;
+        border-radius: 10px;
+        z-index: 2;
         h1 {
           text-align: center;
-          color: #ea5867;
+          padding-bottom: 20px;
+          color: #fff;
         }
+        .google-login {
+          border: none;
+          width: 100%;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          background-color: #2691d9;
+          padding: 15px;
+          margin-top: 20px;
+          border-radius: 5px;
+          position: relative;
+          // box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+          cursor: pointer;
+          .google-logo {
+            width: 30px;
+            height: 30px;
+            background: #fff;
+            border-radius: 5px;
+            position: absolute;
+            left: 10px;
+            img {
+              width: 100%;
+            }
+          }
+          p {
+            color: #fff;
+            font-size: 12px;
+            margin-left: 10px;
+            font-weight: bold;
+          }
+        }
+        .option-label {
+          margin-top: 20px;
+          font-size: 14px;
+          color: #fff;
+          display: flex;
+          justify-content: space-between;
+          .login-line {
+            width: 40%;
+            height: 1px;
+            background-color: #fff;
+            margin: auto;
+          }
+          p {
+          }
+        }
+
         .box {
-          margin: 10px 0;
+          margin: 20px 0;
           display: flex;
           flex-direction: column;
           label {
             font-size: 14px;
-            margin: 10px 0;
+            color: #fff;
           }
           input {
             width: 100%;
-            border: 2px solid #ea5867;
+            border: none;
             padding: 10px;
             outline: none;
-            background: transparent;
+            font-size: 14px;
+            margin-top: 10px;
           }
         }
         .save-forgot-password {
           display: flex;
           justify-content: space-between;
           align-items: center;
-          margin-top: 10px;
-          font-size: 12px;  
-          .save-password{
+          font-size: 14px;
+          .save-password {
             display: flex;
+            color: #fff;
           }
           .forgot-password {
-            color: blue;
+            color: #2691d9;
+          }
+          .forgot-password:hover {
+            cursor: pointer;
+            text-decoration: underline;
           }
         }
-        .form-btn {
-          display: flex;
-          justify-content: space-between;
-          margin: 10px 0;
-          button {
-            width: 49%;
+        .login-btn {
+          margin-top: 20px;
+          width: 100%;
+          font-size: 14px;
+          height: 40px;
+          // background-color: #ea5867;
+          color: #fff;
+          border: none;
+          background: linear-gradient(120deg, #298079, #8e44ad);
+          border-radius: 5px;
+        }
+        .to-sign-up {
+          text-align: center;
+          p {
+            margin-top: 20px;
             font-size: 14px;
-            height: 40px;
-            background-color: #ea5867;
             color: #fff;
-            border: none;
-          }
-          .to-sign-up-btn {
-            border: 2px solid #ea5867;
-            color: #ea5867;
-            font-size: 14px;
-            width: 49%;
-            border-radius: 5px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            cursor: pointer;
+            .to-sign-up-btn {
+              color: #2691d9;
+              cursor: pointer;
+            }
           }
         }
       }

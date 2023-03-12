@@ -9,7 +9,7 @@ const Product = ({ categories, addToCart, filterResult, productFilter,setProduct
   }, [])
   return (
     <>
-      <section className="product-page-section" style={{ paddingTop: 150 }}>
+      <section className="product-page-section" style={{ paddingTop: 140 }}>
         <Categories categories={categories} filterResult={filterResult} setProductFilter={setProductFilter} products={products} />
         <ProductCard productFilter={productFilter} addToCart={addToCart} />
       </section>

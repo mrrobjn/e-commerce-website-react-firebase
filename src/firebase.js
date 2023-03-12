@@ -1,6 +1,6 @@
 import { initializeApp } from "firebase/app";
-import { getFirestore, addDoc, collection, query, where } from "firebase/firestore";
-import { getAuth, signOut } from "firebase/auth";
+import { getFirestore, addDoc, collection, query, where, getDocs } from "firebase/firestore";
+import { getAuth, GoogleAuthProvider, signInWithPopup, signOut } from "firebase/auth";
 import { createUserWithEmailAndPassword, signInWithEmailAndPassword } from "firebase/auth";
 import { useNavigate } from "react-router";
 const firebaseConfig = {
@@ -13,6 +13,11 @@ const firebaseConfig = {
   measurementId: "G-MFV28WG5W4"
 };
 
+const app = initializeApp(firebaseConfig);
+export const db = getFirestore(app);
+export const auth = getAuth(app);
+const googleProvider = new GoogleAuthProvider();
+
 export const signUp = async (name, email, phoneNo, password, age) => {
   try {
     const res = await createUserWithEmailAndPassword(auth, email, password);
@@ -22,7 +27,7 @@ export const signUp = async (name, email, phoneNo, password, age) => {
       email,
       phoneNo,
       name,
-      age, 
+      age,
       authProvider: "local",
     });
   } catch (err) {
@@ -36,10 +41,23 @@ export const signIn = async (e, email, password) => {
     alert(err.message);
   }
 };
+export const signInWithGoogle = async () => {
+  try {
+    const res = await signInWithPopup(auth, googleProvider);
+    const user = res.user;
+    const q = query(collection(db, "users"), where("uid", "==", user.uid));
+    const docs = await getDocs(q);
+    if (docs.docs.length === 0) {
+      await addDoc(collection(db, "users"), {
+        uid: user.uid,
+        authProvider: "google",
+        email: user.email,
+      });
+    }
+  } catch (err) {
+    alert(err.message);
+  }
+};
 export const logout = (auth) => {
   signOut(auth);
 };
-
-const app = initializeApp(firebaseConfig);
-export const db = getFirestore(app);
-export const auth = getAuth(app);

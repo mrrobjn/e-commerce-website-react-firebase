@@ -19,17 +19,17 @@ const Search = ({ cartItem}) => {
         <ul>
           <li className="nav-btn">
             <Link to="/">
-              <i className="fa-solid fa-house"></i>Trang chủ
+              Trang chủ
             </Link>
           </li>
           <li className="nav-btn">
             <Link to="/product">
-              <i className="fa-solid fa-bag-shopping"></i>Sản phẩm
+              Sản phẩm
             </Link>
           </li>
           <li className="nav-btn ">
             <Link to={user ? "/profile/userprofile" : "/login"}>
-              <i className="fa-solid fa-user"></i>Tài khoản
+              Tài khoản
             </Link>
           </li>
           <li className="nav-btn cart-btn">

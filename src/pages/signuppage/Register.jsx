@@ -25,9 +25,12 @@ const Register = () => {
   return (
     <>
       <div className="form-container">
+        <div className="background"></div>
         <form onSubmit={register}>
           <h1>Đăng kí</h1>
-          <div className="box box-2">
+          <div className="box-2">
+            <div className="input-box">
+              <label>Họ và tên</label>
             <input
               value={useName}
               type="text"
@@ -36,61 +39,74 @@ const Register = () => {
               onChange={(e) => setUseName(e.target.value)}
               required
             />
+            </div>
+            <div className="input-box">
+            <label>Tuổi</label>
             <input
               value={age}
               type="number"
-              placeholder="Tuổi"
+              placeholder="eg: 21"
               autoComplete="off"
               onChange={(e) => setAge(e.target.value)}
               required
             />
-          </div>
-          <div className="box">
+            </div>
+            
+            
+          <div className="input-box">
+            <label>Email</label>
             <input
               value={email}
               type="email"
-              placeholder="Địa chỉ email"
+              placeholder="eg: abc@gmail.com"
               onChange={(e) => setEmail(e.target.value)}
               autoComplete="off"
               required
             />
           </div>
-          <div className="box">
+          <div className="input-box">
+            <label>Số điện thoại</label>
             <input
               value={phoneNo}
               type="tel"
-              placeholder="Số điện thoại"
+              placeholder="eg: 099999999"
               autoComplete="off"
               onChange={(e) => setPhoneNo(e.target.value)}
               required
               pattern="[0]{1}[0-9]{9}"
             />
           </div>
-          <div className="box">
+          <div className="input-box">
+            <label>Tạo mật khẩu</label>
             <input
               value={password}
               type="password"
-              placeholder="Mật khẩu"
+              placeholder="********"
               onChange={(e) => setPassword(e.target.value)}
               autoComplete="new-password"
               required
             />
           </div>
-          <div className="box">
+          <div className="input-box">
+            <label>Xác nhận mật khẩu</label>
             <input
               value={confirmPassword}
               type="password"
-              placeholder="Xác nhận mật khẩu"
+              placeholder="********"
               autoComplete="new-password"
               onChange={(e) => setConfirmPassword(e.target.value)}
               required
             />
           </div>
-          <div className="form-btn">
-            <button type="submit">Tạo tài khoản</button>
-            <div className="back-to-login" onClick={() => navigate("/login")}>
-              Đã có tài khoản
-            </div>
+          </div>
+          <button type="submit">Tạo tài khoản</button>
+          <div className="to-login">
+            <p>
+              Đã có tài khoản?{" "}
+              <a className="to-login-btn" onClick={() => navigate("/login")}>
+                Đăng nhập
+              </a>
+            </p>
           </div>
         </form>
       </div>

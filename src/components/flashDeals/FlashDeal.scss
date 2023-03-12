@@ -1,5 +1,5 @@
 .flash-background {
-  background-color: #fff;
+  background-color: #ea5867;
   margin-top: 10px;
   border-radius: 10px;
   .flash-container {
@@ -7,8 +7,9 @@
     .flash-heading {
       display: flex;
       margin-bottom: 10px;
+      color: #fff;
       i {
-        color: #ea5867;
+        color: #fff;
         margin-right: 10px;
       }
     }
@@ -45,13 +46,14 @@
 .product-box {
   outline-style: none;
   .product {
-    border-radius: 10px;
     background-color: #fff;
     padding: 15px;
     position: relative;
-    margin-left: 10px;
-    margin-bottom: 10px;
-    border: 2px solid #ea5867;
+    margin-left: 5px;
+    margin-bottom: 5px;
+    // border: 2px solid #ea5867;
+    transition: 0.3s;
+    border-radius: 5px;
     .product-img {
       width: 100%;
       height: 173px;
@@ -95,5 +97,8 @@
         color: #ea5867;
       }
     }
+  }
+  .product:hover {
+    // box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
   }
 }

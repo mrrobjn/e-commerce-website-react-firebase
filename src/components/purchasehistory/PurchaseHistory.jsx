@@ -14,7 +14,7 @@ const PurchaseHistory = ({ orders }) => {
   useEffect(() => {
     window.scrollTo(0, 0);
     getOrderByUser();
-  }, [orderWithUser]);
+  }, []);
   return (
     <>
       <div className="order-history-section">

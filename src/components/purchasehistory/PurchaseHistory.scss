@@ -1,13 +1,14 @@
 .order-history-section {
-  width: 79%;
+  width: 80%;
+  height: auto;
+  background-color: #fff;
   .order-container {
     .order-title {
-      border-radius: 10px;
       display: flex;
       text-align: center;
-      background-color: #fff;
       padding: 15px 0;
       font-weight: bold;
+      border-bottom: 1px solid #ccc;
       .payment-method {
         width: 15%;
         border-right: 1px solid #333;
@@ -29,16 +30,15 @@
       }
     }
     .order-history {
-      margin-top: 10px;
       height: auto;
+      border-bottom: 1px solid #ccc;
       li {
         display: flex;
         box-shadow: rgb(3 0 71 / 9%) 0 1px 3px;
         text-align: center;
+        padding: 16px 0;
         background-color: #fff;
-        padding: 15px 0;
         border-radius: 10px;
-        margin-bottom: 10px;
         .payment-method {
           border-right: 1px solid #333;
           width: 15%;

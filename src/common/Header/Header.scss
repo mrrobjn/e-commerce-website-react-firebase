@@ -5,37 +5,42 @@
 
 // head
 .head {
-  padding: 10px 15%;
-  display: flex;
-  justify-content: space-between;
-  background-color: #316bb3;
-}
-.left-head {
-  display: flex;
-  color: #fff;
-  font-size: 14px;
-  p{
-    margin-left: 10px;
+  background-color: #007bff;
+  .head-container {
+    width: 1400px;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 10px 0;
+    display: flex;
+    justify-content: space-between;
+    .left-head {
+      display: flex;
+      color: #fff;
+      font-size: 14px;
+      p {
+        margin-left: 10px;
+      }
+    }
+    .right-head a {
+      margin-left: 20px;
+      cursor: pointer;
+      color: #fff;
+      font-size: 14px;
+    }
   }
-}
-.right-head a {
-  margin-left: 20px;
-  cursor: pointer;
-}
-.head a {
-  color: #fff;
-  font-size: 14px;
-}
-.head a i {
-  margin-right: 10px;
 }
 /* head  */
 /* search  */
 .search {
+  width: 1400px;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 20px 0;
   display: flex;
   justify-content: space-between;
   align-items: center;
-    .logo {
+
+  .logo {
     a {
       color: #ea5867;
       font-weight: bolder;
@@ -75,14 +80,10 @@
         font-size: 16px;
         border-radius: 10px;
         line-height: 43px;
-        padding: 0 10px;
+        padding: 0 20px;
         a {
           color: #316bb3;
           font-weight: bold;
-         
-          i {
-            margin-right: 5px;
-          }
         }
       }
       .cart-btn {
@@ -105,7 +106,6 @@
   }
   .nav-btn:hover {
     background-color: #e9f2fa;
-   
   }
 }
 
@@ -140,10 +140,10 @@
   }
 }
 @media only screen and (max-width: 1600px) {
-  .head {
-    padding: 10px 10%;
+  .head-container {
+    width: 1200px;
   }
   .search {
-    padding: 20px 10%;
+    width: 1200px;
   }
 }

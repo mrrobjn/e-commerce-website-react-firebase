@@ -44,8 +44,7 @@ const CartTotal = ({ cartItem, setCartItem }) => {
     e.preventDefault();
     if (cartItem.length === 0) {
       alert("Giỏ hàng trống");
-    } else if (!user) {
-      alert("Vui lòng đăng nhập");
+    
     } else {
       await addDoc(collection(db, "orders"), {
         user_id: user?.uid,
@@ -157,7 +156,7 @@ const CartTotal = ({ cartItem, setCartItem }) => {
                 />
               </div>
             </div>
-            <button type="submit">Thanh toán</button>
+            <button className="btn" type="submit">Thanh toán</button>
           </form>
         </div>
       </div>

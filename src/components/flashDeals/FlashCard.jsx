@@ -60,7 +60,7 @@ const FlashCard = ({ product, addToCart }) => {
                   <Skeleton width={90} />
                 </h4>
               )}
-              <button
+              <button className="btn"
                 onClick={
                   user ? () => addToCart(product) : () => navigate("/login")
                 }

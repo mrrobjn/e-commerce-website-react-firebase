@@ -20,7 +20,7 @@ const Cartpage = ({
   }, [user, loading]);
   return (
     <>
-      <section className="cart-items" style={{ paddingTop: 150 }}>
+      <section className="cart-items" style={{ paddingTop: 140 }}>
         <div className="cart-container">
           <div className="cart-detail">
             {/* if there are no item in cart */}

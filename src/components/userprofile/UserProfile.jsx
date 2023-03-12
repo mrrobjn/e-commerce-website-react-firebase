@@ -1,83 +1,131 @@
 import { useEffect, useState } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { auth, db } from "../../firebase";
-import { query, collection, getDocs, where } from "firebase/firestore";
+import { updateDoc, doc } from "firebase/firestore";
 import "./UserProfile.scss";
-import Skeleton from "react-loading-skeleton";
-const UserProfile = () => {
-  const [user, loading, error] = useAuthState(auth);
+const UserProfile = ({ users }) => {
+  const [user, loading] = useAuthState(auth);
+  const [userName, setUserName] = useState("");
+  const [userDayOfBirth, setUserDayOfBirth] = useState("");
+  const [userEmail, setUserEmail] = useState("");
+  const [userPhoneNo, setUserPhoneNo] = useState("");
+  const [userId, setUserId] = useState("");
+  //update
   const [name, setName] = useState("");
-  const [age, setAge] = useState("");
+  const [dayOfBirth, setDayOfBirth] = useState("");
   const [email, setEmail] = useState("");
   const [phoneNo, setPhoneNo] = useState("");
   useEffect(() => {
     window.scrollTo(0, 0);
-      fetchUserName();
+    fetchUser();
   }, [user, loading]);
-  const fetchUserName = async () => {
-    const q = query(collection(db, "users"), where("uid", "==", user?.uid));
-    const doc = await getDocs(q);
-    const data = doc.docs[0].data();
-    setName(data.name);
-    setAge(data.age);
-    setEmail(data.email);
-    setPhoneNo(data.phoneNo);
+  // fetch user data
+  const fetchUser = async () => {
+    try {
+      const userss = await users.find((userss) => (userss.data.uid = user.uid));
+      setUserName(userss.data.name);
+      setUserDayOfBirth(userss.data.dayOfBirth);
+      setUserEmail(userss.data.email);
+      setUserPhoneNo(userss.data.phoneNo);
+      setUserId(userss.id);
+    } catch (err) {
+      console.log(err.message)
+    }
+  };
+  // update phone
+  const updateName = async (e) => {
+    e.preventDefault();
+    if (!name) {
+      alert("Không hợp lệ hoặc đã tồn tại");
+    } else {
+      const docRef = doc(db, "users", userId);
+      try {
+        await updateDoc(docRef, {
+          name: name,
+        });
+        fetchUser();
+        alert("Cập nhật thành công");
+      } catch (error) {
+        alert(error.message);
+      }
+    }
+  };
+  // update phone
+  const updateDayOfBirth = async (e) => {
+    e.preventDefault();
+    if (!dayOfBirth) {
+      alert("Không hợp lệ hoặc đã tồn tại");
+    } else {
+      const docRef = doc(db, "users", userId);
+      try {
+        await updateDoc(docRef, {
+          dayOfBirth: dayOfBirth,
+        });
+        fetchUser();
+        alert("Cập nhật thành công");
+      } catch (error) {
+        alert(error.message);
+      }
+    }
+  };
+  // update phone
+  const updatePhoneNo = async (e) => {
+    e.preventDefault();
+    if (!name) {
+      alert("Không hợp lệ hoặc đã tồn tại");
+    } else {
+      const docRef = doc(db, "users", userId);
+      try {
+        await updateDoc(docRef, {
+          phoneNo: phoneNo,
+        });
+        fetchUser();
+        alert("Cập nhật thành công");
+      } catch (error) {
+        alert(error.message);
+      }
+    }
   };
   return (
     <>
       <div className="user-profile-container">
-        {user ? (
-          <div className="info-container">
-            <div className="info-label">
-              <p>Họ và tên:</p>
-              <p>Tuổi:</p>
-              <p>Email:</p>
-              <p>Số điện thoại:</p>
-            </div>
-            <div className="user-info">
-              {name ? (
-                <>
-                  <p>{name}</p>
-                </>
-              ) : (
-                <p>
-                  <Skeleton width={200} />
-                </p>
-              )}
-              {age ? (
-                <>
-                  <p>{age}</p>
-                </>
-              ) : (
-                <p>
-                  <Skeleton width={200} />
-                </p>
-              )}
-              {email ? (
-                <>
-                  <p>{email}</p>
-                </>
-              ) : (
-                <p>
-                  <Skeleton width={200} />
-                </p>
-              )}
-              {phoneNo ? (
-                <>
-                  <p>{phoneNo}</p>
-                </>
-              ) : (
-                <p>
-                  <Skeleton width={200} />
-                </p>
-              )}
-            </div>
+        <div className="info-container">
+          <h1>Cài đặt tài khoản</h1>
+          <div className="input-container">
+            <form className="input-field" onSubmit={updateName}>
+              <label>Họ & Tên</label>
+              <input
+                defaultValue={userName}
+                type="text"
+                onChange={(e) => setName(e.target.value)}
+              />
+              <button type="submit">Cập nhật</button>
+            </form>
+            <form className="input-field" onSubmit={updateDayOfBirth}>
+              <label>Ngày sinh</label>
+              <input
+                defaultValue={userDayOfBirth}
+                type="date"
+                onChange={(e) => setDayOfBirth(e.target.value)}
+              />
+              <button type="submit">Cập nhật</button>
+            </form>
+            <form className="input-field">
+              <label>Email</label>
+              <input defaultValue={userEmail} type="email" disabled />
+            </form>
+            <form className="input-field" onSubmit={updatePhoneNo}>
+              <label>Số điện thoại</label>
+              <input
+                defaultValue={userPhoneNo}
+                type="tel"
+                onChange={(e) => setPhoneNo(e.target.value)}
+                required
+              />
+              <button type="submit">Cập nhật</button>
+            </form>
           </div>
-        ) : (
-          <div className="no-login">
-            <h1>Vui lòng đăng nhập</h1>
-          </div>
-        )}
+        </div>
       </div>
     </>
   );

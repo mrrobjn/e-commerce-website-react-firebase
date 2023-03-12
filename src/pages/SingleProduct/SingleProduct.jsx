@@ -45,7 +45,7 @@ const SingleProduct = ({ products, addToCartQty, categories, brands }) => {
 
   return (
     <>
-      <section className="single-product-section" style={{ paddingTop: 150 }}>
+      <section className="single-product-section" style={{ paddingTop: 140 }}>
         <div className="single-product-container">
           <div className="single-product-left">
             <div className="img">
@@ -88,21 +88,21 @@ const SingleProduct = ({ products, addToCartQty, categories, brands }) => {
             </div>
             <div className="quantity-box">
               <button
-                className="descrease-value-btn"
+                className="descrease-value-btn btn"
                 onClick={() => decreaseQty()}
               >
                 <i className="fa-solid fa-minus"></i>
               </button>
               <div className="quantity-value">{quantity}</div>
               <button
-                className="increase-value-btn"
+                className="increase-value-btn btn"
                 onClick={() => increaseQty()}
               >
                 <i className="fa-solid fa-plus"></i>
               </button>
             </div>
             <button
-              className="add-to-cart-btn"
+              className="add-to-cart-btn btn"
               onClick={() => addToCartQty(product, quantity)}
             >
               Chọn mua
