@@ -2,15 +2,32 @@ import "./PurchaseHistory.scss";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { useAuthState } from "react-firebase-hooks/auth";
-import { auth } from "../../firebase";
+import { auth, db } from "../../firebase";
+import { query, collection, where, onSnapshot } from "firebase/firestore";
+
 const PurchaseHistory = ({ orders }) => {
   const [user, loading, error] = useAuthState(auth);
   const [orderWithUser, setOrderWithUser] = useState([]);
   const getOrderByUser = () => {
-    const orderRef = orders.filter((order) => order.data.user_id === user?.uid);
-    setOrderWithUser(orderRef);
+    // const orderRef = orders.filter((order) => order.data.user_id === user?.uid);
+    // setOrderWithUser(orderRef);
+    try {
+      const q = query(
+        collection(db, "orders"),
+        where("user_id", "==", user ? user.uid : "")
+      );
+      onSnapshot(q, (querySnapshot) => {
+        const orderRef = querySnapshot.docs.map((doc) => ({
+          data: doc.data(),
+          id: doc.id
+        }));
+        setOrderWithUser(orderRef)
+      });
+    } catch (error) {
+      console.log(error.message);
+    }
   };
-
+  console.log(orderWithUser)
   useEffect(() => {
     window.scrollTo(0, 0);
     getOrderByUser();

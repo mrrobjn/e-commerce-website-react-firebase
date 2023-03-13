@@ -1,10 +1,11 @@
 import React, { useState } from "react";
-import { db,auth } from "../../firebase";
+import { db, auth } from "../../firebase";
 import { addDoc, collection } from "firebase/firestore";
 import { useAuthState } from "react-firebase-hooks/auth";
+import { toast, ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 const CartTotal = ({ cartItem, setCartItem }) => {
-  const [user, loading, error] = useAuthState(auth);
-
+  const [user, loading, error] = useAuthState(auth)
   const [paymentMethod, setPaymentMethod] = useState("VNPAY");
   const [cardOwner, setCardOwner] = useState("");
   const [cardNumber, setCardNumber] = useState("");
@@ -43,8 +44,7 @@ const CartTotal = ({ cartItem, setCartItem }) => {
   async function checkout(e) {
     e.preventDefault();
     if (cartItem.length === 0) {
-      alert("Giỏ hàng trống");
-    
+      errorToast("Giỏ hàng trống");
     } else {
       await addDoc(collection(db, "orders"), {
         user_id: user?.uid,
@@ -58,16 +58,31 @@ const CartTotal = ({ cartItem, setCartItem }) => {
         time: time,
         arrayProducts: arrayProducts,
       });
-      alert("Đặt hàng thành công");
+      successToast("Đặt hàng thành công");
       setCartItem([]);
       setAddress("");
       setCardNumber("");
       setCardOwner("");
     }
   }
+  const errorToast = (text) => toast.error(`${text}`);
+  const successToast = (text) => toast.success(`${text}`);
+
   return (
     <>
       <div className="cart-total">
+      <ToastContainer
+          position="top-right"
+          autoClose={3000}
+          hideProgressBar={false}
+          newestOnTop={false}
+          closeOnClick
+          rtl={false}
+          pauseOnFocusLoss
+          draggable
+          pauseOnHover
+          theme="light"
+        />
         <div className="payment">
           <div className="total-box">
             <p>Tổng thanh toán: </p>
@@ -156,7 +171,9 @@ const CartTotal = ({ cartItem, setCartItem }) => {
                 />
               </div>
             </div>
-            <button className="btn" type="submit">Thanh toán</button>
+            <button className="btn" type="submit">
+              Thanh toán
+            </button>
           </form>
         </div>
       </div>

@@ -2,8 +2,7 @@ import { initializeApp } from "firebase/app";
 import { getFirestore, addDoc, collection, query, where, getDocs } from "firebase/firestore";
 import { getAuth, GoogleAuthProvider, signInWithPopup, signOut } from "firebase/auth";
 import { createUserWithEmailAndPassword, signInWithEmailAndPassword } from "firebase/auth";
-import { useNavigate } from "react-router";
-const firebaseConfig = {
+import { toast } from "react-toastify";const firebaseConfig = {
   apiKey: "AIzaSyA7pFaInlp10pwxR0NDdDxdrjtwQyHOOoQ",
   authDomain: "e-commerce-website-3cb63.firebaseapp.com",
   projectId: "e-commerce-website-3cb63",
@@ -17,6 +16,8 @@ const app = initializeApp(firebaseConfig);
 export const db = getFirestore(app);
 export const auth = getAuth(app);
 const googleProvider = new GoogleAuthProvider();
+const errorToast = (text) => toast.error(`${text}`);
+const successToast = (text) => toast.success(`${text}`);
 
 export const signUp = async (name, email, phoneNo, password, age) => {
   try {
@@ -30,15 +31,16 @@ export const signUp = async (name, email, phoneNo, password, age) => {
       age,
       authProvider: "local",
     });
+    successToast("Đăng ký thành công")
   } catch (err) {
-    alert(err.message);
+    errorToast(err.message);
   }
 }
 export const signIn = async (e, email, password) => {
   try {
     await signInWithEmailAndPassword(auth, email, password);
   } catch (err) {
-    alert(err.message);
+    console.log(err.message);
   }
 };
 export const signInWithGoogle = async () => {
@@ -55,7 +57,7 @@ export const signInWithGoogle = async () => {
       });
     }
   } catch (err) {
-    alert(err.message);
+    errorToast(err.message);
   }
 };
 export const logout = (auth) => {

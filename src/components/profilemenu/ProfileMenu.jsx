@@ -1,18 +1,26 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import "./ProfileMenu.scss";
-import { auth } from "../../firebase";
+import { auth, db } from "../../firebase";
 import { useAuthState } from "react-firebase-hooks/auth";
-const ProfileMenu = ({ users }) => {
-  const [name, setName] = useState("");
+import { query, collection, where, onSnapshot } from "firebase/firestore";
+const ProfileMenu = () => {
+  const [datas, setDatas] = useState("");
   const [user] = useAuthState(auth);
   useEffect(() => {
     fetchUser();
   }, []);
   const fetchUser = async () => {
     try {
-      const userss = await users.find((userss) => (userss.data.uid = user.uid));
-      setName(userss.data.name);
+      const q = query(
+        collection(db, "users"),
+        where("uid", "==", user ? user.uid : "")
+      );
+      onSnapshot(q, (querySnapshot) => {
+        querySnapshot.docs.forEach((doc) => {
+          setDatas(doc.data());
+        });
+      });
     } catch (error) {
       console.log(error.message);
     }
@@ -23,7 +31,7 @@ const ProfileMenu = ({ users }) => {
         <div className="menu-btn-container">
           <div className="user-img">
             <img src="/assets/images/user.png" alt="" />
-            <p>{name || "unknown"}</p>
+            <p>{datas.name || "loading"}</p>
           </div>
           <Link to="/profile/userprofile">
             <div className="menu-btn">

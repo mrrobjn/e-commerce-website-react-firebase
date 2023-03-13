@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router";
 import { signUp } from "../../firebase";
+import { toast, ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 const Register = () => {
   const [useName, setUseName] = useState("");
   const [email, setEmail] = useState("");
@@ -11,7 +13,7 @@ const Register = () => {
   const navigate = useNavigate();
   const register = (e) => {
     e.preventDefault();
-    if (password !== confirmPassword) alert("xác nhận mật khẩu không hợp lệ");
+    if (password !== confirmPassword) errorToast("xác nhận mật khẩu không hợp lệ");
     else {
       signUp(useName, email, phoneNo, password, age);
       setUseName("");
@@ -22,9 +24,22 @@ const Register = () => {
       setAge("");
     }
   };
+  const errorToast = (text) => toast.error(`${text}`);
   return (
     <>
       <div className="form-container">
+      <ToastContainer
+          position="top-right"
+          autoClose={3000}
+          hideProgressBar={false}
+          newestOnTop={false}
+          closeOnClick
+          rtl={false}
+          pauseOnFocusLoss
+          draggable
+          pauseOnHover
+          theme="light"
+        />
         <div className="background"></div>
         <form onSubmit={register}>
           <h1>Đăng kí</h1>

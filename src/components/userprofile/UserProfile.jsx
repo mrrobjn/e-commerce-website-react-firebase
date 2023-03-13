@@ -3,7 +3,10 @@ import { useAuthState } from "react-firebase-hooks/auth";
 import { auth, db } from "../../firebase";
 import { updateDoc, doc } from "firebase/firestore";
 import "./UserProfile.scss";
-const UserProfile = ({ users }) => {
+import { query, collection, where, onSnapshot } from "firebase/firestore";
+import { toast, ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+const UserProfile = () => {
   const [user, loading] = useAuthState(auth);
   const [userName, setUserName] = useState("");
   const [userDayOfBirth, setUserDayOfBirth] = useState("");
@@ -22,21 +25,28 @@ const UserProfile = ({ users }) => {
   // fetch user data
   const fetchUser = async () => {
     try {
-      const userss = await users.find((userss) => (userss.data.uid = user.uid));
-      setUserName(userss.data.name);
-      setUserDayOfBirth(userss.data.dayOfBirth);
-      setUserEmail(userss.data.email);
-      setUserPhoneNo(userss.data.phoneNo);
-      setUserId(userss.id);
+      const q = query(
+        collection(db, "users"),
+        where("uid", "==", user ? user.uid : "")
+      );
+      onSnapshot(q, (querySnapshot) => {
+        querySnapshot.docs.forEach((doc) => {
+          setUserName(doc.data().name);
+          setUserDayOfBirth(doc.data().dayOfBirth);
+          setUserEmail(doc.data().email);
+          setUserPhoneNo(doc.data().phoneNo);
+          setUserId(doc.id);
+        });
+      });
     } catch (err) {
-      console.log(err.message)
+      errorToast(err.message);
     }
   };
   // update phone
   const updateName = async (e) => {
     e.preventDefault();
-    if (!name) {
-      alert("Không hợp lệ hoặc đã tồn tại");
+    if (!name || name === userName) {
+      errorToast("Không hợp lệ hoặc đã tồn tại");
     } else {
       const docRef = doc(db, "users", userId);
       try {
@@ -44,17 +54,18 @@ const UserProfile = ({ users }) => {
           name: name,
         });
         fetchUser();
-        alert("Cập nhật thành công");
+        successToast("Cập nhật thành công");
       } catch (error) {
-        alert(error.message);
+        errorToast(error.message);
       }
     }
   };
+
   // update phone
   const updateDayOfBirth = async (e) => {
     e.preventDefault();
-    if (!dayOfBirth) {
-      alert("Không hợp lệ hoặc đã tồn tại");
+    if (!dayOfBirth || dayOfBirth === userDayOfBirth) {
+      errorToast("Không hợp lệ hoặc đã tồn tại");
     } else {
       const docRef = doc(db, "users", userId);
       try {
@@ -62,17 +73,17 @@ const UserProfile = ({ users }) => {
           dayOfBirth: dayOfBirth,
         });
         fetchUser();
-        alert("Cập nhật thành công");
+        successToast("Cập nhật thành công");
       } catch (error) {
-        alert(error.message);
+        errorToast(error.message);
       }
     }
   };
   // update phone
   const updatePhoneNo = async (e) => {
     e.preventDefault();
-    if (!name) {
-      alert("Không hợp lệ hoặc đã tồn tại");
+    if (!phoneNo || phoneNo === userPhoneNo) {
+      errorToast("Không hợp lệ hoặc đã tồn tại");
     } else {
       const docRef = doc(db, "users", userId);
       try {
@@ -80,15 +91,30 @@ const UserProfile = ({ users }) => {
           phoneNo: phoneNo,
         });
         fetchUser();
-        alert("Cập nhật thành công");
+        successToast("Cập nhật thành công");
       } catch (error) {
-        alert(error.message);
+        errorToast(error.message);
       }
     }
   };
+  // toast message
+  const successToast = (text) => toast.success(`${text}`);
+  const errorToast = (text) => toast.error(`${text}`);
   return (
     <>
       <div className="user-profile-container">
+        <ToastContainer
+          position="top-right"
+          autoClose={3000}
+          hideProgressBar={false}
+          newestOnTop={false}
+          closeOnClick
+          rtl={false}
+          pauseOnFocusLoss
+          draggable
+          pauseOnHover
+          theme="light"
+        />
         <div className="info-container">
           <h1>Cài đặt tài khoản</h1>
           <div className="input-container">

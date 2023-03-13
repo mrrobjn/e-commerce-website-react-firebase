@@ -54,19 +54,19 @@ const Cartpage = ({
                   </div>
                   <div className="cart-items-function">
                     <button
-                      className="item-remove"
+                      className="item-remove btn"
                       onClick={() => deteteCart(item)}
                     >
                       <i className="fa-solid fa-xmark"></i>
                     </button>
                     <button
-                      className="increase"
+                      className="increase btn"
                       onClick={() => addToCart(item)}
                     >
                       <i className="fa-solid fa-plus"></i>
                     </button>
                     <button
-                      className="descrease"
+                      className="descrease btn"
                       onClick={() => descreaseQty(item)}
                     >
                       <i className="fa-solid fa-minus"></i>
