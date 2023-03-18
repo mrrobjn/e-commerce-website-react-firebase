@@ -1,42 +1,48 @@
-import React, { useEffect, useState } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { useNavigate } from "react-router-dom";
-import { logout, auth } from "../../firebase";
+import { logout, auth, db } from "../../firebase";
 const Head = ({ users }) => {
   const navigate = useNavigate();
-  const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
-  const [user, loading] = useAuthState(auth);
-
+  const [user] = useAuthState(auth);
   const signOutBtn = () => {
     logout(auth);
     navigate("/");
   };
-  // const userRef =
-  //   users && users.find((userss) => userss.data.uid === user?.uid);
-  // setName(userRef.data.name);
-  // setEmail(userRef.data.email);
   return (
     <div className="head">
       <div className="head-container">
         <div className="left-head">
-          {/* {user ? (
-            <>
-              <i className="fa-solid fa-user"></i>
-              <p>Xin chào {name || email}</p>
-            </>
-          ) : (
-            ""
-          )} */}
+          <a >Kênh người bán</a>
         </div>
         <div className="right-head">
           {user ? (
-            <a onClick={signOutBtn}>Đăng xuất</a>
+            <>
+              <div className="user-avt">
+                <img src={user?.photoURL || "/assets/images/user.png"} alt="" />
+              </div>
+              <div className="dropdown">
+                <span>{user?.displayName || "unknown"}</span>
+                <div className="dropdown-content">
+                  <div
+                    className="dropdown-btn"
+                    onClick={() => navigate("/profile/userprofile")}
+                  >
+                    Tài khoản
+                  </div>
+                  <div className="dropdown-btn" onClick={() => navigate("/profile/purchasehistory")}>Đơn hàng</div>
+                  <div className="dropdown-btn" onClick={signOutBtn}>
+                    Đăng xuất
+                  </div>
+                </div>
+              </div>
+            </>
           ) : (
-            <a onClick={() => navigate("/login")}>Đăng nhập</a>
+            <>
+              <a onClick={() => navigate("/register")}>Đăng kí</a>
+              <div className="vl"></div>
+              <a onClick={() => navigate("/login")}>Đăng nhập</a>
+            </>
           )}
-          <a>🇻🇳 VN</a>
-          <a>🇬🇧 UK</a>
         </div>
       </div>
     </div>

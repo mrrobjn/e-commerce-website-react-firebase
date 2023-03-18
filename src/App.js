@@ -1,7 +1,7 @@
 import './App.scss';
 import { Route, Routes } from 'react-router-dom';
 import { useEffect, useState } from 'react';
-import { db, auth } from './firebase'
+import { db } from './firebase'
 import { getDocs, collection } from "firebase/firestore";
 //pages
 import Header from './common/Header/Header';
@@ -17,7 +17,8 @@ import PurchaseHistory from './components/purchasehistory/PurchaseHistory'
 import UserProfile from './components/userprofile/UserProfile';
 import OrderDetail from './components/orderdetails/OrderDetail.jsx'
 import RegisterPage from './pages/signuppage/RegisterPage';
-import { useAuthState } from 'react-firebase-hooks/auth';
+import ResetPassword from './pages/resetpassword/ResetPassword';
+import UpdatePassword from './components/updatepassword/UpdatePassword';
 function App() {
   const [users, setUsers] = useState()
   const [products, setProducts] = useState([])
@@ -88,9 +89,9 @@ function App() {
   }
   // add item to cart
   const addToCart = (product) => {
-    const productExit = cartItem.find((item) => item.id === product.id)
-    if (productExit) {
-      setCartItem(cartItem.map((item) => (item.id === product.id ? { ...productExit, qty: productExit.qty + 1 } : item)))
+    const productExist = cartItem.find((item) => item.id === product.id)
+    if (productExist) {
+      setCartItem(cartItem.map((item) => (item.id === product.id ? { ...productExist, qty: productExist.qty + 1 } : item)))
     }
     else {
       setCartItem([...cartItem, { ...product, qty: 1 }])
@@ -98,14 +99,14 @@ function App() {
   }
   // decrease item
   const descreaseQty = (product) => {
-    const productExit = cartItem.find(item => item.id === product.id)
+    const productExist = cartItem.find(item => item.id === product.id)
     // if quantity = 1 
-    if (productExit.qty === 1) {
+    if (productExist.qty === 1) {
       setCartItem(cartItem.filter((item) => item.id !== product.id))
     }
     // quantity > 1
     else {
-      setCartItem(cartItem.map((item) => (item.id === product.id ? { ...productExit, qty: productExit.qty - 1 } : item)))
+      setCartItem(cartItem.map((item) => (item.id === product.id ? { ...productExist, qty: productExist.qty - 1 } : item)))
     }
   }
   // delete item from cart
@@ -132,11 +133,12 @@ function App() {
 
   return (
     <>
-      <Header cartItem={cartItem} users={users}/>
+      <Header cartItem={cartItem} users={users} />
       <div className='page-container'>
         <Routes>
           <Route path='/login' element={<LoginPage users={users} />} />
           <Route path='/register' element={<RegisterPage />} />
+          <Route path='/resetpassword' element={<ResetPassword />} />
           <Route>
             <Route path='/' element={<Homepage
               products={products}
@@ -163,6 +165,7 @@ function App() {
                 path="purchasehistory"
                 element={<PurchaseHistory orders={orders} />}
               />
+            <Route path='password' element={<UpdatePassword />} />
             </Route>
             <Route path='/purchasehistory/:orderId' element={<OrderDetail orders={orders} products={products} />} />
             <Route path='product' element={<Product
@@ -183,7 +186,7 @@ function App() {
         </Routes>
         <TopScroll />
       </div>
-        <Footer />
+      <Footer />
     </>
   );
 }

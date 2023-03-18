@@ -27,7 +27,6 @@ const PurchaseHistory = ({ orders }) => {
       console.log(error.message);
     }
   };
-  console.log(orderWithUser)
   useEffect(() => {
     window.scrollTo(0, 0);
     getOrderByUser();

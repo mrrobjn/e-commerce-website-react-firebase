@@ -15,7 +15,7 @@ const Login = () => {
         <div className="background"></div>
         <form onSubmit={handleSubmit}>
           <h1>Đăng nhập</h1>
-          <button className="google-login" onClick={signInWithGoogle}>
+          <button className="google-login" type="button" onClick={signInWithGoogle}>
             <div className="google-logo">
               <img
                 src="assets\images\logo\google-logo-png-webinar-optimizing-for-success-google-business-webinar-13.png"

@@ -1,17 +1,17 @@
 .order-detail-section {
-  background-color: #e9f2fa;
   display: flex;
   justify-content: space-between;
-  margin-bottom: 10px;
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
-
+margin-top: 140px;
+margin-bottom: 10px;
+height: 600px;
   .order-detail-container {
     height: auto;
     background-color: #fff;
     width: 80%;
     .product-list {
       max-height: 300px;
-      overflow: scroll;
+      overflow-y: scroll;
       .order-product {
         margin-bottom: 10px;
         background-color: #fff;

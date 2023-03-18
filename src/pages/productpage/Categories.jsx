@@ -5,9 +5,6 @@ const Categories = ({
   setProductFilter,
   products,
 }) => {
-  useEffect(() => {
-    setProductFilter(products);
-  }, []);
   return (
     <>
       <div className="category">

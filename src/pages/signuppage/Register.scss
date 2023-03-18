@@ -33,7 +33,7 @@
           padding-bottom: 20px;
           color: #fff;
         }
-       
+
         .box-2 {
           display: flex;
           justify-content: space-between;
@@ -62,8 +62,9 @@
           height: 40px;
           color: #fff;
           border: none;
-          background: linear-gradient(120deg, #298079, #8e44ad);
           border-radius: 5px;
+          background: #007bff;
+          font-weight: bold;
         }
         .to-login {
           text-align: center;
@@ -72,8 +73,11 @@
             font-size: 14px;
             color: #fff;
             .to-login-btn {
-              color: #2691d9;
+              color: #007bff;
               cursor: pointer;
+            }
+            .to-login-btn:hover {
+              text-decoration: underline;
             }
           }
         }

@@ -1,7 +1,6 @@
 .home-category {
     width: 20%;
     height: auto;
-    border-radius: 10px;
     // overflow: scroll;
     background-color: #fff;
     .box {
@@ -12,6 +11,7 @@
         font-weight: 600;
         font-size: 16px;
         transition: 0.5s;
+        text-transform: capitalize;
       }
       &:hover {
         cursor: pointer;

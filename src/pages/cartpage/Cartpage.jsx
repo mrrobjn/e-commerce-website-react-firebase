@@ -20,9 +20,13 @@ const Cartpage = ({
   }, [user, loading]);
   return (
     <>
-      <section className="cart-items" style={{ paddingTop: 140 }}>
+      <section className="cart-items">
         <div className="cart-container">
           <div className="cart-detail">
+            <div className="cart-header">
+              <h1>Giỏ hàng của bạn</h1>
+              <p>{cartItem.length} sản phẩm</p>
+            </div>
             {/* if there are no item in cart */}
             {cartItem.length === 0 && (
               <h1 className="no-items">Giỏ hàng trống</h1>
@@ -36,8 +40,8 @@ const Cartpage = ({
                     <img src={item.data.image} alt="" />
                   </div>
                   <div className="cart-details">
-                    <h3>{item.data.title}</h3>
-                    <p>
+                    <p className="title">{item.data.title}</p>
+                    <p className="price">
                       {item.data.price.toLocaleString("vi-VN", {
                         style: "currency",
                         currency: "VND",

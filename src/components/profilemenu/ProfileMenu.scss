@@ -5,17 +5,23 @@
   border-right: 1px solid #ccc;
   .menu-btn-container {
     .user-img {
-      width: 100%;
-      text-align: center;
-      margin: 20px 0;
+      width: 150px;
+      height: 150px;
+      margin: 20px auto 20px auto;
+      border-radius: 50%;
+      border: 5px solid #ea5867;
       img {
-        width: 40%;
+        width: 100%;
+        height: 100%;
+        border-radius: 50%;
+        object-fit: cover;
       }
-      p {
-        font-weight: bold;
-        margin-top: 10px;
-        font-size: 18px;
-      }
+    }
+    p {
+      font-weight: bold;
+      margin: 10px 0;
+      font-size: 18px;
+      text-align: center;
     }
     .menu-btn {
       padding: 0 20px;
@@ -24,7 +30,7 @@
       line-height: 50px;
       color: #333;
       border-bottom: 1px solid #ccc;
-      i{
+      i {
         margin-right: 10px;
       }
       &:hover {

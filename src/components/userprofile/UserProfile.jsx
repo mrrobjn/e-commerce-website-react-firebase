@@ -1,26 +1,30 @@
 import { useEffect, useState } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
-import { auth, db } from "../../firebase";
+import { auth, db, storage } from "../../firebase";
 import { updateDoc, doc } from "firebase/firestore";
 import "./UserProfile.scss";
 import { query, collection, where, onSnapshot } from "firebase/firestore";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { getDownloadURL, ref, uploadBytes } from "firebase/storage";
+import { updateProfile } from "firebase/auth";
 const UserProfile = () => {
   const [user, loading] = useAuthState(auth);
   const [userName, setUserName] = useState("");
   const [userDayOfBirth, setUserDayOfBirth] = useState("");
   const [userEmail, setUserEmail] = useState("");
-  const [userPhoneNo, setUserPhoneNo] = useState("");
+  const [userPhoneNumber, setUserPhoneNumber] = useState("");
   const [userId, setUserId] = useState("");
   //update
-  const [name, setName] = useState("");
+  const [displayName, setDisplayName] = useState("");
   const [dayOfBirth, setDayOfBirth] = useState("");
-  const [email, setEmail] = useState("");
-  const [phoneNo, setPhoneNo] = useState("");
+  const [phoneNumber, setPhoneNumber] = useState("");
+  const [avt, setAvt] = useState("");
+
   useEffect(() => {
     window.scrollTo(0, 0);
     fetchUser();
+    setUserName(user?.displayName);
   }, [user, loading]);
   // fetch user data
   const fetchUser = async () => {
@@ -31,10 +35,9 @@ const UserProfile = () => {
       );
       onSnapshot(q, (querySnapshot) => {
         querySnapshot.docs.forEach((doc) => {
-          setUserName(doc.data().name);
           setUserDayOfBirth(doc.data().dayOfBirth);
           setUserEmail(doc.data().email);
-          setUserPhoneNo(doc.data().phoneNo);
+          setUserPhoneNumber(doc.data().phoneNumber);
           setUserId(doc.id);
         });
       });
@@ -45,23 +48,20 @@ const UserProfile = () => {
   // update phone
   const updateName = async (e) => {
     e.preventDefault();
-    if (!name || name === userName) {
+    if (!displayName || displayName === user.displayName) {
       errorToast("Không hợp lệ hoặc đã tồn tại");
     } else {
-      const docRef = doc(db, "users", userId);
-      try {
-        await updateDoc(docRef, {
-          name: name,
+      updateProfile(auth.currentUser, { displayName: displayName })
+        .then(() => {
+          successToast("Cập nhật thành công");
+        })
+        .catch((err) => {
+          errorToast(err.message);
         });
-        fetchUser();
-        successToast("Cập nhật thành công");
-      } catch (error) {
-        errorToast(error.message);
-      }
     }
   };
 
-  // update phone
+  // update day of birth
   const updateDayOfBirth = async (e) => {
     e.preventDefault();
     if (!dayOfBirth || dayOfBirth === userDayOfBirth) {
@@ -82,13 +82,13 @@ const UserProfile = () => {
   // update phone
   const updatePhoneNo = async (e) => {
     e.preventDefault();
-    if (!phoneNo || phoneNo === userPhoneNo) {
+    if (!phoneNumber || phoneNumber === userPhoneNumber) {
       errorToast("Không hợp lệ hoặc đã tồn tại");
     } else {
       const docRef = doc(db, "users", userId);
       try {
         await updateDoc(docRef, {
-          phoneNo: phoneNo,
+          phoneNumber: phoneNumber,
         });
         fetchUser();
         successToast("Cập nhật thành công");
@@ -96,6 +96,22 @@ const UserProfile = () => {
         errorToast(error.message);
       }
     }
+  };
+  // update avt
+  const updateAvatar = async (e) => {
+    e.preventDefault();
+    const imgRef = ref(storage, `user avatars/${user.uid}` + ".png");
+    const snapshot = await uploadBytes(imgRef, avt);
+    const photoURL = await getDownloadURL(imgRef).catch((err) => {
+      errorToast(err.message);
+    });
+    updateProfile(auth.currentUser, { photoURL })
+      .then(() => {
+        successToast("Cập nhật thành công");
+      })
+      .catch((err) => {
+        errorToast(err.message);
+      });
   };
   // toast message
   const successToast = (text) => toast.success(`${text}`);
@@ -123,7 +139,7 @@ const UserProfile = () => {
               <input
                 defaultValue={userName}
                 type="text"
-                onChange={(e) => setName(e.target.value)}
+                onChange={(e) => setDisplayName(e.target.value)}
               />
               <button type="submit">Cập nhật</button>
             </form>
@@ -143,9 +159,19 @@ const UserProfile = () => {
             <form className="input-field" onSubmit={updatePhoneNo}>
               <label>Số điện thoại</label>
               <input
-                defaultValue={userPhoneNo}
+                defaultValue={userPhoneNumber}
                 type="tel"
-                onChange={(e) => setPhoneNo(e.target.value)}
+                onChange={(e) => setPhoneNumber(e.target.value)}
+                required
+                pattern="[0]{1}[0-9]{9}"
+              />
+              <button type="submit">Cập nhật</button>
+            </form>
+            <form className="input-field" onSubmit={updateAvatar}>
+              <label>Ảnh đại diện</label>
+              <input
+                type="file"
+                onChange={(e) => setAvt(e.target.files[0])}
                 required
               />
               <button type="submit">Cập nhật</button>

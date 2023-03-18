@@ -1,8 +1,10 @@
 import { initializeApp } from "firebase/app";
 import { getFirestore, addDoc, collection, query, where, getDocs } from "firebase/firestore";
-import { getAuth, GoogleAuthProvider, signInWithPopup, signOut } from "firebase/auth";
+import { getAuth, GoogleAuthProvider, sendPasswordResetEmail, signInWithPopup, signOut, updatePassword } from "firebase/auth";
 import { createUserWithEmailAndPassword, signInWithEmailAndPassword } from "firebase/auth";
-import { toast } from "react-toastify";const firebaseConfig = {
+import { getStorage } from 'firebase/storage'
+import { toast } from "react-toastify";
+const firebaseConfig = {
   apiKey: "AIzaSyA7pFaInlp10pwxR0NDdDxdrjtwQyHOOoQ",
   authDomain: "e-commerce-website-3cb63.firebaseapp.com",
   projectId: "e-commerce-website-3cb63",
@@ -15,11 +17,12 @@ import { toast } from "react-toastify";const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 export const db = getFirestore(app);
 export const auth = getAuth(app);
+export const storage = getStorage(app)
 const googleProvider = new GoogleAuthProvider();
 const errorToast = (text) => toast.error(`${text}`);
 const successToast = (text) => toast.success(`${text}`);
 
-export const signUp = async (name, email, phoneNo, password, age) => {
+export const signUp = async (name, email, phoneNo, password, dayOfBirth) => {
   try {
     const res = await createUserWithEmailAndPassword(auth, email, password);
     const user = res.user;
@@ -28,7 +31,7 @@ export const signUp = async (name, email, phoneNo, password, age) => {
       email,
       phoneNo,
       name,
-      age,
+      dayOfBirth,
       authProvider: "local",
     });
     successToast("Đăng ký thành công")
@@ -57,6 +60,15 @@ export const signInWithGoogle = async () => {
       });
     }
   } catch (err) {
+    errorToast(err.message);
+  }
+};
+export const sendPasswordReset = async (email) => {
+  try {
+    await sendPasswordResetEmail(auth, email);
+    successToast("Password reset link sent!");
+  } catch (err) {
+    console.error(err);
     errorToast(err.message);
   }
 };

@@ -5,7 +5,7 @@ import { useAuthState } from "react-firebase-hooks/auth";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 const CartTotal = ({ cartItem, setCartItem }) => {
-  const [user, loading, error] = useAuthState(auth)
+  const [user, loading, error] = useAuthState(auth);
   const [paymentMethod, setPaymentMethod] = useState("VNPAY");
   const [cardOwner, setCardOwner] = useState("");
   const [cardNumber, setCardNumber] = useState("");
@@ -71,7 +71,7 @@ const CartTotal = ({ cartItem, setCartItem }) => {
   return (
     <>
       <div className="cart-total">
-      <ToastContainer
+        <ToastContainer
           position="top-right"
           autoClose={3000}
           hideProgressBar={false}
@@ -83,9 +83,10 @@ const CartTotal = ({ cartItem, setCartItem }) => {
           pauseOnHover
           theme="light"
         />
+        <div className="background"></div>
         <div className="payment">
           <div className="total-box">
-            <p>Tổng thanh toán: </p>
+            <h1>Tổng thanh toán: </h1>
             <span>
               {totalPrice.toLocaleString("vi-VN", {
                 style: "currency",
@@ -162,18 +163,17 @@ const CartTotal = ({ cartItem, setCartItem }) => {
               )}
               <div className="input-holder address-holder">
                 <label>Địa chỉ nhận hàng</label>
-                <textarea
+                <input
                   value={address}
                   type="text"
-                  rows="3"
                   onChange={(e) => setAddress(e.target.value)}
                   required
                 />
               </div>
+              <button className="cart-btn" type="submit">
+                Thanh toán
+              </button>
             </div>
-            <button className="btn" type="submit">
-              Thanh toán
-            </button>
           </form>
         </div>
       </div>

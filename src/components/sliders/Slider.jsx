@@ -6,16 +6,16 @@ import './Slider.scss'
 const Slider = ({ slides }) => {
   const settings = {
     arrow: false,
-    dots: true,
+    dots: false,
     infinite: true,
-    speed: 500,
-    slidesToShow: 1,
+    speed: 1000,
+    slidesToShow: 2,
     slidesToScroll: 1,
     autoplay: true,
     lazyLoad: true,
-    appendDots: (dots) => {
-      return <ul>{dots}</ul>;
-    },
+    // appendDots: (dots) => {
+    //   return <ul>{dots}</ul>;
+    // },
   };
   return (
     <>

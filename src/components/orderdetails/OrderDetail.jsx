@@ -19,7 +19,7 @@ const OrderDetail = ({ orders }) => {
     orderInfo && orderInfo.data.arrayProducts.map((products) => products);
   return (
     <>
-      <section className="order-detail-section" style={{ paddingTop: 140 }}>
+      <section className="order-detail-section">
         <ProfileMenu />
         <div className="order-detail-container">
           <div className="product-list">

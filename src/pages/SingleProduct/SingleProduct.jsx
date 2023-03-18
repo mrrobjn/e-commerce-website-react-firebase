@@ -1,8 +1,6 @@
 import { useParams } from "react-router-dom";
 import "./SingleProduct.scss";
 import React, { useEffect, useState } from "react";
-import Skeleton from "react-loading-skeleton";
-import "react-loading-skeleton/dist/skeleton.css";
 
 const SingleProduct = ({ products, addToCartQty, categories, brands }) => {
   const [quantity, setQuantity] = useState(1);
@@ -49,28 +47,18 @@ const SingleProduct = ({ products, addToCartQty, categories, brands }) => {
         <div className="single-product-container">
           <div className="single-product-left">
             <div className="img">
-              {productImg ? (
-                <img src={productImg} alt="" />
-              ) : (
-                <Skeleton height={390} />
-              )}
+              {productImg && <img src={productImg} alt="" />}
             </div>
           </div>
           <div className="single-product-right">
-            <h3>{productName || <Skeleton count={2} height={23} />}</h3>
+            <h3>{productName}</h3>
             <div className="detail-box">
               <p>
-                Thương hiệu:{" "}
-                <span>
-                  {productBrand || <Skeleton height={17} width={100} />}
-                </span>
+                Thương hiệu: <span>{productBrand}</span>
               </p>
 
               <p>
-                Loại{" "}
-                <span>
-                  {productCategory || <Skeleton height={18} width={100} />}
-                </span>
+                Loại: <span>{productCategory}</span>
               </p>
               <div className="rate">
                 <i className="fa-solid fa-star"></i>
@@ -83,7 +71,7 @@ const SingleProduct = ({ products, addToCartQty, categories, brands }) => {
                 {productPrice.toLocaleString("vi-VN", {
                   style: "currency",
                   currency: "VND",
-                }) || <Skeleton height={34} width={200} />}
+                })}
               </h5>
             </div>
             <div className="quantity-box">

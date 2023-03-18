@@ -6,7 +6,7 @@ import { useNavigate } from "react-router";
 import { auth } from "../../firebase";
 
 const LoginPage = ({ users }) => {
-  const [user, loading, error] = useAuthState(auth);
+  const [user, loading] = useAuthState(auth);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -18,7 +18,6 @@ const LoginPage = ({ users }) => {
       <section className="login-section">
         <div className="login-container">
           <div className="login-cover">
-            
           </div>
           <Login users={users} />
         </div>

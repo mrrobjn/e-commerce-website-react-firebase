@@ -10,8 +10,8 @@
       width: 30%;
       display: flex;
       justify-content: center;
-      border-top-right-radius: 10px;
-      border-bottom-right-radius: 10px;
+      // border-top-right-radius: 10px;
+      // border-bottom-right-radius: 10px;
       position: relative;
       .background {
         position: absolute;
@@ -27,7 +27,6 @@
         margin: 30px 50px;
         width: 100%;
         padding: 10px;
-        border-radius: 10px;
         z-index: 2;
         h1 {
           text-align: center;
@@ -40,7 +39,7 @@
           display: flex;
           justify-content: center;
           align-items: center;
-          background-color: #2691d9;
+          background-color: #007bff;
           padding: 15px;
           margin-top: 20px;
           border-radius: 5px;
@@ -120,11 +119,11 @@
           width: 100%;
           font-size: 14px;
           height: 40px;
-          // background-color: #ea5867;
           color: #fff;
           border: none;
-          background: linear-gradient(120deg, #298079, #8e44ad);
           border-radius: 5px;
+          background: #007bff;
+          font-weight: bold;
         }
         .to-sign-up {
           text-align: center;
@@ -133,7 +132,7 @@
             font-size: 14px;
             color: #fff;
             .to-sign-up-btn {
-              color: #2691d9;
+              color: #007bff;
               cursor: pointer;
             }
           }

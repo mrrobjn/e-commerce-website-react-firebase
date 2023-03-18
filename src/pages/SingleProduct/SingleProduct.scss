@@ -2,7 +2,7 @@
   margin-bottom: 10px;
   .single-product-container {
     background-color: #fff;
-    border-radius: 10px;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
     display: flex;
     .single-product-left {
       padding: 10px;
@@ -52,12 +52,12 @@
         border-radius: 5px;
         .descrease-value-btn {
           width: 35%;
-          border-radius: 5px;
+          border-radius: 0;
           border: none;
         }
         .increase-value-btn {
           width: 35%;
-          border-radius: 5px;
+          border-radius: 0;
           border: none;
         }
         .quantity-value {
