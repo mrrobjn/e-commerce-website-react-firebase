@@ -20,7 +20,6 @@ const UserProfile = () => {
   const [dayOfBirth, setDayOfBirth] = useState("");
   const [phoneNumber, setPhoneNumber] = useState("");
   const [avt, setAvt] = useState("");
-
   useEffect(() => {
     window.scrollTo(0, 0);
     fetchUser();

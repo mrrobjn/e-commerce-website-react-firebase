@@ -14,7 +14,6 @@ const Homepage = ({
   addToCart,
   setProductFilter,
   filterResult,
-  categoriesLoading,
 }) => {
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -28,7 +27,6 @@ const Homepage = ({
           products={products}
           setProductFilter={setProductFilter}
           filterResult={filterResult}
-          categoriesLoading={categoriesLoading}
         />
         <div className="container">
           <Slider slides={slides} />

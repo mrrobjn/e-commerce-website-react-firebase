@@ -28,23 +28,24 @@ const BrandSlide = ({ brands }) => {
     slidesToShow: 6,
     slidesToScroll: 1,
     lazyLoad: true,
+    autoplay: true,
     nextArrow: <NextArrow />,
     prevArrow: <PrevArrow />,
   };
   return (
     <>
-        <Slider {...settings}>
-          {brands.map((brand) => {
-            return (
-              <div className="brand-slide" key={brand.id}>
-                <div className="brand-img">
-                  <img src={brand.data.image} alt="" />
-                </div>
-                <p>{brand.data.name}</p>
+      <Slider {...settings}>
+        {brands.map((brand) => {
+          return (
+            <div className="brand-slide" key={brand.id}>
+              <div className="brand-img">
+                <img src={brand.data.image} alt="" />
               </div>
-            );
-          })}
-        </Slider>
+              <p>{brand.data.name}</p>
+            </div>
+          );
+        })}
+      </Slider>
     </>
   );
 };

@@ -4,12 +4,7 @@ import "./ProfileMenu.scss";
 import { auth } from "../../firebase";
 import { useAuthState } from "react-firebase-hooks/auth";
 const ProfileMenu = () => {
-  const [name, setName] = useState("loading");
-  const [avatar, setAvatar] = useState("");
   const [user] = useAuthState(auth);
-  // useEffect(() => {
-  //   // fetchUser();
-  // }, [user]);
   return (
     <>
       <div className="profile-menu-container">

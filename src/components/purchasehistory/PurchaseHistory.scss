@@ -2,85 +2,90 @@
   width: 80%;
   height: auto;
   background-color: #fff;
+  .heading {
+    margin: 20px 40px 0 40px;
+    h1 {
+      font-size: 20px;
+    }
+  }
   .order-container {
+    margin: 20px 40px 0 40px;
+    border: 1px solid #ccc;
+    height: 80%;
+    font-size: 14px;
     .order-title {
       display: flex;
-      text-align: center;
-      padding: 15px 0;
+      align-items: center;
+      height: 10%;
       font-weight: bold;
-      border-bottom: 1px solid #ccc;
+      color: #808080;
+      padding-left: 20px;
+        border-bottom: 1px solid #ccc;
       .payment-method {
         width: 15%;
-        border-right: 1px solid #333;
       }
       .date {
         width: 15%;
-        border-right: 1px solid #333;
       }
       .address {
         width: 40%;
-        border-right: 1px solid #333;
       }
       .total {
         width: 15%;
-        border-right: 1px solid #333;
       }
       .status {
         width: 15%;
       }
     }
     .order-history {
-      height: auto;
-      
+      height: 90%;
       li {
         border-bottom: 1px solid #ccc;
         display: flex;
-        text-align: center;
-        padding: 16px 0;
         background-color: #fff;
+        padding-left: 20px;
+        height: 10%;
+        align-items: center;
         .payment-method {
-          border-right: 1px solid #333;
           width: 15%;
         }
         .date {
           width: 15%;
-          border-right: 1px solid #333;
         }
         .address {
           width: 40%;
-          text-align: left;
-          padding: 0 20px;
-          border-right: 1px solid #333;
         }
         .total {
           width: 15%;
           color: #ea5867;
           font-weight: bold;
-          border-right: 1px solid #333;
         }
         .status {
-          width: 15%;
-        }
-        p {
-          padding: 0 5px;
+          width: 25px;
+          height: 25px;
+          border-radius: 50px;
+          text-align: center;
+          line-height: 25px;
         }
       }
     }
   }
-  .no-login{
+  .no-login {
     background-color: #fff;
     height: auto;
     border-radius: 10px;
-    h1{
-      color:#ea5867;
+    h1 {
+      color: #ea5867;
       text-align: center;
       padding: 20px 0;
     }
-  } 
+  }
 }
 .not-confirm {
   color: red;
+  background-color: rgb(255, 205, 205);
 }
 .confirm {
   color: green;
+  background-color: rgb(206, 255, 206);
 }

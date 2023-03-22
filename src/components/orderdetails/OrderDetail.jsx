@@ -5,13 +5,12 @@ import "./OrderDetail.scss";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { auth } from "../../firebase";
 const OrderDetail = ({ orders }) => {
-  const [user, loading, error] = useAuthState(auth);
+  const [user, loading] = useAuthState(auth);
   const navigate = useNavigate();
   useEffect(() => {
     window.scrollTo(0, 0);
     if (!user) return navigate("/login");
   }, [user, loading]);
-
   const { orderId } = useParams();
   const orderInfo = orders.find((order) => order.id === orderId);
   // map array trong order
@@ -23,47 +22,55 @@ const OrderDetail = ({ orders }) => {
         <ProfileMenu />
         <div className="order-detail-container">
           <div className="product-list">
-            {arrProducts &&
-              arrProducts.map((productDetail) => {
-                return (
-                  <Link
-                    to={`/product/${productDetail.id}`}
-                    className="order-product"
-                    key={productDetail.id}
-                  >
-                    <div className="product-img">
-                      <img src={productDetail.image} alt="" />
-                    </div>
-                    <div className="product-detail">
-                      <h3>{productDetail.title}</h3>
-                      <div className="detail-container">
-                        <div className="left-detail">
-                          <p>Số lượng:</p>
-                          <p>Giá:</p>
-                          <p>Tổng:</p>
+            <table>
+              <tr className="title">
+                <td className="img">Ảnh</td>
+                <td className="name">Tên sản phẩm</td>
+                <td className="price">Giá</td>
+                <td className="qty">Số lượng</td>
+                <td className="total">Đơn giá</td>
+              </tr>
+              {arrProducts &&
+                arrProducts.map((productDetail) => {
+                  return (
+                    <tr
+                      key={productDetail.id}
+                      onClick={() => navigate(`/product/${productDetail.id}`)}
+                      className="product"
+                    >
+                      <td>
+                        <div className="img">
+                          <img src={productDetail.image} alt="" />
                         </div>
-                        <div className="right-detail">
-                          <p>{productDetail.qty}</p>
-                          <p>
-                            {productDetail.price.toLocaleString("vi-VN", {
-                              style: "currency",
-                              currency: "VND",
-                            })}
-                          </p>
-                          <p>
-                            {(
-                              productDetail.price * productDetail.qty
-                            ).toLocaleString("vi-VN", {
-                              style: "currency",
-                              currency: "VND",
-                            })}
-                          </p>
-                        </div>
-                      </div>
-                    </div>
-                  </Link>
-                );
-              })}
+                      </td>
+                      <td>
+                        <p>{productDetail.title}</p>
+                      </td>
+                      <td>
+                        <p>
+                          {productDetail.price.toLocaleString("vi-VN", {
+                            style: "currency",
+                            currency: "VND",
+                          })}
+                        </p>
+                      </td>
+                      <td>
+                        <p>{productDetail.qty}</p>
+                      </td>
+                      <td>
+                        <p>
+                          {(
+                            productDetail.price * productDetail.qty
+                          ).toLocaleString("vi-VN", {
+                            style: "currency",
+                            currency: "VND",
+                          })}
+                        </p>
+                      </td>
+                    </tr>
+                  );
+                })}
+            </table>
           </div>
           {orderInfo && (
             <div className="order-detail">
@@ -73,6 +80,10 @@ const OrderDetail = ({ orders }) => {
                   <p>Giờ đặt: </p>
                   <p>Thành tiền: </p>
                   <p>Trạng thái: </p>
+                  <p>Thanh toán:</p>
+                  {orderInfo.data.cardOwner ? <p>Chủ thẻ: </p> : ""}
+                  {orderInfo.data.cardNumber ? <p>Số thẻ: </p> : ""}
+                  <p>Địa chỉ: </p>
                 </div>
                 <div className="detail">
                   <p>{orderInfo.data.date}</p>
@@ -92,16 +103,6 @@ const OrderDetail = ({ orders }) => {
                       ? "Chưa xác nhận"
                       : "Đã xác nhận"}
                   </p>
-                </div>
-              </div>
-              <div className="detail-container">
-                <div className="title">
-                  <p>Thanh toán:</p>
-                  {orderInfo.data.cardOwner ? <p>Chủ thẻ: </p> : ""}
-                  {orderInfo.data.cardNumber ? <p>Số thẻ: </p> : ""}
-                  <p>Địa chỉ: </p>
-                </div>
-                <div className="detail">
                   <p>{orderInfo.data.paymentMethod}</p>
                   {orderInfo.data.cardOwner ? (
                     <p>{orderInfo.data.cardOwner}</p>

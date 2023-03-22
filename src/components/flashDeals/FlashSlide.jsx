@@ -29,6 +29,7 @@ const FlashSlide = ({ products, addToCart }) => {
     slidesToShow: 5,
     slidesToScroll: 1,
     lazyLoad: true,
+    autoplay: true,
     nextArrow: <NextArrow />,
     prevArrow: <PrevArrow />,
   };

@@ -2,7 +2,7 @@ import './App.scss';
 import { Route, Routes } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import { db } from './firebase'
-import { getDocs, collection } from "firebase/firestore";
+import { getDocs, collection, onSnapshot } from "firebase/firestore";
 //pages
 import Header from './common/Header/Header';
 import Footer from './common/Footer/Footer'
@@ -24,7 +24,6 @@ function App() {
   const [products, setProducts] = useState([])
   const [slides, setSlides] = useState([])
   const [categories, setCategories] = useState([])
-  const [categoriesLoading, setCategoriesLoading] = useState(true)
   const [orders, setOrders] = useState([]);
   const [brands, setBrands] = useState([])
   const [cartItem, setCartItem] = useState([])
@@ -39,53 +38,65 @@ function App() {
     getBrands()
   }, [])
   async function getBrands() {
-    const brandRef = await getDocs(collection(db, "brands"));
-    const brandss = brandRef.docs.map(doc => ({
-      data: doc.data(),
-      id: doc.id
-    }))
-    setBrands(brandss)
+    const brandRef = collection(db, "brands");
+    onSnapshot(brandRef, (querySnapshot) => {
+      const brandss = querySnapshot.docs.map((doc) => ({
+        data: doc.data(),
+        id: doc.id,
+      }));
+      setBrands(brandss);
+    });
+
   }
   async function getOrders() {
-    const orderRef = await getDocs(collection(db, "orders"));
-    const orderss = orderRef.docs.map(doc => ({
-      data: doc.data(),
-      id: doc.id
-    }))
-    setOrders(orderss)
+    const orderRef = collection(db, "orders");
+    onSnapshot(orderRef, (querySnapshot) => {
+      const orderss = querySnapshot.docs.map((doc) => ({
+        data: doc.data(),
+        id: doc.id,
+      }));
+      setOrders(orderss)
+    });
   }
   async function getUsers() {
-    const userRef = await getDocs(collection(db, "users"));
-    const userss = userRef.docs.map(doc => ({
-      data: doc.data(),
-      id: doc.id
-    }))
-    setUsers(userss)
+    const userRef = collection(db, "users");
+    onSnapshot(userRef, (querySnapshot) => {
+      const userss = querySnapshot.docs.map((doc) => ({
+        data: doc.data(),
+        id: doc.id,
+      }));
+      setUsers(userss)
+    });
   }
   async function getCategories() {
-    const categoriesRef = await getDocs(collection(db, "categories"));
-    const categoriess = categoriesRef.docs.map(doc => ({
-      data: doc.data(),
-      id: doc.id
-    }))
-    setCategories(categoriess)
-    setCategoriesLoading(false)
+    const categoriesRef = collection(db, "categories");
+    onSnapshot(categoriesRef, (querySnapshot) => {
+      const categoriess = querySnapshot.docs.map((doc) => ({
+        data: doc.data(),
+        id: doc.id,
+      }));
+      setCategories(categoriess)
+    });
   }
   async function getSliders() {
-    const sliderRef = await getDocs(collection(db, "sliders"));
-    const sliderss = sliderRef.docs.map(doc => ({
-      data: doc.data(),
-      id: doc.id
-    }))
-    setSlides(sliderss)
+    const sliderRef = collection(db, "sliders");
+    onSnapshot(sliderRef, (querySnapshot) => {
+      const sliderss = querySnapshot.docs.map((doc) => ({
+        data: doc.data(),
+        id: doc.id,
+      }));
+      setSlides(sliderss)
+    });
   }
   async function getProducts() {
-    const productRef = await getDocs(collection(db, "products"));
-    const productss = productRef.docs.map(doc => ({
-      data: doc.data(),
-      id: doc.id
-    }))
-    setProducts(productss)
+    const productRef = collection(db, "products");
+    onSnapshot(productRef, (querySnapshot) => {
+      const productss = querySnapshot.docs.map((doc) => ({
+        data: doc.data(),
+        id: doc.id,
+      }));
+      setProducts(productss)
+    });
   }
   // add item to cart
   const addToCart = (product) => {
@@ -133,7 +144,7 @@ function App() {
 
   return (
     <>
-      <Header cartItem={cartItem} users={users} />
+      <Header cartItem={cartItem} users={users} setProductFilter={setProductFilter} products={products} />
       <div className='page-container'>
         <Routes>
           <Route path='/login' element={<LoginPage users={users} />} />
@@ -148,7 +159,6 @@ function App() {
               addToCart={addToCart}
               setProductFilter={setProductFilter}
               filterResult={filterResult}
-              categoriesLoading={categoriesLoading}
               cartItem={cartItem}
             />} />
             <Route path='cart' element={<Cartpage
@@ -165,7 +175,7 @@ function App() {
                 path="purchasehistory"
                 element={<PurchaseHistory orders={orders} />}
               />
-            <Route path='password' element={<UpdatePassword />} />
+              <Route path='password' element={<UpdatePassword />} />
             </Route>
             <Route path='/purchasehistory/:orderId' element={<OrderDetail orders={orders} products={products} />} />
             <Route path='product' element={<Product
