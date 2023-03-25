@@ -1,10 +1,9 @@
-import React, { useEffect } from "react";
-const Categories = ({
-  categories,
-  filterResult,
-  setProductFilter,
-  products,
-}) => {
+import React, { useContext } from "react";
+import { CategoriesContext } from "~/context/CategoriesContext";
+import { ProductContext } from "~/context/ProductContext";
+const Categories = ({ filterResult, setProductFilter }) => {
+  const products = useContext(ProductContext);
+  const categories = useContext(CategoriesContext);
   return (
     <>
       <div className="category">

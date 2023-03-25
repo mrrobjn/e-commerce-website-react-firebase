@@ -1,0 +1,24 @@
+.home-category {
+    width: 20%;
+    height: auto;
+    // overflow: scroll;
+    background-color: #fff;
+    .box {
+      padding: 0 20px;
+      line-height: 50px;
+      p {
+        margin: 5px 0;
+        font-weight: 600;
+        font-size: 16px;
+        transition: 0.5s;
+        text-transform: capitalize;
+        color: #333;
+      }
+      &:hover {
+        cursor: pointer;
+        p {
+          color: #ea5867;
+        }
+      }
+    }
+  }

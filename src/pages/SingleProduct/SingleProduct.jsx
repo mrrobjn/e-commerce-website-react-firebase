@@ -1,14 +1,21 @@
 import { useParams } from "react-router-dom";
 import "./SingleProduct.scss";
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
+import { ProductContext } from "~/context/ProductContext";
+import { CategoriesContext } from "~/context/CategoriesContext";
+import { BrandsContext } from "~/context/BrandsContext";
 
-const SingleProduct = ({ products, addToCartQty, categories, brands }) => {
+const SingleProduct = ({ addToCartQty}) => {
   const [quantity, setQuantity] = useState(1);
   const [productName, setProductName] = useState("");
   const [productImg, setProductImg] = useState("");
   const [productPrice, setProductPrice] = useState("");
   const [productCategory, setProductCategory] = useState("");
   const [productBrand, setProductBrand] = useState("");
+  const products = useContext(ProductContext);
+  const categories = useContext(CategoriesContext);
+  const brands = useContext(BrandsContext);
+
   useEffect(() => {
     window.scrollTo(0, 0);
     product &&

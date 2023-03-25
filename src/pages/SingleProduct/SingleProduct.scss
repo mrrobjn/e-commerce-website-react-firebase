@@ -1,11 +1,12 @@
 .single-product-section {
   margin-bottom: 10px;
+  color: #333;
   .single-product-container {
     background-color: #fff;
     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
     display: flex;
     .single-product-left {
-      padding: 10px;
+      padding: 20px;
       width: 40%;
       .img {
         width: 100%;
@@ -13,20 +14,18 @@
         img {
           width: 100%;
           height: 100%;
-          object-fit: contain;
+          object-fit: cover;
         }
       }
     }
     .single-product-right {
       width: 60%;
-      margin: 20px;
+      padding: 20px;
       h3 {
         font-weight: 600;
         font-size: 20px;
-        margin: 10px 0;
-      }
+        }
       .detail-box {
-        margin: 10px 0;
         p {
           font-size: 14px;
           margin: 10px 0;

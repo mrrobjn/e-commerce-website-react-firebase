@@ -3,6 +3,7 @@ import { useNavigate } from "react-router";
 import { signUp } from "../../firebase";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { Link } from "react-router-dom";
 const Register = () => {
   const [useName, setUseName] = useState("");
   const [email, setEmail] = useState("");
@@ -45,7 +46,8 @@ const Register = () => {
         <div className="background"></div>
         <form onSubmit={register}>
           <h1>Đăng kí</h1>
-          <div className="box-2">
+          <div className="box-2"></div>
+          <div className="box-1">
             <div className="input-box">
               <label>Họ và tên</label>
               <input
@@ -54,17 +56,6 @@ const Register = () => {
                 placeholder="Họ và tên"
                 autoComplete="off"
                 onChange={(e) => setUseName(e.target.value)}
-                required
-              />
-            </div>
-            <div className="input-box">
-              <label>Tuổi</label>
-              <input
-                value={dayOfBirth}
-                type="date"
-                placeholder="eg: 21"
-                autoComplete="off"
-                onChange={(e) => setDayOfBirth(e.target.value)}
                 required
               />
             </div>
@@ -80,6 +71,8 @@ const Register = () => {
                 required
               />
             </div>
+          </div>
+          <div className="box-2">
             <div className="input-box">
               <label>Số điện thoại</label>
               <input
@@ -92,6 +85,19 @@ const Register = () => {
                 pattern="[0]{1}[0-9]{9}"
               />
             </div>
+            <div className="input-box">
+              <label>Ngày sinh</label>
+              <input
+                value={dayOfBirth}
+                type="date"
+                placeholder="eg: 21"
+                autoComplete="off"
+                onChange={(e) => setDayOfBirth(e.target.value)}
+                required
+              />
+            </div>
+          </div>
+          <div className="box-1">
             <div className="input-box">
               <label>Tạo mật khẩu</label>
               <input
@@ -119,9 +125,9 @@ const Register = () => {
           <div className="to-login">
             <p>
               Đã có tài khoản?{" "}
-              <a className="to-login-btn" onClick={() => navigate("/login")}>
+              <Link className="to-login-btn" to="/login">
                 Đăng nhập
-              </a>
+              </Link>
             </p>
           </div>
         </form>

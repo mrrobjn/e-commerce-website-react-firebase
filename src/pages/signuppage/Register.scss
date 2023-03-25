@@ -6,7 +6,7 @@
     display: flex;
     background: linear-gradient(120deg, #298079, #8e44ad);
     .form-container {
-      width: 40%;
+      width: 30%;
       display: flex;
       justify-content: center;
       border-top-right-radius: 10px;
@@ -23,7 +23,7 @@
         border-radius: 10px;
       }
       form {
-        margin: 30px 50px;
+        margin: 30px 30px;
         width: 100%;
         padding: 10px;
         border-radius: 10px;
@@ -33,13 +33,33 @@
           padding-bottom: 20px;
           color: #fff;
         }
-
         .box-2 {
           display: flex;
           justify-content: space-between;
           flex-wrap: wrap;
           .input-box {
             width: 49%;
+            margin-top: 20px;
+            label {
+              font-size: 14px;
+              color: #fff;
+            }
+            input {
+              width: 100%;
+              border: none;
+              padding: 10px;
+              outline: none;
+              font-size: 14px;
+              margin-top: 10px;
+            }
+          }
+        }
+        .box-1 {
+          display: flex;
+          justify-content: space-between;
+          flex-wrap: wrap;
+          .input-box {
+            width: 100%;
             margin-top: 20px;
             label {
               font-size: 14px;

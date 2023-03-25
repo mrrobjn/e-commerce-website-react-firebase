@@ -1,37 +1,23 @@
 .login-section {
+  margin: 140px 0;
   .login-container {
-    // padding-top: 150px;
-    padding: 140px 0;
     height: auto;
-    justify-content: center;
     display: flex;
-    background: linear-gradient(120deg, #298079, #8e44ad);
     .form-container {
-      width: 30%;
+      background-color: #fff;
+      box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+      width: 40%;
       display: flex;
       justify-content: center;
-      // border-top-right-radius: 10px;
-      // border-bottom-right-radius: 10px;
-      position: relative;
-      .background {
-        position: absolute;
-        background: #000;
-        top: 0;
-        bottom: 0;
-        right: 0;
-        left: 0;
-        opacity: 0.4;
-        border-radius: 10px;
-      }
       form {
-        margin: 30px 50px;
-        width: 100%;
-        padding: 10px;
+        margin: 30px auto;
+        width: 70%;
         z-index: 2;
         h1 {
-          text-align: center;
           padding-bottom: 20px;
-          color: #fff;
+          color: #333;
+          font-size: 30px;
+          text-align: center;
         }
         .google-login {
           border: none;
@@ -42,7 +28,6 @@
           background-color: #007bff;
           padding: 15px;
           margin-top: 20px;
-          border-radius: 5px;
           position: relative;
           // box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
           cursor: pointer;
@@ -59,7 +44,7 @@
           }
           p {
             color: #fff;
-            font-size: 12px;
+            font-size: 14px;
             margin-left: 10px;
             font-weight: bold;
           }
@@ -67,16 +52,16 @@
         .option-label {
           margin-top: 20px;
           font-size: 14px;
-          color: #fff;
           display: flex;
           justify-content: space-between;
           .login-line {
             width: 40%;
             height: 1px;
-            background-color: #fff;
+            background-color: #333;
             margin: auto;
           }
           p {
+            color: #333;
           }
         }
 
@@ -86,7 +71,7 @@
           flex-direction: column;
           label {
             font-size: 14px;
-            color: #fff;
+            color: #333;
           }
           input {
             width: 100%;
@@ -95,6 +80,7 @@
             outline: none;
             font-size: 14px;
             margin-top: 10px;
+            border: 1px solid #333;
           }
         }
         .save-forgot-password {
@@ -104,10 +90,10 @@
           font-size: 14px;
           .save-password {
             display: flex;
-            color: #fff;
+            color: #333;
           }
           .forgot-password {
-            color: #2691d9;
+            color: #007bff;
           }
           .forgot-password:hover {
             cursor: pointer;
@@ -121,16 +107,16 @@
           height: 40px;
           color: #fff;
           border: none;
-          border-radius: 5px;
           background: #007bff;
           font-weight: bold;
+          cursor: pointer;
         }
         .to-sign-up {
           text-align: center;
           p {
             margin-top: 20px;
             font-size: 14px;
-            color: #fff;
+            color: #333;
             .to-sign-up-btn {
               color: #007bff;
               cursor: pointer;

@@ -1,8 +1,7 @@
 import React, { useState } from "react";
-import { useNavigate } from "react-router";
+import { Link } from "react-router-dom";
 import { signIn, auth,signInWithGoogle } from "../../firebase";
 const Login = () => {
-  const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const handleSubmit = (e) => {
@@ -12,7 +11,6 @@ const Login = () => {
   return (
     <>
       <div className="form-container">
-        <div className="background"></div>
         <form onSubmit={handleSubmit}>
           <h1>Đăng nhập</h1>
           <button className="google-login" type="button" onClick={signInWithGoogle}>
@@ -30,9 +28,9 @@ const Login = () => {
             <div className="login-line"></div>
           </div>
           <div className="box">
-            <label>
+            {/* <label>
               <i className="fa-solid fa-user"></i> Email
-            </label>
+            </label> */}
             <input
               type="email"
               onChange={(e) => setEmail(e.target.value)}
@@ -41,9 +39,9 @@ const Login = () => {
             />
           </div>
           <div className="box">
-            <label>
+            {/* <label>
               <i className="fa-solid fa-lock"></i> Mật khẩu
-            </label>
+            </label> */}
             <input
               type="password"
               onChange={(e) => setPassword(e.target.value)}
@@ -55,14 +53,12 @@ const Login = () => {
             <label className="save-password">
               <input type="checkbox" /> Nhớ mật khẩu
             </label>
-            <a
+            <Link
               className="forgot-password"
-              onClick={() => {
-                navigate("/resetpassword");
-              }}
+              to="/resetpassword"
             >
               Quên mật khẩu?
-            </a>
+            </Link>
           </div>
           <button className="login-btn" type="submit">
             Đăng nhập
@@ -70,12 +66,12 @@ const Login = () => {
           <div className="to-sign-up">
             <p>
               Chưa có tài khoản?{" "}
-              <a
+              <Link
                 className="to-sign-up-btn"
-                onClick={() => navigate("/register")}
+                to="/register"
               >
                 Đăng ký
-              </a>
+              </Link>
             </p>
           </div>
         </form>

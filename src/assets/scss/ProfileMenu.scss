@@ -1,0 +1,43 @@
+.profile-menu-container {
+  background-color: #fff;
+  width: 20%;
+  min-height: 400px;
+  border-right: 1px solid #ccc;
+  color: #333;
+  .menu-btn-container {
+    .user-img {
+      width: 150px;
+      height: 150px;
+      margin: 20px auto 20px auto;
+      border-radius: 50%;
+      border: 5px solid #ea5867;
+      img {
+        width: 100%;
+        height: 100%;
+        border-radius: 50%;
+        object-fit: cover;
+      }
+    }
+    p {
+      font-weight: bold;
+      margin: 10px 0;
+      font-size: 18px;
+      text-align: center;
+    }
+    .menu-btn {
+      padding: 0 20px;
+      transition: 0.3s;
+      font-size: 16px;
+      line-height: 50px;
+      color: #333;
+      border-bottom: 1px solid #ccc;
+      i {
+        margin-right: 10px;
+      }
+      &:hover {
+        background-color: #007bff;
+        color: #fff;
+      }
+    }
+  }
+}

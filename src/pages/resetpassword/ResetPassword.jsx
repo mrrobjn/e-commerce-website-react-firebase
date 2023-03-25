@@ -2,9 +2,8 @@ import "./ResetPassword.scss";
 import { sendPasswordReset } from "../../firebase.js";
 import { useState } from "react";
 import { ToastContainer } from "react-toastify";
-import { useNavigate } from "react-router";
+import { Link } from "react-router-dom";
 const ResetPassword = () => {
-  const navigate = useNavigate("");
   const [email, setEmail] = useState("");
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -42,7 +41,7 @@ const ResetPassword = () => {
             </div>
             <button type="submit">Gửi yêu cầu đổi mật khẩu</button>
             <p className="back-to-login">
-              Quay về <a onClick={() => navigate("/login")}>Đăng nhập</a>
+              Quay về <Link to="/login">Đăng nhập</Link>
             </p>
           </form>
         </div>

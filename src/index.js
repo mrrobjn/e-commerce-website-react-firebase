@@ -4,17 +4,26 @@ import { BrowserRouter as Router } from 'react-router-dom'
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-import { SkeletonTheme } from 'react-loading-skeleton';
+import { ProductProvider } from './context/ProductContext';
+import { CategoriesProvider } from './context/CategoriesContext';
+import { SlideProvider } from './context/SlideContext';
+import { OrderProvider } from './context/OrderContext';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 
 root.render(
   // <React.StrictMode>
-  <SkeletonTheme >
-    <Router >
-      <App />
-    </Router>
-  </SkeletonTheme>
+  <Router >
+    <ProductProvider>
+      <CategoriesProvider>
+        <SlideProvider>
+          <OrderProvider>
+              <App />
+          </OrderProvider>
+        </SlideProvider>
+      </CategoriesProvider>
+    </ProductProvider>
+  </Router>
   // </React.StrictMode>
 );
 

@@ -5,7 +5,7 @@ import { useAuthState } from "react-firebase-hooks/auth";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 const CartTotal = ({ cartItem, setCartItem }) => {
-  const [user, loading, error] = useAuthState(auth);
+  const [user] = useAuthState(auth);
   const [paymentMethod, setPaymentMethod] = useState("VNPAY");
   const [cardOwner, setCardOwner] = useState("");
   const [cardNumber, setCardNumber] = useState("");

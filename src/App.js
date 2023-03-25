@@ -1,103 +1,28 @@
 import './App.scss';
 import { Route, Routes } from 'react-router-dom';
-import { useEffect, useState } from 'react';
-import { db } from './firebase'
-import { getDocs, collection, onSnapshot } from "firebase/firestore";
+import { useContext, useState } from 'react';
+import { ProductContext } from './context/ProductContext';
 //pages
-import Header from './common/Header/Header';
-import Footer from './common/Footer/Footer'
+import Header from './layout/Header/Header';
+import Footer from './layout/Footer/Footer'
 import Homepage from './pages/homepage/Homepage'
 import Cartpage from './pages/cartpage/Cartpage'
 import Profile from './pages/profilepage/Profile';
 import Product from './pages/productpage/Product';
-import TopScroll from './common/TopScroll/TopScroll';
+import TopScroll from './layout/TopScroll/TopScroll';
 import SingleProduct from './pages/SingleProduct/SingleProduct';
 import LoginPage from './pages/loginpage/LoginPage';
-import PurchaseHistory from './components/purchasehistory/PurchaseHistory'
-import UserProfile from './components/userprofile/UserProfile';
-import OrderDetail from './components/orderdetails/OrderDetail.jsx'
+import PurchaseHistory from './components/PurchaseHistory'
+import UserProfile from './components/UserProfile';
+import OrderDetail from './components/OrderDetail.jsx'
 import RegisterPage from './pages/signuppage/RegisterPage';
 import ResetPassword from './pages/resetpassword/ResetPassword';
-import UpdatePassword from './components/updatepassword/UpdatePassword';
+import UpdatePassword from './components/UpdatePassword';
 function App() {
-  const [users, setUsers] = useState()
-  const [products, setProducts] = useState([])
-  const [slides, setSlides] = useState([])
-  const [categories, setCategories] = useState([])
-  const [orders, setOrders] = useState([]);
-  const [brands, setBrands] = useState([])
+  const products = useContext(ProductContext)
   const [cartItem, setCartItem] = useState([])
   const [productFilter, setProductFilter] = useState(products)
 
-  useEffect(() => {
-    getCategories()
-    getProducts()
-    getSliders()
-    getUsers()
-    getOrders()
-    getBrands()
-  }, [])
-  async function getBrands() {
-    const brandRef = collection(db, "brands");
-    onSnapshot(brandRef, (querySnapshot) => {
-      const brandss = querySnapshot.docs.map((doc) => ({
-        data: doc.data(),
-        id: doc.id,
-      }));
-      setBrands(brandss);
-    });
-
-  }
-  async function getOrders() {
-    const orderRef = collection(db, "orders");
-    onSnapshot(orderRef, (querySnapshot) => {
-      const orderss = querySnapshot.docs.map((doc) => ({
-        data: doc.data(),
-        id: doc.id,
-      }));
-      setOrders(orderss)
-    });
-  }
-  async function getUsers() {
-    const userRef = collection(db, "users");
-    onSnapshot(userRef, (querySnapshot) => {
-      const userss = querySnapshot.docs.map((doc) => ({
-        data: doc.data(),
-        id: doc.id,
-      }));
-      setUsers(userss)
-    });
-  }
-  async function getCategories() {
-    const categoriesRef = collection(db, "categories");
-    onSnapshot(categoriesRef, (querySnapshot) => {
-      const categoriess = querySnapshot.docs.map((doc) => ({
-        data: doc.data(),
-        id: doc.id,
-      }));
-      setCategories(categoriess)
-    });
-  }
-  async function getSliders() {
-    const sliderRef = collection(db, "sliders");
-    onSnapshot(sliderRef, (querySnapshot) => {
-      const sliderss = querySnapshot.docs.map((doc) => ({
-        data: doc.data(),
-        id: doc.id,
-      }));
-      setSlides(sliderss)
-    });
-  }
-  async function getProducts() {
-    const productRef = collection(db, "products");
-    onSnapshot(productRef, (querySnapshot) => {
-      const productss = querySnapshot.docs.map((doc) => ({
-        data: doc.data(),
-        id: doc.id,
-      }));
-      setProducts(productss)
-    });
-  }
   // add item to cart
   const addToCart = (product) => {
     const productExist = cartItem.find((item) => item.id === product.id)
@@ -144,18 +69,14 @@ function App() {
 
   return (
     <>
-      <Header cartItem={cartItem} users={users} setProductFilter={setProductFilter} products={products} />
+      <Header cartItem={cartItem} setProductFilter={setProductFilter} products={products} />
       <div className='page-container'>
         <Routes>
-          <Route path='/login' element={<LoginPage users={users} />} />
+          <Route path='/login' element={<LoginPage />} />
           <Route path='/register' element={<RegisterPage />} />
           <Route path='/resetpassword' element={<ResetPassword />} />
           <Route>
             <Route path='/' element={<Homepage
-              products={products}
-              categories={categories}
-              slides={slides}
-              brands={brands}
               addToCart={addToCart}
               setProductFilter={setProductFilter}
               filterResult={filterResult}
@@ -169,28 +90,23 @@ function App() {
               setCartItem={setCartItem}
             />}
             />
-            <Route path='profile' element={<Profile users={users} />} >
-              <Route path="userprofile" element={<UserProfile users={users} />} />
+            <Route path='profile' element={<Profile />} >
+              <Route path="userprofile" element={<UserProfile />} />
               <Route
                 path="purchasehistory"
-                element={<PurchaseHistory orders={orders} />}
+                element={<PurchaseHistory/>}
               />
               <Route path='password' element={<UpdatePassword />} />
             </Route>
-            <Route path='/purchasehistory/:orderId' element={<OrderDetail orders={orders} products={products} />} />
+            <Route path='/purchasehistory/:orderId' element={<OrderDetail/>} />
             <Route path='product' element={<Product
-              categories={categories}
               addToCart={addToCart}
               filterResult={filterResult}
               setProductFilter={setProductFilter}
-              products={products}
               productFilter={productFilter} />}
             />
             <Route path='/product/:productId'
               element={<SingleProduct
-                products={products}
-                brands={brands}
-                categories={categories}
                 addToCartQty={addToCartQty} />} />
           </Route>
         </Routes>
