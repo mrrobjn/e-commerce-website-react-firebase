@@ -5,7 +5,7 @@
       {
         "alias": {
           "~": "./src",
-          "~~": "./src/assets/scss"
+          "~~": "./src/assets"
         }
       }
     ]

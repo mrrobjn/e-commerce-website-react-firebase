@@ -1,7 +1,7 @@
 import { useContext, useEffect } from "react";
 import {  useNavigate, useParams } from "react-router-dom";
 import ProfileMenu from "./ProfileMenu";
-import "../assets/scss/components/OrderDetail.scss";
+import "~~/components/OrderDetail.scss";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { auth } from "../firebase";
 import { OrderContext } from "~/context/OrderContext";
@@ -25,53 +25,55 @@ const OrderDetail = () => {
         <div className="order-detail-container">
           <div className="product-list">
             <table>
-              <tr className="title">
-                <td className="img">Ảnh</td>
-                <td className="name">Tên sản phẩm</td>
-                <td className="price">Giá</td>
-                <td className="qty">Số lượng</td>
-                <td className="total">Đơn giá</td>
-              </tr>
-              {arrProducts &&
-                arrProducts.map((productDetail) => {
-                  return (
-                    <tr
-                      key={productDetail.id}
-                      onClick={() => navigate(`/product/${productDetail.id}`)}
-                      className="product"
-                    >
-                      <td>
-                        <div className="img">
-                          <img src={productDetail.image} alt="" />
-                        </div>
-                      </td>
-                      <td>
-                        <p>{productDetail.title}</p>
-                      </td>
-                      <td>
-                        <p>
-                          {productDetail.price.toLocaleString("vi-VN", {
-                            style: "currency",
-                            currency: "VND",
-                          })}
-                        </p>
-                      </td>
-                      <td>
-                        <p>{productDetail.qty}</p>
-                      </td>
-                      <td>
-                        <p>
-                          {(
-                            productDetail.price * productDetail.qty
-                          ).toLocaleString("vi-VN", {
-                            style: "currency",
-                            currency: "VND",
-                          })}
-                        </p>
-                      </td>
-                    </tr>
-                  );
-                })}
+             <tbody>
+               <tr className="title">
+                 <td className="img">Ảnh</td>
+                 <td className="name">Tên sản phẩm</td>
+                 <td className="price">Giá</td>
+                 <td className="qty">Số lượng</td>
+                 <td className="total">Đơn giá</td>
+               </tr>
+               {arrProducts &&
+                 arrProducts.map((productDetail) => {
+                   return (
+                     <tr
+                       key={productDetail.id}
+                       onClick={() => navigate(`/product/${productDetail.id}`)}
+                       className="product"
+                     >
+                       <td>
+                         <div className="img">
+                           <img src={productDetail.image} alt="" />
+                         </div>
+                       </td>
+                       <td>
+                         <p>{productDetail.title}</p>
+                       </td>
+                       <td>
+                         <p>
+                           {productDetail.price.toLocaleString("vi-VN", {
+                             style: "currency",
+                             currency: "VND",
+                           })}
+                         </p>
+                       </td>
+                       <td>
+                         <p>{productDetail.qty}</p>
+                       </td>
+                       <td>
+                         <p>
+                           {(
+                             productDetail.price * productDetail.qty
+                           ).toLocaleString("vi-VN", {
+                             style: "currency",
+                             currency: "VND",
+                           })}
+                         </p>
+                       </td>
+                     </tr>
+                   );
+                 })}
+             </tbody>
             </table>
           </div>
           {orderInfo && (

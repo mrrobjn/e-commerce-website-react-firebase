@@ -1,6 +1,6 @@
 import React from "react";
 import FlashCard from "./FlashSlide";
-import "~/assets/scss/components/FlashDeal.scss";
+import "~~/components/FlashDeal.scss";
 const FlashDeal = ({ products, addToCart }) => {
   return (
     <>

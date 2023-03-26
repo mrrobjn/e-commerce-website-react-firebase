@@ -1,6 +1,6 @@
 import React from "react";
 import BrandSlide from "./BrandSlide";
-import "~/assets/scss/components/OfficialBrand.scss";
+import "~~/components/OfficialBrand.scss";
 const OfficialBrands = () => {
   return (
     <>

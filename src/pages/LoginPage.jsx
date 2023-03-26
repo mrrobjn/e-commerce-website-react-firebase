@@ -9,11 +9,10 @@ import FormCover from "../components/FormCover";
 const LoginPage = () => {
   const [user, loading] = useAuthState(auth);
   const navigate = useNavigate();
-
   useEffect(() => {
     window.scrollTo(0, 0);
+    if (user) navigate("/");
   }, [user, loading]);
-  if (user) navigate("/");
   return (
     <>
       <section className="login-section">

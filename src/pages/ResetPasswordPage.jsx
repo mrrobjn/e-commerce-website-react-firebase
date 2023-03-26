@@ -1,4 +1,4 @@
-import "~/assets/scss/pages/ResetPasswordPage.scss";
+import "~~/pages/ResetPasswordPage.scss";
 import { ToastContainer } from "react-toastify";
 import FormCover from "~/components/FormCover";
 import ResetPassword from "~/components/ResetPassword";

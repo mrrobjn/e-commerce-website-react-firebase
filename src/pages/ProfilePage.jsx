@@ -9,8 +9,8 @@ const Profile = () => {
   const navigate = useNavigate();
   useEffect(() => {
     window.scrollTo(0, 0);
+    if (!user) return navigate("/login");
   }, [user, loading]);
-  if (!user) return navigate("/login");
   return (
     <>
       <section className="profile-section" style={{ paddingTop: 140 }}>

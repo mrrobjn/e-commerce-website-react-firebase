@@ -1,6 +1,6 @@
 import React from "react";
 import { useState } from "react";
-import '~/assets/scss/layout/TopScroll.scss'
+import '~~/layout/TopScroll.scss'
 const TopScroll = () => {
   const [visible, setVisible] = useState(false);
   const toggleVisible = () => {

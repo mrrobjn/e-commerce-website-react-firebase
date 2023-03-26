@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import HomeCategoriesCard from "./HomeCategoriesCard";
-import '~/assets/scss/components/HomeCategories.scss'
+import '~~/components/HomeCategories.scss'
 import { useContext } from "react";
 import { ProductContext } from "~/context/ProductContext";
 import { CategoriesContext } from "~/context/CategoriesContext";

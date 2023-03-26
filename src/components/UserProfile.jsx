@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
-import { auth, db, storage } from "../firebase";
+import { auth, db, sendPasswordReset, storage } from "../firebase";
 import { updateDoc, doc } from "firebase/firestore";
-import "../assets/scss/components/UserProfile.scss";
+import "~~/components/UserProfile.scss";
 import { query, collection, where, onSnapshot } from "firebase/firestore";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -112,6 +112,11 @@ const UserProfile = () => {
         errorToast(err.message);
       });
   };
+  // update password
+  const updatePassword = (e) => {
+    e.preventDefault();
+    sendPasswordReset(user.email);
+  };
   // toast message
   const successToast = (text) => toast.success(`${text}`);
   const errorToast = (text) => toast.error(`${text}`);
@@ -174,6 +179,15 @@ const UserProfile = () => {
                 required
               />
               <button type="submit">Cập nhật</button>
+            </form>
+            <form className="input-field" onSubmit={updatePassword}>
+              <label>Đổi mật khẩu</label>
+              <input
+                defaultValue={user?.email}
+                type="email"
+                disabled
+              />
+              <button type="submit">Gửi yêu cầu</button>
             </form>
           </div>
         </div>

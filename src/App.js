@@ -17,7 +17,6 @@ import UserProfile from './components/UserProfile';
 import OrderDetail from './components/OrderDetail.jsx'
 import RegisterPage from './pages/RegisterPage';
 import ResetPasswordPage from './pages/ResetPasswordPage';
-import UpdatePassword from './components/UpdatePassword';
 function App() {
   const products = useContext(ProductContext)
   const [cartItem, setCartItem] = useState([])
@@ -94,20 +93,19 @@ function App() {
               <Route path="userprofile" element={<UserProfile />} />
               <Route
                 path="purchasehistory"
-                element={<PurchaseHistory/>}
+                element={<PurchaseHistory />}
               />
-              <Route path='password' element={<UpdatePassword />} />
             </Route>
-            <Route path='/purchasehistory/:orderId' element={<OrderDetail/>} />
+            <Route path='/purchasehistory/:orderId' element={<OrderDetail />} />
             <Route path='product' element={<Product
               addToCart={addToCart}
               filterResult={filterResult}
               setProductFilter={setProductFilter}
               productFilter={productFilter} />}
             />
-            <Route path='/product/:productId'
+            <Route path='product/:productId'
               element={<SingleProduct
-                addToCartQty={addToCartQty} />} />
+              addToCartQty={addToCartQty} />} />
           </Route>
         </Routes>
         <TopScroll />
