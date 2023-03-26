@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { db, auth } from "../../firebase";
+import { db, auth } from "../firebase";
 import { addDoc, collection } from "firebase/firestore";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { toast, ToastContainer } from "react-toastify";

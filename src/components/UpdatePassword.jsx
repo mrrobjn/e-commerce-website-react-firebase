@@ -1,4 +1,4 @@
-import "../assets/scss/UpdatePassword.scss";
+import "../assets/scss/components/UpdatePassword.scss";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { auth, sendPasswordReset } from "../firebase";

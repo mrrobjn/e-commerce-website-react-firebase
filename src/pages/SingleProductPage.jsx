@@ -1,5 +1,5 @@
 import { useParams } from "react-router-dom";
-import "./SingleProduct.scss";
+import "~~/pages/SingleProductPage.scss";
 import React, { useContext, useEffect, useState } from "react";
 import { ProductContext } from "~/context/ProductContext";
 import { CategoriesContext } from "~/context/CategoriesContext";

@@ -1,8 +1,8 @@
 import React, { useEffect } from "react";
-import "./Cartpage.scss";
-import CartTotal from "./CartTotal";
+import '~~/pages/CartPage.scss'
+import CartTotal from "../components/CartTotal";
 import { useAuthState } from "react-firebase-hooks/auth";
-import { auth } from "../../firebase";
+import { auth } from "../firebase";
 import { useNavigate } from "react-router";
 import { Link } from "react-router-dom";
 const Cartpage = ({

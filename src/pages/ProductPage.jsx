@@ -1,7 +1,7 @@
 import {useEffect} from "react";
-import Categories from "./Categories";
-import ProductCard from "./ProductCard";
-import "./Product.scss";
+import Categories from "../components/Categories";
+import ProductCard from "../components/ProductCard";
+import '~~/pages/ProductPage.scss'
 
 const Product = ({  addToCart, filterResult, productFilter,setProductFilter }) => {
   useEffect(() => {

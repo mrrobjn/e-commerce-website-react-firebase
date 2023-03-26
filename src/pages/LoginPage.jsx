@@ -1,10 +1,10 @@
 import { useEffect } from "react";
-import Login from "./Login";
-import "./LoginPage.scss";
+import Login from "../components/Login";
+import "~~/pages/LoginPage.scss";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { useNavigate } from "react-router";
-import { auth } from "../../firebase";
-import FormCover from "../../components/FormCover";
+import { auth } from "../firebase";
+import FormCover from "../components/FormCover";
 
 const LoginPage = () => {
   const [user, loading] = useAuthState(auth);

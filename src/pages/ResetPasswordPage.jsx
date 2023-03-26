@@ -1,8 +1,9 @@
-import "./ResetPassword.scss";
-import { sendPasswordReset } from "../../firebase.js";
+import "~/assets/scss/pages/ResetPasswordPage.scss";
+import { sendPasswordReset } from "../firebase.js";
 import { useState } from "react";
 import { ToastContainer } from "react-toastify";
 import { Link } from "react-router-dom";
+import FormCover from "~/components/FormCover";
 const ResetPassword = () => {
   const [email, setEmail] = useState("");
   const handleSubmit = (e) => {
@@ -24,14 +25,11 @@ const ResetPassword = () => {
           pauseOnHover
           theme="light"
         />
+        <FormCover/>
         <div className="reset-container">
-          <div className="background"></div>
           <form onSubmit={handleSubmit}>
             <h1>Đặt lại mật khẩu</h1>
             <div className="input-container">
-              <label>
-                <i className="fa-solid fa-user"></i> Email
-              </label>
               <input
                 type="email"
                 required

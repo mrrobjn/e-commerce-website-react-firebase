@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router";
-import { signUp } from "../../firebase";
+import { signUp } from "../firebase";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { Link } from "react-router-dom";
@@ -43,7 +43,6 @@ const Register = () => {
           pauseOnHover
           theme="light"
         />
-        <div className="background"></div>
         <form onSubmit={register}>
           <h1>Đăng kí</h1>
           <div className="box-2"></div>

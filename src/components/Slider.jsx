@@ -2,7 +2,7 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Sliders from "react-slick";
 import SliderCard from "./SliderCard";
-import "~/assets/scss/Slider.scss";
+import "~/assets/scss/components/Slider.scss";
 import { useContext } from "react";
 import { SlideContext } from "~/context/SlideContext";
 const Slider = () => {

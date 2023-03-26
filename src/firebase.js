@@ -5,7 +5,7 @@ import { createUserWithEmailAndPassword, signInWithEmailAndPassword } from "fire
 import { getStorage } from 'firebase/storage'
 import { toast } from "react-toastify";
 const firebaseConfig = {
-  apiKey: "AIzaSyA7pFaInlp10pwxR0NDdDxdrjtwQyHOOoQ",
+  apiKey: process.env.REACT_APP_API,
   authDomain: "e-commerce-website-3cb63.firebaseapp.com",
   projectId: "e-commerce-website-3cb63",
   storageBucket: "e-commerce-website-3cb63.appspot.com",

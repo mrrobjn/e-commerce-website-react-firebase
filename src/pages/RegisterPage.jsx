@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
-import Register from "./Register";
-import "./Register.scss";
+import FormCover from "~/components/FormCover";
+import Register from "~/components/Register";
+import "~~/pages/RegisterPage.scss";
 const RegisterPage = () => {
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -9,7 +10,7 @@ const RegisterPage = () => {
     <>
       <section className="register-section">
         <div className="register-container">
-          <div className="register-cover">{/* <img src="" alt=""/> */}</div>
+          <FormCover/>
           <Register />
         </div>
       </section>

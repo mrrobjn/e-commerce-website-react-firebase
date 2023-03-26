@@ -1,9 +1,9 @@
 import { useEffect } from "react";
 import { Outlet, useNavigate } from "react-router-dom";
 import { useAuthState } from "react-firebase-hooks/auth";
-import { auth } from "../../firebase";
-import "./Profile.scss";
-import ProfileMenu from "../../components/ProfileMenu";
+import { auth } from "../firebase";
+import "~~/pages/ProfilePage.scss";
+import ProfileMenu from "../components/ProfileMenu";
 const Profile = () => {
   const [user, loading] = useAuthState(auth);
   const navigate = useNavigate();

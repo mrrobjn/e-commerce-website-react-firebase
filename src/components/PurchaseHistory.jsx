@@ -1,4 +1,4 @@
-import "../assets/scss/PurchaseHistory.scss";
+import "../assets/scss/components/PurchaseHistory.scss";
 import { useContext, useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useAuthState } from "react-firebase-hooks/auth";

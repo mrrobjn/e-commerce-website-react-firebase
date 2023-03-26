@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { auth, db, storage } from "../firebase";
 import { updateDoc, doc } from "firebase/firestore";
-import "../assets/scss/UserProfile.scss";
+import "../assets/scss/components/UserProfile.scss";
 import { query, collection, where, onSnapshot } from "firebase/firestore";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -99,7 +99,7 @@ const UserProfile = () => {
   // update avt
   const updateAvatar = async (e) => {
     e.preventDefault();
-    const imgRef = ref(storage, `user avatars/${user.uid}` + ".png");
+    const imgRef = ref(storage, `user avatars/${user.uid}.png`);
     await uploadBytes(imgRef, avt);
     const photoURL = await getDownloadURL(imgRef).catch((err) => {
       errorToast(err.message);

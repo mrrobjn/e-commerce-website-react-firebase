@@ -1,7 +1,7 @@
 import { useContext, useEffect } from "react";
 import {  useNavigate, useParams } from "react-router-dom";
 import ProfileMenu from "./ProfileMenu";
-import "../assets/scss/OrderDetail.scss";
+import "../assets/scss/components/OrderDetail.scss";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { auth } from "../firebase";
 import { OrderContext } from "~/context/OrderContext";

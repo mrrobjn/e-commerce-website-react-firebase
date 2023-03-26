@@ -1,7 +1,6 @@
-import React from "react";
-import Head from "./Head";
-import Search from "./Search";
-import "./Header.scss";
+import Head from "../components/Head";
+import Search from "~/components/Search";
+import '~/assets/scss/layout/Header.scss'
 const Header = ({ cartItem, setProductFilter, }) => {
   return (
     <section id="header">

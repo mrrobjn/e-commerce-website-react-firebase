@@ -1,6 +1,6 @@
 import { useAuthState } from "react-firebase-hooks/auth";
 import { Link, useNavigate } from "react-router-dom";
-import { logout, auth } from "../../firebase";
+import { logout, auth } from "../firebase";
 const Head = () => {
   const navigate = useNavigate();
   const [user] = useAuthState(auth);

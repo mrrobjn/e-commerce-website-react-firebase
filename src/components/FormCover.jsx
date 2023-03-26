@@ -1,5 +1,5 @@
 import React from "react";
-import '../assets/scss/FormCover.scss'
+import '../assets/scss/components/FormCover.scss'
 const FormCover = () => {
   return (
     <div className="form-cover">

@@ -2,11 +2,8 @@ import { useEffect } from "react";
 import Slider from "~/components/Slider";
 import FlashDeal from "~/components/FlashDeal";
 import HomeCategories from "~/components/HomeCategories";
-import "./Homepage.scss";
+import "~~/pages/HomePage.scss";
 import OfficialBrands from "~/components/OfficialBrands";
-import { BrandsProvider } from "~/context/BrandsContext";
-import Categories from "../productpage/Categories";
-
 const Homepage = ({ addToCart, setProductFilter, filterResult }) => {
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -14,7 +11,6 @@ const Homepage = ({ addToCart, setProductFilter, filterResult }) => {
 
   return (
     <>
-      <BrandsProvider>
         <section id="homepage">
           <HomeCategories
             setProductFilter={setProductFilter}
@@ -26,7 +22,6 @@ const Homepage = ({ addToCart, setProductFilter, filterResult }) => {
             <OfficialBrands />
           </div>
         </section>
-      </BrandsProvider>
     </>
   );
 };

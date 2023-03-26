@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import "../assets/scss/ProfileMenu.scss";
+import "../assets/scss/components/ProfileMenu.scss";
 import { auth } from "../firebase";
 import { useAuthState } from "react-firebase-hooks/auth";
 const ProfileMenu = () => {

@@ -3,20 +3,20 @@ import { Route, Routes } from 'react-router-dom';
 import { useContext, useState } from 'react';
 import { ProductContext } from './context/ProductContext';
 //pages
-import Header from './layout/Header/Header';
-import Footer from './layout/Footer/Footer'
-import Homepage from './pages/homepage/Homepage'
-import Cartpage from './pages/cartpage/Cartpage'
-import Profile from './pages/profilepage/Profile';
-import Product from './pages/productpage/Product';
-import TopScroll from './layout/TopScroll/TopScroll';
-import SingleProduct from './pages/SingleProduct/SingleProduct';
-import LoginPage from './pages/loginpage/LoginPage';
+import Header from './layout/Header';
+import Footer from './layout/Footer'
+import Homepage from './pages/HomePage'
+import Cartpage from './pages/CartPage'
+import Profile from './pages/ProfilePage';
+import Product from './pages/ProductPage';
+import TopScroll from './layout/TopScroll';
+import SingleProduct from './pages/SingleProductPage';
+import LoginPage from './pages/LoginPage';
 import PurchaseHistory from './components/PurchaseHistory'
 import UserProfile from './components/UserProfile';
 import OrderDetail from './components/OrderDetail.jsx'
-import RegisterPage from './pages/signuppage/RegisterPage';
-import ResetPassword from './pages/resetpassword/ResetPassword';
+import RegisterPage from './pages/RegisterPage';
+import ResetPassword from './pages/ResetPasswordPage';
 import UpdatePassword from './components/UpdatePassword';
 function App() {
   const products = useContext(ProductContext)

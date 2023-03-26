@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import { useAuthState } from "react-firebase-hooks/auth";
-import { auth } from "../../firebase";
+import { auth } from "~/firebase";
 import { ProductContext } from "~/context/ProductContext";
 const Search = ({ cartItem, setProductFilter }) => {
   const products = useContext(ProductContext);
