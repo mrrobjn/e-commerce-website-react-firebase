@@ -16,7 +16,7 @@ import PurchaseHistory from './components/PurchaseHistory'
 import UserProfile from './components/UserProfile';
 import OrderDetail from './components/OrderDetail.jsx'
 import RegisterPage from './pages/RegisterPage';
-import ResetPassword from './pages/ResetPasswordPage';
+import ResetPasswordPage from './pages/ResetPasswordPage';
 import UpdatePassword from './components/UpdatePassword';
 function App() {
   const products = useContext(ProductContext)
@@ -74,7 +74,7 @@ function App() {
         <Routes>
           <Route path='/login' element={<LoginPage />} />
           <Route path='/register' element={<RegisterPage />} />
-          <Route path='/resetpassword' element={<ResetPassword />} />
+          <Route path='/resetpassword' element={<ResetPasswordPage />} />
           <Route>
             <Route path='/' element={<Homepage
               addToCart={addToCart}

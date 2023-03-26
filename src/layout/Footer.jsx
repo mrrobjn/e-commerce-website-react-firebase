@@ -2,19 +2,6 @@ import '~/assets/scss/layout/Footer.scss'
 const Footer = () => {
   return (
     <>
-      {/* <section className="notify-register-section">
-        <div className="notify-register">
-          <div className="input-container">
-            <label>
-              <i className="fa-regular fa-envelope"></i> Đăng kí nhận bảng tin
-            </label>
-            <input type="email" placeholder="Nhập địa chỉ email của bạn" />
-            <div className="register-btn">
-              <button>Đăng ký</button>
-            </div>
-          </div>
-        </div>
-      </section> */}
       <section className="footer-section">
         <footer className="footer">
           <div className="left-box">
@@ -85,11 +72,6 @@ const Footer = () => {
                 </div>
               </div>
             </div>
-            {/* <div className="box-2">
-              <div className="box">
-                <h2>Liên Hệ</h2>
-              </div>
-            </div> */}
           </div>
         </footer>
       </section>
