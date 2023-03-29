@@ -1,5 +1,5 @@
 import { useContext, useEffect } from "react";
-import {  useNavigate, useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import ProfileMenu from "./ProfileMenu";
 import "~~/components/OrderDetail.scss";
 import { useAuthState } from "react-firebase-hooks/auth";
@@ -8,7 +8,7 @@ import { OrderContext } from "~/context/OrderContext";
 const OrderDetail = () => {
   const [user, loading] = useAuthState(auth);
   const navigate = useNavigate();
-  const orders=useContext(OrderContext)
+  const orders = useContext(OrderContext);
   const { orderId } = useParams();
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -23,107 +23,115 @@ const OrderDetail = () => {
       <section className="order-detail-section">
         <ProfileMenu />
         <div className="order-detail-container">
+          <div className="heading">
+            <h1>Chi tiết đơn hàng</h1>
+          </div>
           <div className="product-list">
             <table>
-             <tbody>
-               <tr className="title">
-                 <td className="img">Ảnh</td>
-                 <td className="name">Tên sản phẩm</td>
-                 <td className="price">Giá</td>
-                 <td className="qty">Số lượng</td>
-                 <td className="total">Đơn giá</td>
-               </tr>
-               {arrProducts &&
-                 arrProducts.map((productDetail) => {
-                   return (
-                     <tr
-                       key={productDetail.id}
-                       onClick={() => navigate(`/product/${productDetail.id}`)}
-                       className="product"
-                     >
-                       <td>
-                         <div className="img">
-                           <img src={productDetail.image} alt="" />
-                         </div>
-                       </td>
-                       <td>
-                         <p>{productDetail.title}</p>
-                       </td>
-                       <td>
-                         <p>
-                           {productDetail.price.toLocaleString("vi-VN", {
-                             style: "currency",
-                             currency: "VND",
-                           })}
-                         </p>
-                       </td>
-                       <td>
-                         <p>{productDetail.qty}</p>
-                       </td>
-                       <td>
-                         <p>
-                           {(
-                             productDetail.price * productDetail.qty
-                           ).toLocaleString("vi-VN", {
-                             style: "currency",
-                             currency: "VND",
-                           })}
-                         </p>
-                       </td>
-                     </tr>
-                   );
-                 })}
-             </tbody>
+              <tbody>
+                <tr className="title">
+                  <th className="img">Ảnh</th>
+                  <th className="name">Tên sản phẩm</th>
+                  <th className="price">Giá</th>
+                  <th className="qty">Số lượng</th>
+                  <th className="total">Đơn giá</th>
+                </tr>
+                {arrProducts &&
+                  arrProducts.map((productDetail) => {
+                    return (
+                      <tr
+                        key={productDetail.id}
+                        onClick={() => navigate(`/product/${productDetail.id}`)}
+                        className="product"
+                      >
+                        <td>
+                          <div className="img">
+                            <img src={productDetail.image} alt="" />
+                          </div>
+                        </td>
+                        <td className="prd-title">{productDetail.title}</td>
+                        <td>
+                          {productDetail.price.toLocaleString("vi-VN", {
+                            style: "currency",
+                            currency: "VND",
+                          })}
+                        </td>
+                        <td>{productDetail.qty}</td>
+                        <td>
+                          {(
+                            productDetail.price * productDetail.qty
+                          ).toLocaleString("vi-VN", {
+                            style: "currency",
+                            currency: "VND",
+                          })}
+                        </td>
+                      </tr>
+                    );
+                  })}
+              </tbody>
             </table>
           </div>
-          {orderInfo && (
-            <div className="order-detail">
-              <div className="detail-container">
-                <div className="title">
-                  <p>Ngày đặt: </p>
-                  <p>Giờ đặt: </p>
-                  <p>Thành tiền: </p>
-                  <p>Trạng thái: </p>
-                  <p>Thanh toán:</p>
-                  {orderInfo.data.cardOwner ? <p>Chủ thẻ: </p> : ""}
-                  {orderInfo.data.cardNumber ? <p>Số thẻ: </p> : ""}
-                  <p>Địa chỉ: </p>
-                </div>
-                <div className="detail">
-                  <p>{orderInfo.data.date}</p>
-                  <p>{orderInfo.data.time}</p>
-                  <p style={{ color: "#ea5867" }}>
-                    {orderInfo.data.totalPrice.toLocaleString("vi-VN", {
-                      style: "currency",
-                      currency: "VND",
-                    })}
-                  </p>
-                  <p
-                    className={
-                      orderInfo.data.status === false ? "red" : "green"
-                    }
-                  >
-                    {orderInfo.data.status === false
-                      ? "Chưa xác nhận"
-                      : "Đã xác nhận"}
-                  </p>
-                  <p>{orderInfo.data.paymentMethod}</p>
+          <div className="detail-container">
+            {orderInfo && (
+              <table>
+                <tbody>
+                  <tr>
+                    <td className="detail-title">Ngày đặt: </td>
+                    <td>{orderInfo.data.date}</td>
+                  </tr>
+                  <tr>
+                    <td className="detail-title">Giờ đặt: </td>
+                    <td>{orderInfo.data.time}</td>
+                  </tr>
+                  <tr>
+                    <td className="detail-title">Thành tiền: </td>
+                    <td style={{ color: "#ea5867" }}>
+                      {orderInfo.data.totalPrice.toLocaleString("vi-VN", {
+                        style: "currency",
+                        currency: "VND",
+                      })}
+                    </td>
+                  </tr>
+                  <tr>
+                    <td className="detail-title">Trạng thái: </td>
+                    <td
+                      className={
+                        orderInfo.data.status === false ? "red" : "green"
+                      }
+                    >
+                      {orderInfo.data.status === false
+                        ? "Đang chờ"
+                        : "Đã xác nhận"}
+                    </td>
+                  </tr>
+                  <tr>
+                    <td className="detail-title">Thanh toán:</td>
+                    <td>{orderInfo.data.paymentMethod}</td>
+                  </tr>
                   {orderInfo.data.cardOwner ? (
-                    <p>{orderInfo.data.cardOwner}</p>
+                    <tr>
+                      <td className="detail-title">Chủ thẻ: </td>
+                      <td>{orderInfo.data.cardOwner}</td>
+                    </tr>
                   ) : (
                     ""
                   )}
                   {orderInfo.data.cardNumber ? (
-                    <p>{orderInfo.data.cardNumber}</p>
+                    <tr>
+                      <td className="detail-title">Số thẻ: </td>
+                      <td>{orderInfo.data.cardNumber}</td>
+                    </tr>
                   ) : (
                     ""
                   )}
-                  {/* <p>{orderInfo.data.cardNumber}</p> */}
-                  <p>{orderInfo.data.address}</p>
-                </div>
-              </div>
-            </div>
-          )}
+                  <tr>
+                    <td className="detail-title">Địa chỉ: </td>
+                    <td>{orderInfo.data.address}</td>
+                  </tr>
+                </tbody>
+              </table>
+            )}
+          </div>
         </div>
       </section>
     </>

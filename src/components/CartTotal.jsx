@@ -83,7 +83,6 @@ const CartTotal = ({ cartItem, setCartItem }) => {
           pauseOnHover
           theme="light"
         />
-        <div className="background"></div>
         <div className="payment">
           <div className="total-box">
             <h1>Tổng thanh toán: </h1>
@@ -168,6 +167,7 @@ const CartTotal = ({ cartItem, setCartItem }) => {
                   type="text"
                   onChange={(e) => setAddress(e.target.value)}
                   required
+                  maxLength="50"
                 />
               </div>
               <button className="cart-btn" type="submit">

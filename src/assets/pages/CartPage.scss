@@ -1,14 +1,15 @@
 .cart-items {
   margin-top: 140px;
   margin-bottom: 10px;
-  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
   .cart-container {
-    height: 600px;
+    min-height: 600px;
     display: flex;
+    justify-content: space-between;
     .cart-detail {
+      box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
       background-color: #fff;
       width: 70%;
-      height: 100%;
+      padding-bottom: 20px;
       .cart-header {
         display: flex;
         justify-content: space-between;
@@ -20,8 +21,6 @@
         }
       }
       .handle-product {
-        overflow-y: scroll;
-        height: 80%;
         margin: 0 30px;
         .no-items {
           text-align: center;
@@ -82,38 +81,26 @@
       }
     }
     .cart-total {
-      width: 30%;
-      position: relative;
-      background: linear-gradient(120deg, #298079, #8e44ad);
-      .background {
-        position: absolute;
-        background: #000;
-        top: 0;
-        bottom: 0;
-        right: 0;
-        left: 0;
-        opacity: 0.4;
-      }
+      width: 29%;
+      height: 100%;
+      background: #fff;
+      box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
       .payment {
-        position: relative;
-        z-index: 2;
         .total-box {
           display: flex;
           justify-content: space-between;
-          color: #fff;
           padding: 20px 0;
           margin: 0 20px;
-          border-bottom: 1px solid #fff;
+          border-bottom: 1px solid #ea5867;
           h1 {
             font-size: 20px;
           }
           span {
             font-size: 20px;
-            color: #fff;
+            color: #ea5867;
           }
         }
         .payment-box {
-          color: #fff;
           .second-container {
             margin: 10px 20px;
             .payment-method {
@@ -125,22 +112,27 @@
                 width: 30%;
                 padding: 5px;
                 border-radius: 5px;
-                border: 2px solid #fff;
+                border: 2px solid #ea5867;
                 position: relative;
                 transition: 0.3s;
+                color: #ea5867;
                 input {
                   position: absolute;
                   top: 5px;
                   right: 5px;
-                  color: #fff;
+                  color: #ea5867;
+                }
+                p {
+                  color: #ea5867;
+                  padding-top: 5px;
                 }
                 &:hover {
                   background-color: #ea5867;
                   color: #fff;
                   cursor: pointer;
-                }
-                p {
-                  padding-top: 5px;
+                  p{
+                    color: #fff;
+                  }
                 }
               }
             }
@@ -180,6 +172,7 @@
             border: none;
             padding: 10px 0;
             font-size: 16px;
+            cursor: pointer;
           }
         }
       }

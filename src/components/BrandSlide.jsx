@@ -1,8 +1,5 @@
-import React, { useContext } from "react";
 import Slider from "react-slick";
-import { BrandsContext } from "~/context/BrandsContext";
-const BrandSlide = () => {
-  const brands=useContext(BrandsContext)
+const BrandSlide = ({brands}) => {
   const NextArrow = (props) => {
     const { onClick } = props;
     return (

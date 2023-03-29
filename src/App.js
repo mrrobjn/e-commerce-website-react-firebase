@@ -105,13 +105,12 @@ function App() {
             />
             <Route path='product/:productId'
               element={<SingleProduct
-              addToCartQty={addToCartQty} />} />
+                addToCartQty={addToCartQty} />} />
           </Route>
         </Routes>
         <TopScroll />
       </div>
-      <Footer />
-    </>
+      <Footer /></>
   );
 }
 

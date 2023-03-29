@@ -1,7 +1,6 @@
 .product-page-section {
   display: flex;
   justify-content: space-between;
-  background-color: #e9f2fa;
   margin-bottom: 10px;
   color: #333;
   .category {
@@ -10,18 +9,18 @@
     background-color: #fff;
     font-weight: bold;
     .box {
-      transition: 0.5s;
       padding: 0 20px;
       line-height: 50px;
-      &:hover {
-        cursor: pointer;
-        color: #ea5867;
-      }
       p {
+        transition: 0.5s;
         margin: 5px 0;
         font-size: 16px;
         text-transform: capitalize;
       }
+    }
+    .box:hover p {
+      cursor: pointer;
+      color: #ea5867;
     }
   }
   .product-section {
@@ -39,7 +38,7 @@
       width: 100%;
       height: auto;
       text-transform: capitalize;
-      margin-left: 10px;
+      margin-left: 5px;
     }
     .product-box {
       width: 20%;

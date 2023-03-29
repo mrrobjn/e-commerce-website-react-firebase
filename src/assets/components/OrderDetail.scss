@@ -5,24 +5,32 @@
   margin-top: 140px;
   margin-bottom: 10px;
   min-height: 600px;
+  color: #333;
   .order-detail-container {
     height: auto;
     background-color: #fff;
     width: 80%;
+    .heading{
+      margin: 20px 40px;
+      h1{
+        font-size: 20px;
+      }
+    }
     .product-list {
       height: auto;
-      margin: 20px;
+      margin: 20px 40px;
       font-size: 14px;
       table {
         width: 100%;
         text-align: center;
-        border: 1px solid #ea5867;
+        border-collapse: collapse;
         .title {
           font-weight: bold;
           color: #fff;
           background: #ea5867;
-          td{
+          th {
             padding: 10px 0;
+            border: 2px solid #ea5867;
           }
           .img {
             width: 10%;
@@ -41,65 +49,50 @@
           }
         }
         .product {
-          td{
-            padding: 10px 0;
+          cursor: pointer;
+          td {
+            padding: 5px;
+            border: 2px solid #ea5867;
           }
           .img {
             margin: auto;
             width: 80%;
-            height: 80%;
             img {
               width: 100%;
               height: 100%;
-              object-fit: contain;
+              object-fit: cover;
             }
+          }
+          .prd-title{
+            text-align: left;
           }
         }
       }
     }
-    .order-detail {
-      background-color: #fff;
-      display: flex;
-      height: auto;
-      margin: 0 20px 20px 20px;
-      font-size: 14px;
-      .detail-container {
-        display: flex;
+    .detail-container {
+      margin: 0 40px 20px 40px;
+      width: auto;
+      table {
         width: 100%;
-        border-top: 1px solid #ccc;
-        border-right: 1px solid #ccc;
-        border-left: 1px solid #ccc;
-        .title {
-          width: 80%;
-          display: flex;
-          flex-direction: column;
-          text-align: right;
-          p {
-            border-bottom: 1px solid #ccc;
-            border-right: 1px solid #ccc;
+        border-collapse: collapse;
+        tr {
+          td {
+            border: 1px solid #ccc;
             padding: 10px;
-            width: 100%;
           }
-
-        }
-        .detail {
-          width: 20%;
-          display: flex;
-          flex-direction: column;
-          font-weight: bold;
-          p {
-            border-bottom: 1px solid #ccc;
-            padding: 10px;
-            width: 100%;
-          }
-          .red {
-            color: red;
-          }
-          .green {
-            color: green;
+          .detail-title{
+            width: 70%;
+            text-align: right;
+            font-weight: bold;
           }
         }
       }
+    }
+    .red {
+      color: red;
+    }
+    .green {
+      color: green;
     }
   }
 }

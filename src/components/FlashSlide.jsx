@@ -2,8 +2,7 @@ import React, { useContext } from "react";
 import Slider from "react-slick";
 import { ProductContext } from "~/context/ProductContext";
 import FlashCard from "./FlashCard";
-const FlashSlide = ({ addToCart }) => {
-  const products = useContext(ProductContext);
+const FlashSlide = ({ addToCart,products}) => {
   const NextArrow = (props) => {
     const { onClick } = props;
     return (

@@ -156,10 +156,6 @@ const UserProfile = () => {
               />
               <button type="submit">Cập nhật</button>
             </form>
-            <form className="input-field">
-              <label>Email</label>
-              <input defaultValue={userEmail} type="email" disabled />
-            </form>
             <form className="input-field" onSubmit={updatePhoneNo}>
               <label>Số điện thoại</label>
               <input
