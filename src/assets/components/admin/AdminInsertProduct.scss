@@ -9,9 +9,14 @@
     }
   }
   .form-container {
-    margin-top: 10px;
+    width: 600px;
+    margin: auto;
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+    padding: 30px;
     form {
-      width: 60%;
+      width:100%;
       margin: auto;
       display: flex;
       flex-wrap: wrap;

@@ -1,7 +1,9 @@
 .admin-sidebar {
   width: 20%;
-  background: #333;
+  background: #fff;
   overflow-y: scroll;
+  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+
   .heading {
     display: flex;
     justify-content: space-between;
@@ -9,14 +11,14 @@
     position: sticky;
     top: 0;
     padding: 20px;
-    background: #333;
+    background: #fff;
     a{
-      color: #fff;
+      color: #ea5867;
       font-weight: bold;
       text-decoration: underline;
     }
     h1 {
-      color: #fff;
+      color: #333;
       font-size: 24px;
       text-transform: uppercase;
     }
@@ -25,14 +27,15 @@
     display: flex;
     flex-direction: column;
     a {
-      color: #fff;
+      color: #333;
+      font-weight: bold;
       padding: 20px 20px 20px 20px;
       transition: 0.3s;
       cursor: pointer;
       text-transform: capitalize;
     }
     .link-active {
-      background-color: #fff;
+      background-color: #f2f2f2;
       color: #333;
     }
   }
