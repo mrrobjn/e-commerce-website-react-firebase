@@ -5,6 +5,8 @@ import { useAuthState } from "react-firebase-hooks/auth";
 import { auth } from "../firebase";
 import { useNavigate } from "react-router";
 import CartHandle from "~/components/CartHandle";
+import Header from "~/layout/Header";
+import Footer from "~/layout/Footer";
 const Cartpage = ({
   cartItem,
   addToCart,
@@ -12,6 +14,7 @@ const Cartpage = ({
   deteteCart,
   setCartItem,
   showDate,
+  setProductFilter,
 }) => {
   const [user, loading] = useAuthState(auth);
   const navigate = useNavigate();
@@ -21,22 +24,25 @@ const Cartpage = ({
   if (!user) return navigate("/login");
   return (
     <>
-      <section className="cart-items">
-        <div className="cart-container">
-          <CartHandle
-            addToCart={addToCart}
-            descreaseQty={descreaseQty}
-            deteteCart={deteteCart}
-            cartItem={cartItem}
-
-          />
-          <CartTotal
-            cartItem={cartItem}
-            setCartItem={setCartItem}
-            showDate={showDate}
-          />
-        </div>
-      </section>
+      <Header cartItem={cartItem} setProductFilter={setProductFilter} />
+      <div className="page-container">
+        <section className="cart-items">
+          <div className="cart-container">
+            <CartHandle
+              addToCart={addToCart}
+              descreaseQty={descreaseQty}
+              deteteCart={deteteCart}
+              cartItem={cartItem}
+            />
+            <CartTotal
+              cartItem={cartItem}
+              setCartItem={setCartItem}
+              showDate={showDate}
+            />
+          </div>
+        </section>
+      </div>
+      <Footer />
     </>
   );
 };

@@ -15,6 +15,7 @@ const AdminInsertProduct = () => {
   const [discount, setDiscount] = useState("");
   const [categoryId, setCategoryId] = useState(categories[0]?.id);
   const [brandId, setBrandId] = useState(brands[0]?.id);
+  const [description, setDescription] = useState("");
   const handleSubmit = async (e) => {
     e.preventDefault();
     addProduct(
@@ -23,12 +24,14 @@ const AdminInsertProduct = () => {
       price,
       discount,
       categoryId,
-      brandId
+      brandId,
+      description
     );
     setImage("");
     setTitle("");
     setPrice("");
     setDiscount("");
+    setDescription("")
   };
   return (
     <div className="insert-product-container">
@@ -116,6 +119,15 @@ const AdminInsertProduct = () => {
                 );
               })}
             </select>
+          </div>
+          <div className="input-field-width">
+            <label>Mô tả sản phẩm</label>
+            <textarea
+              type="text"
+              required
+              onChange={(e) => setDescription(e.target.value)}
+              rows="20"
+            />
           </div>
           <button type="submit">Thêm sản phẩm</button>
         </form>

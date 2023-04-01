@@ -24,8 +24,9 @@ import AdminProduct from './components/admin/AdminProduct';
 import AdminOrders from './components/admin/AdminOrders';
 import AdminCategories from './components/admin/AdminCategories';
 import AdminBrands from './components/admin/AdminBrands';
+import OrderHistory from './pages/OrderHistory';
 function App() {
-  const {products} = useContext(ProductContext)
+  const { products } = useContext(ProductContext)
   const [cartItem, setCartItem] = useState([])
   const [productFilter, setProductFilter] = useState(products)
   // add item to cart
@@ -74,57 +75,66 @@ function App() {
 
   return (
     <>
-      <Header cartItem={cartItem} setProductFilter={setProductFilter} />
-      <div className='page-container'>
-        <Routes>
-          <Route path='/login' element={<LoginPage />} />
-          <Route path='/register' element={<RegisterPage />} />
-          <Route path='/resetpassword' element={<ResetPasswordPage />} />
-          <Route>
-            <Route path='/' element={<Homepage
-              addToCart={addToCart}
+      <Routes>
+        <Route path='/login' element={<LoginPage setProductFilter={setProductFilter}
+          cartItem={cartItem} />} />
+        <Route path='/register' element={<RegisterPage setProductFilter={setProductFilter}
+          cartItem={cartItem} />} />
+        <Route path='/resetpassword' element={<ResetPasswordPage setProductFilter={setProductFilter}
+          cartItem={cartItem} />} />
+        <Route>
+          <Route path='/' element={<Homepage
+            addToCart={addToCart}
+            setProductFilter={setProductFilter}
+            filterResult={filterResult}
+            cartItem={cartItem}
+          />} />
+          <Route path='cart' element={<Cartpage
+            addToCart={addToCart}
+            descreaseQty={descreaseQty}
+            deteteCart={deleteCart}
+            cartItem={cartItem}
+            setCartItem={setCartItem}
+            setProductFilter={setProductFilter}
+          />}
+          />
+          <Route path='profile' element={<Profile
+            setProductFilter={setProductFilter}
+            cartItem={cartItem}
+          />} >
+            <Route path="userprofile" element={<UserProfile />} />
+            <Route
+              path="purchasehistory"
+              element={<PurchaseHistory />}
+            />
+          </Route>
+          <Route path='/profile/purchasehistory/:orderId' element={<OrderHistory setProductFilter={setProductFilter}
+            cartItem={cartItem} />} />
+          <Route path='product' element={<Product
+            addToCart={addToCart}
+            filterResult={filterResult}
+            setProductFilter={setProductFilter}
+            productFilter={productFilter}
+            cartItem={cartItem}
+          />}
+          />
+          <Route path='product/:productId'
+            element={<SingleProduct
+              addToCartQty={addToCartQty}
               setProductFilter={setProductFilter}
-              filterResult={filterResult}
               cartItem={cartItem}
             />} />
-            <Route path='cart' element={<Cartpage
-              addToCart={addToCart}
-              descreaseQty={descreaseQty}
-              deteteCart={deleteCart}
-              cartItem={cartItem}
-              setCartItem={setCartItem}
-            />}
-            />
-            <Route path='profile' element={<Profile />} >
-              <Route path="userprofile" element={<UserProfile />} />
-              <Route
-                path="purchasehistory"
-                element={<PurchaseHistory />}
-              />
-            </Route>
-            <Route path='/purchasehistory/:orderId' element={<OrderDetail />} />
-            <Route path='product' element={<Product
-              addToCart={addToCart}
-              filterResult={filterResult}
-              setProductFilter={setProductFilter}
-              productFilter={productFilter} />}
-            />
-            <Route path='product/:productId'
-              element={<SingleProduct
-                addToCartQty={addToCartQty} />} />
-          </Route>
-          <Route path='admin' element={<AdminPage />}>
-            <Route path='usermanagement' element={<AdminUsers />} />
-            <Route path='insertproduct' element={<AdminInsertProduct />} />
-            <Route path='adminproduct' element={<AdminProduct />} />
-            <Route path='adminorder' element={<AdminOrders />} />
-            <Route path='admincategory' element={<AdminCategories />} />
-            <Route path='adminbrand' element={<AdminBrands />} />
-          </Route>
-        </Routes>
-        <TopScroll />
-      </div>
-      <Footer />
+        </Route>
+        <Route path='admin' element={<AdminPage />}>
+          <Route path='usermanagement' element={<AdminUsers />} />
+          <Route path='insertproduct' element={<AdminInsertProduct />} />
+          <Route path='adminproduct' element={<AdminProduct />} />
+          <Route path='adminorder' element={<AdminOrders />} />
+          <Route path='admincategory' element={<AdminCategories />} />
+          <Route path='adminbrand' element={<AdminBrands />} />
+        </Route>
+      </Routes>
+      <TopScroll />
     </>
   );
 }

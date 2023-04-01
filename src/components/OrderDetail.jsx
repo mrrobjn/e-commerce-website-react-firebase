@@ -1,6 +1,5 @@
 import { useContext, useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
-import ProfileMenu from "./ProfileMenu";
 import "~~/components/OrderDetail.scss";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { auth } from "../firebase";
@@ -20,8 +19,6 @@ const OrderDetail = () => {
     orderInfo && orderInfo.data.arrayProducts.map((products) => products);
   return (
     <>
-      <section className="order-detail-section">
-        <ProfileMenu />
         <div className="order-detail-container">
           <div className="heading">
             <h1>Chi tiết đơn hàng</h1>
@@ -133,7 +130,6 @@ const OrderDetail = () => {
             )}
           </div>
         </div>
-      </section>
     </>
   );
 };

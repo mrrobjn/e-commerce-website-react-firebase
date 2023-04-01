@@ -5,8 +5,10 @@ import { useAuthState } from "react-firebase-hooks/auth";
 import { useNavigate } from "react-router";
 import { auth } from "../firebase";
 import FormCover from "../components/FormCover";
+import Footer from "~/layout/Footer";
+import Header from "~/layout/Header";
 
-const LoginPage = () => {
+const LoginPage = ({ setProductFilter, cartItem }) => {
   const [user, loading] = useAuthState(auth);
   const navigate = useNavigate();
   useEffect(() => {
@@ -15,12 +17,16 @@ const LoginPage = () => {
   }, [user, loading]);
   return (
     <>
-      <section className="login-section">
-        <div className="login-container">
-          <FormCover />
-          <Login />
-        </div>
-      </section>
+      <Header setProductFilter={setProductFilter} cartItem={cartItem} />
+      <div className="page-container">
+        <section className="login-section">
+          <div className="login-container">
+            <FormCover />
+            <Login />
+          </div>
+        </section>
+      </div>
+      <Footer />
     </>
   );
 };

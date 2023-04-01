@@ -21,7 +21,7 @@ export const ProductProvider = ({ children }) => {
         }
         getProducts()
     }, [])
-    const addProduct = async (image, title, price, discount, categoryId, brandId) => {
+    const addProduct = async (image, title, price, discount, categoryId, brandId, description) => {
         // upload product image
         const imgRef = ref(storage, `product images/${title}.png`);
         await uploadBytes(imgRef, image);
@@ -36,6 +36,7 @@ export const ProductProvider = ({ children }) => {
             discount: +discount,
             category_id: categoryId,
             brand_id: brandId,
+            description: description,
         })
             .then(() => {
                 successToast("Đã thêm mặt hàng");

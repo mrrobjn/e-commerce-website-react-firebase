@@ -38,6 +38,25 @@
           padding: 10px;
         }
       }
+      .input-field-width {
+        margin-bottom: 10px;
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        label {
+          font-size: 16px;
+        }
+        textarea {
+          outline: none;
+          font-size: 16px;
+          padding: 10px;
+          border: 1px solid #ccc;
+          height: 200px;
+        }
+        textarea:invalid{
+          border: 1px solid red;
+        }
+      }
       button {
         font-size: 16px;
         width: 100%;

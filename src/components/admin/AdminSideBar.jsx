@@ -1,10 +1,11 @@
 import React from "react";
-import { NavLink } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import "~~/components/admin/AdminSidebar.scss";
 const AdminSideBar = () => {
   return (
     <div className="admin-sidebar">
       <div className="heading">
+        <Link to="/">Quay về</Link>
         <h1>admin</h1>
       </div>
       <div className="sidebar-btn">

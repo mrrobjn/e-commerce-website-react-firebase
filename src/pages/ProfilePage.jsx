@@ -4,7 +4,9 @@ import { useAuthState } from "react-firebase-hooks/auth";
 import { auth } from "../firebase";
 import "~~/pages/ProfilePage.scss";
 import ProfileMenu from "../components/ProfileMenu";
-const Profile = () => {
+import Footer from "~/layout/Footer";
+import Header from "~/layout/Header";
+const Profile = ({setProductFilter,cartItem}) => {
   const [user, loading] = useAuthState(auth);
   const navigate = useNavigate();
   useEffect(() => {
@@ -13,12 +15,16 @@ const Profile = () => {
   }, [user, loading]);
   return (
     <>
-      <section className="profile-section">
-        <div className="profile-container">
-          <ProfileMenu/>
-          <Outlet/>
-        </div>
-      </section>
+      <Header setProductFilter={setProductFilter} cartItem={cartItem} />
+      <div className="page-container">
+        <section className="profile-section">
+          <div className="profile-container">
+            <ProfileMenu />
+            <Outlet />
+          </div>
+        </section>
+      </div>
+      <Footer />
     </>
   );
 };

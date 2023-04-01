@@ -77,3 +77,16 @@
     }
   }
 }
+.description-container{
+  background-color: #fff;
+  margin-top: 20px;
+  margin-bottom: 10px;
+  min-height: 200px;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  .box{
+    padding: 20px 40px;
+    h1{
+      margin-bottom: 10px;
+    }
+  }
+}

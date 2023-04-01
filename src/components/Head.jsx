@@ -17,7 +17,7 @@ const Head = () => {
       <div className="head-container">
         <div className="left-head">
           {logUser?.data.role === "admin" ? (
-            <Link to="admin/usermanagement">Quản trị viên</Link>
+            <Link to="/admin/usermanagement">Quản trị viên</Link>
           ) : (
             ""
           )}

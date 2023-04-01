@@ -40,7 +40,7 @@ const PurchaseHistory = () => {
                 return (
                   <tr
                     key={order.id}
-                    onClick={() => navigate(`/purchasehistory/${order.id}`)}
+                    onClick={() => navigate(`/profile/purchasehistory/${order.id}`)}
                   >
                     <td>{index+1}</td>
                     <td className="date">{order.data.date}</td>
