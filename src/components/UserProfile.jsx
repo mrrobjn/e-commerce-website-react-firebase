@@ -12,7 +12,6 @@ const UserProfile = () => {
   const [user, loading] = useAuthState(auth);
   const [userName, setUserName] = useState("");
   const [userDayOfBirth, setUserDayOfBirth] = useState("");
-  const [userEmail, setUserEmail] = useState("");
   const [userPhoneNumber, setUserPhoneNumber] = useState("");
   const [userId, setUserId] = useState("");
   //update
@@ -23,7 +22,6 @@ const UserProfile = () => {
   useEffect(() => {
     window.scrollTo(0, 0);
     fetchUser();
-    setUserName(user?.displayName);
   }, [user, loading]);
   // fetch user data
   const fetchUser = async () => {
@@ -34,8 +32,8 @@ const UserProfile = () => {
       );
       onSnapshot(q, (querySnapshot) => {
         querySnapshot.docs.forEach((doc) => {
+          setUserName(doc.data().name);
           setUserDayOfBirth(doc.data().dayOfBirth);
-          setUserEmail(doc.data().email);
           setUserPhoneNumber(doc.data().phoneNumber);
           setUserId(doc.id);
         });
@@ -44,19 +42,22 @@ const UserProfile = () => {
       errorToast(err.message);
     }
   };
-  // update phone
+  // update name
   const updateName = async (e) => {
     e.preventDefault();
-    if (!displayName || displayName === user.displayName) {
+    if (!displayName || displayName === userName) {
       errorToast("Không hợp lệ hoặc đã tồn tại");
     } else {
-      updateProfile(auth.currentUser, { displayName: displayName })
-        .then(() => {
-          successToast("Cập nhật thành công");
-        })
-        .catch((err) => {
-          errorToast(err.message);
+      const docRef = doc(db, "users", userId);
+      try {
+        await updateDoc(docRef, {
+          name: displayName,
         });
+        fetchUser();
+        successToast("Cập nhật thành công");
+      } catch (error) {
+        errorToast(error.message);
+      }
     }
   };
 
@@ -178,11 +179,7 @@ const UserProfile = () => {
             </form>
             <form className="input-field" onSubmit={updatePassword}>
               <label>Đổi mật khẩu</label>
-              <input
-                defaultValue={user?.email}
-                type="email"
-                disabled
-              />
+              <input defaultValue={user?.email} type="email" disabled />
               <button type="submit">Gửi yêu cầu</button>
             </form>
           </div>

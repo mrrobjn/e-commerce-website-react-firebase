@@ -4,8 +4,7 @@ import { useAuthState } from "react-firebase-hooks/auth";
 import { auth } from "~/firebase";
 import { ProductContext } from "~/context/ProductContext";
 const Search = ({ cartItem, setProductFilter }) => {
-  const products = useContext(ProductContext);
-
+  const {products} = useContext(ProductContext);
   const [user] = useAuthState(auth);
   return (
     <div className="search">

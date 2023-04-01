@@ -7,7 +7,7 @@ import { ProductContext } from "~/context/ProductContext";
 import Loading from "~/layout/Loading";
 const ProductCard = ({ addToCart, productFilter }) => {
   const [loading, setLoading] = useState(true);
-  const products = useContext(ProductContext);
+  const {products} = useContext(ProductContext);
   useEffect(() => {
     products.length >= 1 && setLoading(false);
   }, [products]);
@@ -22,7 +22,7 @@ const ProductCard = ({ addToCart, productFilter }) => {
                 justifyContent: "center",
                 alignItems: "center",
                 background: "#fff",
-                marginLeft: 5
+                marginLeft: 5,
               }
             : null
         }

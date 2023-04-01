@@ -9,6 +9,7 @@ import { CategoriesProvider } from './context/CategoriesContext';
 import { SlideProvider } from './context/SlideContext';
 import { OrderProvider } from './context/OrderContext';
 import { BrandsProvider } from './context/BrandsContext';
+import { UserProvider } from './context/UserContext';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 
@@ -20,7 +21,9 @@ root.render(
         <SlideProvider>
           <OrderProvider>
             <BrandsProvider>
-              <App />
+              <UserProvider>
+                <App />
+              </UserProvider>
             </BrandsProvider>
           </OrderProvider>
         </SlideProvider>

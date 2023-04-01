@@ -13,7 +13,7 @@ const Profile = () => {
   }, [user, loading]);
   return (
     <>
-      <section className="profile-section" style={{ paddingTop: 140 }}>
+      <section className="profile-section">
         <div className="profile-container">
           <ProfileMenu/>
           <Outlet/>

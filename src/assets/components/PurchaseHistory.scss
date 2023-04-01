@@ -2,14 +2,16 @@
   width: 80%;
   height: auto;
   background-color: #fff;
+  padding: 0 40px;
   .heading {
-    margin: 20px 40px 0 40px;
+    margin-top: 20px;
     h1 {
       font-size: 20px;
     }
   }
   table {
-    margin: 20px 40px 0 40px;
+    margin-top: 20px;
+    width: 100%;
     max-height: 80%;
     font-size: 14px;
     border-collapse: collapse;
@@ -19,23 +21,9 @@
         background: #007bff;
         color: #fff;
         th {
-          border: 2px solid #007bff;
           padding: 10px;
-        }
-        .date {
-          width: 10%;
-        }
-        .address {
-          width: 45%;
-        }
-        .total {
-          width: 15%;
-        }
-        .payment-method {
-          width: 15%;
-        }
-        .status {
-          width: 15%;
+          position: sticky;
+          top: 0;
         }
       }
     }
@@ -44,38 +32,25 @@
         cursor: pointer;
         transition: 0.3s;
         td {
-          min-height: 100px;
           padding: 20px 5px;
-          border: 2px solid #007bff;
-        }
-        .date {
-          width: 10%;
-        }
-        .address {
-          text-align: left;
-          overflow: hidden;
-        }
-        .total {
-          width: 15%;
-        }
-        .payment-method {
-          width: 15%;
         }
         .status {
-          width: 15%;
           span {
             padding: 5px 10px;
             border-radius: 50px;
           }
+          .not-confirm {
+            color: red;
+            background-color: rgb(255, 205, 205);
+          }
+          .confirm {
+            color: green;
+            background-color: rgb(206, 255, 206);
+          }
         }
-        .not-confirm {
-          color: red;
-          background-color: rgb(255, 205, 205);
-        }
-        .confirm {
-          color: green;
-          background-color: rgb(206, 255, 206);
-        }
+      }
+      tr:nth-child(even) {
+        background-color: #f2f2f2;
       }
     }
   }

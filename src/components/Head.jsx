@@ -1,9 +1,13 @@
+import { useContext } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { Link, useNavigate } from "react-router-dom";
+import { UserContext } from "~/context/UserContext";
 import { logout, auth } from "../firebase";
 const Head = () => {
   const navigate = useNavigate();
   const [user] = useAuthState(auth);
+  const users = useContext(UserContext);
+  const logUser = users?.find((userss) => userss.data.uid === user?.uid);
   const signOutBtn = () => {
     logout(auth);
     navigate("/");
@@ -12,16 +16,20 @@ const Head = () => {
     <div className="head">
       <div className="head-container">
         <div className="left-head">
-          <Link>Kênh người bán</Link>
+          {logUser?.data.role === "admin" ? (
+            <Link to="admin/usermanagement">Quản trị viên</Link>
+          ) : (
+            ""
+          )}
         </div>
         <div className="right-head">
-          {user ? (
+          {user && logUser ? (
             <>
               <div className="user-avt">
                 <img src={user?.photoURL || "/assets/images/user.png"} alt="" />
               </div>
               <div className="dropdown">
-                <span>{user?.displayName || "unknown"}</span>
+                <span>{logUser.data.name || "unknown"}</span>
                 <div className="dropdown-content">
                   <Link className="dropdown-btn" to="/profile/userprofile">
                     Tài khoản

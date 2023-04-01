@@ -27,10 +27,9 @@
         .title {
           font-weight: bold;
           color: #fff;
-          background: #ea5867;
+          background: #007bff;
           th {
             padding: 10px 0;
-            border: 2px solid #ea5867;
           }
           .img {
             width: 10%;
@@ -52,11 +51,10 @@
           cursor: pointer;
           td {
             padding: 5px;
-            border: 2px solid #ea5867;
           }
           .img {
             margin: auto;
-            width: 80%;
+            width: 50%;
             img {
               width: 100%;
               height: 100%;
@@ -66,6 +64,9 @@
           .prd-title{
             text-align: left;
           }
+        }
+        tr:nth-child(even){
+          background-color: #f2f2f2;
         }
       }
     }
@@ -86,6 +87,7 @@
             font-weight: bold;
           }
         }
+       
       }
     }
     .red {

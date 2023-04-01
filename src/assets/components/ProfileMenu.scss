@@ -5,6 +5,8 @@
   border-right: 1px solid #ccc;
   color: #333;
   .menu-btn-container {
+    display: flex;
+    flex-direction: column;
     .user-img {
       width: 150px;
       height: 150px;
@@ -24,7 +26,7 @@
       font-size: 18px;
       text-align: center;
     }
-    .menu-btn {
+    a {
       padding: 0 20px;
       transition: 0.3s;
       font-size: 16px;
@@ -34,10 +36,10 @@
       i {
         margin-right: 10px;
       }
-      &:hover {
-        background-color: #007bff;
-        color: #fff;
-      }
+    }
+    .link-active{
+      background-color: #007bff;
+      color: #fff;
     }
   }
 }

@@ -8,7 +8,7 @@ import { ProductContext } from "~/context/ProductContext";
 import { useEffect } from "react";
 const FlashDeal = ({ addToCart }) => {
   const [loading, setLoading] = useState(true);
-  const products = useContext(ProductContext);
+  const {products} = useContext(ProductContext);
   useEffect(() => {
     products.length >= 1 && setLoading(false);
   }, [products]);

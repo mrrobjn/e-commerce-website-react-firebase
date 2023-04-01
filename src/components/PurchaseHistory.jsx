@@ -27,8 +27,8 @@ const PurchaseHistory = () => {
         <table className="order-container">
           <thead className="order-title">
             <tr>
+              <th>#</th>
               <th className="date">Ngày đặt</th>
-              <th className="address">Địa chỉ</th>
               <th className="total">Tổng tiền</th>
               <th className="payment-method">Thanh toán</th>
               <th className="status">Xác nhận</th>
@@ -36,14 +36,14 @@ const PurchaseHistory = () => {
           </thead>
           <tbody className="order-history">
             {orderWithUser &&
-              orderWithUser.map((order) => {
+              orderWithUser.map((order,index) => {
                 return (
                   <tr
                     key={order.id}
                     onClick={() => navigate(`/purchasehistory/${order.id}`)}
                   >
+                    <td>{index+1}</td>
                     <td className="date">{order.data.date}</td>
-                    <td className="address">{order.data.address}</td>
                     <td className="total">
                       {order.data.totalPrice.toLocaleString("vi-VN", {
                         style: "currency",

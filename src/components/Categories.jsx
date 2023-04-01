@@ -5,7 +5,7 @@ import { CategoriesContext } from "~/context/CategoriesContext";
 import { ProductContext } from "~/context/ProductContext";
 import Loading from "~/layout/Loading";
 const Categories = ({ filterResult, setProductFilter }) => {
-  const products = useContext(ProductContext);
+  const {products} = useContext(ProductContext);
   const categories = useContext(CategoriesContext);
   const [loading, setLoading] = useState(true);
 

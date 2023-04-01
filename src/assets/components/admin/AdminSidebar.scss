@@ -1,0 +1,31 @@
+.admin-sidebar {
+  max-height: 600px;
+  min-height: 600px;
+  width: 20%;
+  background: #333;
+  .heading {
+    text-align: center;
+    padding: 20px 0;
+    h1 {
+      color: #fff;
+      font-size: 24px;
+      text-transform: uppercase;
+    }
+  }
+  .sidebar-btn {
+    display: flex;
+    flex-direction: column;
+    a {
+      color: #fff;
+      padding: 20px 20px 20px 20px;
+      transition: 0.3s;
+      cursor: pointer;
+      text-transform: capitalize;
+    }
+  
+    .link-active{
+      background-color: #fff;
+      color: #333;
+    }
+  }
+}

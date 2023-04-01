@@ -1,0 +1,64 @@
+.admin-user-container {
+  width: 80%;
+  .heading {
+    text-align: center;
+    padding: 20px 0;
+    h1 {
+      font-size: 24px;
+      text-transform: capitalize;
+    }
+  }
+  .table-container {
+    margin:0 40px;
+    height: 80%;
+    overflow-y: scroll;
+    border: 1px solid #333;
+    table {
+      text-align: center;
+      width: 100%;
+      border-collapse: collapse;
+      margin-bottom: 20px;
+      font-size: 14px;
+      thead {
+        tr {
+          th {
+            position: sticky;
+            top: 0;
+            background-color: #333;
+            color: #fff;
+            padding: 10px 0;
+          }
+        }
+      }
+      tbody {
+        tr {
+          height: 38.8px;
+          td {
+            padding: 10px 0;
+          }
+          .index {
+            width: 5%;
+          }
+          .email {
+            width: 30%;
+          }
+          .name {
+            width: 20%;
+          }
+          .phone {
+            width: 15%;
+          }
+          .day-of-birth {
+            width: 15%;
+          }
+          .role {
+            width: 15%;
+          }
+        }
+        tr:nth-child(even) {
+          background-color: #f2f2f2;
+        }
+      }
+    }
+  }
+}

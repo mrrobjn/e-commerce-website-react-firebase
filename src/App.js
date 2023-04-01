@@ -17,11 +17,17 @@ import UserProfile from './components/UserProfile';
 import OrderDetail from './components/OrderDetail.jsx'
 import RegisterPage from './pages/RegisterPage';
 import ResetPasswordPage from './pages/ResetPasswordPage';
+import AdminPage from './pages/admin/AdminPage';
+import AdminUsers from './components/admin/AdminUsers';
+import AdminInsertProduct from './components/admin/AdminInsertProduct';
+import AdminProduct from './components/admin/AdminProduct';
+import AdminOrders from './components/admin/AdminOrders';
+import AdminCategories from './components/admin/AdminCategories';
+import AdminBrands from './components/admin/AdminBrands';
 function App() {
-  const products = useContext(ProductContext)
+  const {products} = useContext(ProductContext)
   const [cartItem, setCartItem] = useState([])
   const [productFilter, setProductFilter] = useState(products)
-
   // add item to cart
   const addToCart = (product) => {
     const productExist = cartItem.find((item) => item.id === product.id)
@@ -68,7 +74,7 @@ function App() {
 
   return (
     <>
-      <Header cartItem={cartItem} setProductFilter={setProductFilter} products={products} />
+      <Header cartItem={cartItem} setProductFilter={setProductFilter} />
       <div className='page-container'>
         <Routes>
           <Route path='/login' element={<LoginPage />} />
@@ -107,10 +113,19 @@ function App() {
               element={<SingleProduct
                 addToCartQty={addToCartQty} />} />
           </Route>
+          <Route path='admin' element={<AdminPage />}>
+            <Route path='usermanagement' element={<AdminUsers />} />
+            <Route path='insertproduct' element={<AdminInsertProduct />} />
+            <Route path='adminproduct' element={<AdminProduct />} />
+            <Route path='adminorder' element={<AdminOrders />} />
+            <Route path='admincategory' element={<AdminCategories />} />
+            <Route path='adminbrand' element={<AdminBrands />} />
+          </Route>
         </Routes>
         <TopScroll />
       </div>
-      <Footer /></>
+      <Footer />
+    </>
   );
 }
 

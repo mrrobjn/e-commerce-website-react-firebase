@@ -6,10 +6,10 @@ import '~~/pages/ProductPage.scss'
 const Product = ({  addToCart, filterResult, productFilter,setProductFilter }) => {
   useEffect(() => {
     window.scrollTo(0, 0)
-  })
+  },[])
   return (
     <>
-      <section className="product-page-section" style={{ paddingTop: 140 }}>
+      <section className="product-page-section">
         <Categories filterResult={filterResult} setProductFilter={setProductFilter} />
         <ProductCard productFilter={productFilter} addToCart={addToCart} />
       </section>
