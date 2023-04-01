@@ -80,9 +80,10 @@ const AdminInsertProduct = () => {
           <div className="input-field">
             <label>Phần trăm giảm (%)</label>
             <input
-              type="text"
+              type="number"
               required
-              pattern="[0-9]{1-2}"
+              max='99'
+              min='0'
               onChange={(e) => setDiscount(e.target.value)}
             />
           </div>
