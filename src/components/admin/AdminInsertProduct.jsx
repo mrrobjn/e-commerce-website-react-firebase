@@ -82,7 +82,7 @@ const AdminInsertProduct = () => {
             <input
               type="text"
               required
-              pattern="[0-9]{2}"
+              pattern="[0-9]{1-2}"
               onChange={(e) => setDiscount(e.target.value)}
             />
           </div>
