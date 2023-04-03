@@ -13,9 +13,9 @@ const CartTotal = ({ cartItem, setCartItem }) => {
   const status = false;
   const current = new Date();
   //date
-  const date = `${current.getDate()}-${
+  const date = `${current.getDate()}/${
     current.getMonth() + 1
-  }-${current.getFullYear()}`;
+  }/${current.getFullYear()}`;
   //time
   const time =
     current.getHours() +
@@ -167,7 +167,7 @@ const CartTotal = ({ cartItem, setCartItem }) => {
                   type="text"
                   onChange={(e) => setAddress(e.target.value)}
                   required
-                  maxLength="50"
+                  maxLength="30"
                 />
               </div>
               <button className="cart-btn" type="submit">

@@ -6,7 +6,7 @@ const AdminUsers = () => {
   return (
     <div className="admin-user-container">
       <div className="heading">
-        <h1>Quản lí khách hàng</h1>
+        <h1>Quản lý khách hàng</h1>
       </div>
      <div className="table-container">
        <table>

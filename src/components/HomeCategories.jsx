@@ -10,7 +10,7 @@ import { useState } from "react";
 const HomeCategories = ({ filterResult, setProductFilter }) => {
   const [loading, setLoading] = useState(true);
   const products = useContext(ProductContext);
-  const categories = useContext(CategoriesContext);
+  const {categories} = useContext(CategoriesContext);
   useEffect(() => {
     categories.length>=1 && setLoading(false);
   }, [categories]);

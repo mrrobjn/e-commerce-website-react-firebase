@@ -1,0 +1,68 @@
+.admin-order-container {
+  width: 80%;
+  .heading {
+    text-align: center;
+    padding: 20px 0;
+
+    h1 {
+      font-size: 24px;
+      text-transform: capitalize;
+    }
+  }
+  .table-container {
+    margin: 0 40px;
+    background: #fff;
+    border-radius: 5px;
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+    padding: 30px;
+    .table-box {
+      overflow-x: auto;
+      table {
+        font-size: 14px;
+        width: 100%;
+        text-align: center;
+        border-collapse: collapse;
+        thead {
+          tr {
+            th {
+              white-space: nowrap;
+              color: #fff;
+              background-color: #333;
+              padding: 10px;
+            }
+          }
+        }
+        tbody {
+          tr {
+            td {
+              padding: 10px;
+              white-space: nowrap;
+            }
+            .address {
+              text-align: left;
+            }
+            .product {
+              text-align: left;
+              p {
+                padding: 5px;
+              }
+            }
+            .qty{
+                p {
+                    padding: 5px;
+                    font-weight: bold;
+                  }
+            }
+            .total {
+              color: #ea5867;
+              font-weight: bold;
+            }
+          }
+          tr:nth-child(even) {
+            background-color: #f2f2f2;
+          }
+        }
+      }
+    }
+  }
+}
