@@ -68,6 +68,7 @@ const AdminInsertProduct = () => {
             <input
               type="text"
               required
+              value={title}
               onChange={(e) => setTitle(e.target.value)}
             />
           </div>
@@ -76,6 +77,7 @@ const AdminInsertProduct = () => {
             <input
               type="text"
               required
+              value={price}
               pattern="[0-9]+"
               onChange={(e) => setPrice(e.target.value)}
             />
@@ -85,6 +87,7 @@ const AdminInsertProduct = () => {
             <input
               type="number"
               required
+              value={discount}
               max='99'
               min='0'
               onChange={(e) => setDiscount(e.target.value)}
@@ -125,6 +128,7 @@ const AdminInsertProduct = () => {
             <textarea
               type="text"
               required
+              value={description}
               onChange={(e) => setDescription(e.target.value)}
               rows="20"
             />

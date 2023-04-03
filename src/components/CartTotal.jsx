@@ -167,7 +167,7 @@ const CartTotal = ({ cartItem, setCartItem }) => {
                   type="text"
                   onChange={(e) => setAddress(e.target.value)}
                   required
-                  maxLength="30"
+                  maxLength="50"
                 />
               </div>
               <button className="cart-btn" type="submit">
