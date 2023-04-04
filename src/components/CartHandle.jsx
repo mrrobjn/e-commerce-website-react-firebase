@@ -1,6 +1,10 @@
+import { useContext } from "react";
 import { Link } from "react-router-dom";
+import { ProductContext } from "~/context/ProductContext";
 
-const CartHandle = ({ addToCart, descreaseQty, deteteCart,cartItem }) => {
+const CartHandle = () => {
+  const { addToCart, descreaseQty, deleteCart, cartItem } =
+    useContext(ProductContext);
   return (
     <div className="cart-detail">
       <div className="cart-header">
@@ -11,21 +15,21 @@ const CartHandle = ({ addToCart, descreaseQty, deteteCart,cartItem }) => {
         {/* if there are no item in cart */}
         {cartItem.length === 0 && <h1 className="no-items">Giỏ hàng trống</h1>}
         {/* if at least 1 item in cart */}
-        {cartItem.map((item) => {
-          const productQty = item.data.price * item.qty;
+        {cartItem.map((product) => {
+          const productQty = product.data.price * product.qty;
           return (
-            <div className="cart-product" key={item.id}>
+            <div className="cart-product" key={product.id}>
               <Link className="img">
-                <img src={item.data.image} alt="" />
+                <img src={product.data.image} alt="" />
               </Link>
               <div className="cart-details">
-                <p className="title">{item.data.title}</p>
+                <p className="title">{product.data.title}</p>
                 <p className="price">
-                  {item.data.price.toLocaleString("vi-VN", {
+                  {product.data.price.toLocaleString("vi-VN", {
                     style: "currency",
                     currency: "VND",
                   })}{" "}
-                  * {item.qty}
+                  * {product.qty}
                   <br />
                   <span>
                     {productQty.toLocaleString("vi-VN", {
@@ -38,19 +42,19 @@ const CartHandle = ({ addToCart, descreaseQty, deteteCart,cartItem }) => {
               <div className="cart-items-function">
                 <button
                   className="item-remove btn"
-                  onClick={() => deteteCart(item)}
+                  onClick={() => deleteCart(product)}
                 >
                   <i className="fa-solid fa-xmark"></i>
                 </button>
                 <button
                   className="increase btn"
-                  onClick={() => addToCart(item)}
+                  onClick={() => addToCart(product)}
                 >
                   <i className="fa-solid fa-plus"></i>
                 </button>
                 <button
                   className="descrease btn"
-                  onClick={() => descreaseQty(item)}
+                  onClick={() => descreaseQty(product)}
                 >
                   <i className="fa-solid fa-minus"></i>
                 </button>

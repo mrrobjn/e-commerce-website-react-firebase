@@ -4,10 +4,10 @@ import { ProductContext } from "~/context/ProductContext";
 import { CategoriesContext } from "~/context/CategoriesContext";
 import { BrandsContext } from "~/context/BrandsContext";
 import Loading from "~/layout/Loading";
-const ProductDetail = ({ addToCartQty }) => {
+const ProductDetail = () => {
   const [quantity, setQuantity] = useState(1);
   const [loading, setLoading] = useState(true);
-  const {products} = useContext(ProductContext);
+  const {products,addToCartQty} = useContext(ProductContext);
   const {categories} = useContext(CategoriesContext);
   const {brands} = useContext(BrandsContext);
   useEffect (()=>{

@@ -8,6 +8,7 @@ export const ProductProvider = ({ children }) => {
     const [products, setProducts] = useState([])
     const [searchResult, setSearchResult] = useState([])
     const [productFilter, setProductFilter] = useState(products)
+    const [cartItem, setCartItem] = useState([])
     const errorToast = (text) => toast.error(`${text}`);
     const successToast = (text) => toast.success(`${text}`);
     useEffect(() => {
@@ -73,8 +74,42 @@ export const ProductProvider = ({ children }) => {
         })
         setProductFilter(result)
     }
+    // add item to cart
+    const addToCart = (product) => {
+        const productExist = cartItem.find((item) => item.id === product.id)
+        if (productExist) {
+            setCartItem(cartItem.map((item) => (item.id === product.id ? { ...productExist, qty: productExist.qty + 1 } : item)))
+        }
+        else {
+            setCartItem([...cartItem, { ...product, qty: 1 }])
+        }
+    }
+    // decrease item
+    const descreaseQty = (product) => {
+        const productExist = cartItem.find(item => item.id === product.id)
+        if (productExist.qty === 1) {
+            setCartItem(cartItem.filter((item) => item.id !== product.id))
+        }
+        else {
+            setCartItem(cartItem.map((item) => (item.id === product.id ? { ...productExist, qty: productExist.qty - 1 } : item)))
+        }
+    }
+    // delete item from cart
+    const deleteCart = (product) => {
+        setCartItem(cartItem.filter((item) => item.id !== product.id))
+    }
+    // add to cart with quantity value
+    const addToCartQty = (product, quantity) => {
+        const productExist = cartItem.find((item) => item.id === product.id)
+        if (productExist) {
+            setCartItem(cartItem.map((item) => (item.id === product.id ? { ...productExist, qty: productExist.qty + quantity } : item)))
+        }
+        else {
+            setCartItem([...cartItem, { ...product, qty: quantity }])
+        }
+    }
     return (
-        <ProductContext.Provider value={{ products, addProduct, deleteProduct, searchProduct, searchResult, filterProduct, productFilter, setProductFilter }}>
+        <ProductContext.Provider value={{ products, addProduct, deleteProduct, searchProduct, searchResult, filterProduct, productFilter, setProductFilter, addToCartQty, addToCart, deleteCart, descreaseQty, cartItem }}>
             {children}
         </ProductContext.Provider>
     )

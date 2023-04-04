@@ -1,16 +1,17 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { db, auth } from "../firebase";
 import { addDoc, collection, serverTimestamp } from "firebase/firestore";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-const CartTotal = ({ cartItem, setCartItem }) => {
+import { ProductContext } from "~/context/ProductContext";
+const CartTotal = () => {
+  const { cartItem, setCartItem } = useContext(ProductContext);
   const [user] = useAuthState(auth);
   const [paymentMethod, setPaymentMethod] = useState("VNPAY");
   const [dayExpire, setDayExpire] = useState("");
   const [cardNumber, setCardNumber] = useState("");
   const [address, setAddress] = useState("");
-  const current = new Date();
   var arrayProducts = [];
   cartItem.map((product) => {
     let prd = {
@@ -44,7 +45,6 @@ const CartTotal = ({ cartItem, setCartItem }) => {
         arrayProducts: arrayProducts,
         timestamp: serverTimestamp(),
       });
-
       successToast("Đặt hàng thành công");
       setCartItem([]);
       setAddress("");
@@ -102,7 +102,7 @@ const CartTotal = ({ cartItem, setCartItem }) => {
                     value="VISA"
                     onChange={(e) => setPaymentMethod(e.target.value)}
                   />
-                  <i class="fa-brands fa-cc-visa"></i> <p>VISA</p>
+                  <i className="fa-brands fa-cc-visa"></i> <p>VISA</p>
                 </label>
                 <label className="payment-input">
                   <input
@@ -139,13 +139,6 @@ const CartTotal = ({ cartItem, setCartItem }) => {
               ) : (
                 ""
               )}
-              {paymentMethod === "VNPAY" ? (
-                <div className="qr-img">
-                  <img src="assets/images/qr.jpg" alt="" />
-                </div>
-              ) : (
-                ""
-              )}
               <div className="input-holder address-holder">
                 <input
                   value={address}
@@ -156,6 +149,13 @@ const CartTotal = ({ cartItem, setCartItem }) => {
                   maxLength="50"
                 />
               </div>
+              {paymentMethod === "VNPAY" ? (
+                <div className="qr-img">
+                  <img src="assets/images/qr.jpg" alt="" />
+                </div>
+              ) : (
+                ""
+              )}
               <button className="cart-btn" type="submit">
                 Thanh toán
               </button>
