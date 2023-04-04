@@ -7,9 +7,6 @@ import Header from "~/layout/Header";
 
 const Product = ({
   addToCart,
-  filterResult,
-  productFilter,
-  setProductFilter,
   cartItem,
 }) => {
   useEffect(() => {
@@ -17,14 +14,12 @@ const Product = ({
   }, []);
   return (
     <>
-      <Header cartItem={cartItem} setProductFilter={setProductFilter} />
+      <Header cartItem={cartItem}/>
       <div className="page-container">
         <section className="product-page-section">
           <Categories
-            filterResult={filterResult}
-            setProductFilter={setProductFilter}
           />
-          <ProductCard productFilter={productFilter} addToCart={addToCart} />
+          <ProductCard  addToCart={addToCart} />
         </section>
       </div>
       <Footer />

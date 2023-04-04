@@ -199,22 +199,25 @@
       height: 100%;
       display: flex;
       justify-content: right;
+      align-items: center;
       .nav-btn {
-        font-size: 16px;
-        border-radius: 10px;
-        line-height: 43px;
-        padding: 0 20px;
         a {
+          font-size: 16px;
+          border-radius: 10px;
+          padding:10px 20px;
           color: #007bff;
           font-weight: bold;
           text-transform: uppercase;
+        }
+        a:hover {
+          background-color: #e9f2fa;
         }
       }
       .cart-btn {
         position: relative;
         span {
           position: absolute;
-          top: -5px;
+          top: -20px;
           right: -5px;
           width: 20px;
           height: 20px;
@@ -227,8 +230,5 @@
         }
       }
     }
-  }
-  .nav-btn:hover {
-    background-color: #e9f2fa;
   }
 }

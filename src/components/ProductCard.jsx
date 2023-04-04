@@ -5,9 +5,9 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import { ProductContext } from "~/context/ProductContext";
 import Loading from "~/layout/Loading";
-const ProductCard = ({ addToCart, productFilter }) => {
+const ProductCard = ({ addToCart }) => {
   const [loading, setLoading] = useState(true);
-  const { products } = useContext(ProductContext);
+  const { products,productFilter } = useContext(ProductContext);
   useEffect(() => {
     products.length >= 1 && setLoading(false);
   }, [products]);

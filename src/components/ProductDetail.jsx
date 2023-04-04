@@ -61,11 +61,11 @@ const ProductDetail = ({ addToCartQty }) => {
             <h3>{product.data.title}</h3>
             <div className="detail-box">
               <p>
-                Thương hiệu: <span>{brand.data.name}</span>
+                Thương hiệu: <span>{brand?.data.name}</span>
               </p>
 
               <p>
-                Loại: <span>{category.data.name}</span>
+                Loại: <span>{category?.data.name}</span>
               </p>
               <div className="rate">
                 <i className="fa-solid fa-star"></i>

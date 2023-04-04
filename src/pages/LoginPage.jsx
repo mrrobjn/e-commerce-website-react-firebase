@@ -8,7 +8,7 @@ import FormCover from "../components/FormCover";
 import Footer from "~/layout/Footer";
 import Header from "~/layout/Header";
 
-const LoginPage = ({ setProductFilter, cartItem }) => {
+const LoginPage = ({ cartItem }) => {
   const [user, loading] = useAuthState(auth);
   const navigate = useNavigate();
   useEffect(() => {
@@ -17,7 +17,7 @@ const LoginPage = ({ setProductFilter, cartItem }) => {
   }, [user, loading]);
   return (
     <>
-      <Header setProductFilter={setProductFilter} cartItem={cartItem} />
+      <Header  cartItem={cartItem} />
       <div className="page-container">
         <section className="login-section">
           <div className="login-container">

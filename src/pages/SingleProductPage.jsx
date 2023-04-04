@@ -5,14 +5,14 @@ import Description from "~/components/Description";
 import Footer from "~/layout/Footer";
 import Header from "~/layout/Header";
 
-const SingleProduct = ({ addToCartQty,setProductFilter,cartItem }) => {
+const SingleProduct = ({ addToCartQty,cartItem }) => {
   useEffect(() => {
     window.scrollTo(0, 0);
   });
 
   return (
     <>
-      <Header setProductFilter={setProductFilter} cartItem={cartItem} />
+      <Header  cartItem={cartItem} />
       <div className="page-container">
         <ProductDetail addToCartQty={addToCartQty} />
         <Description />

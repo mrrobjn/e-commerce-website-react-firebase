@@ -6,20 +6,17 @@ import "~~/pages/HomePage.scss";
 import OfficialBrands from "~/components/OfficialBrands";
 import Footer from "~/layout/Footer";
 import Header from "~/layout/Header";
-const Homepage = ({ addToCart, setProductFilter, filterResult,cartItem }) => {
+const Homepage = ({ addToCart, cartItem }) => {
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
 
   return (
     <>
-      <Header cartItem={cartItem} setProductFilter={setProductFilter} />
+      <Header cartItem={cartItem} />
       <div className="page-container">
         <section id="homepage">
-          <HomeCategories
-            setProductFilter={setProductFilter}
-            filterResult={filterResult}
-          />
+          <HomeCategories />
           <div className="container">
             <Slider />
             <FlashDeal addToCart={addToCart} />

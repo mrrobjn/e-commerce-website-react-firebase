@@ -6,7 +6,7 @@ import "~~/pages/ProfilePage.scss";
 import ProfileMenu from "../components/ProfileMenu";
 import Footer from "~/layout/Footer";
 import Header from "~/layout/Header";
-const Profile = ({setProductFilter,cartItem}) => {
+const Profile = ({cartItem}) => {
   const [user, loading] = useAuthState(auth);
   const navigate = useNavigate();
   useEffect(() => {
@@ -15,7 +15,7 @@ const Profile = ({setProductFilter,cartItem}) => {
   }, [user, loading]);
   return (
     <>
-      <Header setProductFilter={setProductFilter} cartItem={cartItem} />
+      <Header cartItem={cartItem} />
       <div className="page-container">
         <section className="profile-section">
           <div className="profile-container">

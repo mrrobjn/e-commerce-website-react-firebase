@@ -13,8 +13,6 @@ const Cartpage = ({
   descreaseQty,
   deteteCart,
   setCartItem,
-  showDate,
-  setProductFilter,
 }) => {
   const [user, loading] = useAuthState(auth);
   const navigate = useNavigate();
@@ -24,7 +22,7 @@ const Cartpage = ({
   }, [user, loading]);
   return (
     <>
-      <Header cartItem={cartItem} setProductFilter={setProductFilter} />
+      <Header cartItem={cartItem}/>
       <div className="page-container">
         <section className="cart-items">
           <div className="cart-container">
@@ -37,7 +35,6 @@ const Cartpage = ({
             <CartTotal
               cartItem={cartItem}
               setCartItem={setCartItem}
-              showDate={showDate}
             />
           </div>
         </section>

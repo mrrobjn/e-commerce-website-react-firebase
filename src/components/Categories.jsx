@@ -4,9 +4,10 @@ import { useState } from "react";
 import { CategoriesContext } from "~/context/CategoriesContext";
 import { ProductContext } from "~/context/ProductContext";
 import Loading from "~/layout/Loading";
-const Categories = ({ filterResult, setProductFilter }) => {
-  const {products} = useContext(ProductContext);
-  const {categories} = useContext(CategoriesContext);
+const Categories = () => {
+  const { products, setProductFilter, filterProduct } =
+    useContext(ProductContext);
+  const { categories } = useContext(CategoriesContext);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -22,7 +23,7 @@ const Categories = ({ filterResult, setProductFilter }) => {
                 display: "flex",
                 justifyContent: "center",
                 alignItems: "center",
-                minHeight: 555
+                minHeight: 555,
               }
             : null
         }
@@ -39,7 +40,7 @@ const Categories = ({ filterResult, setProductFilter }) => {
                 <div
                   key={index}
                   className="box"
-                  onClick={() => filterResult(category.id)}
+                  onClick={() => filterProduct(category.id)}
                 >
                   <p>{category.data.name}</p>
                 </div>

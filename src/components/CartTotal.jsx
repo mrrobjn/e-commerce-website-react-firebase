@@ -7,7 +7,7 @@ import "react-toastify/dist/ReactToastify.css";
 const CartTotal = ({ cartItem, setCartItem }) => {
   const [user] = useAuthState(auth);
   const [paymentMethod, setPaymentMethod] = useState("VNPAY");
-  const [cardOwner, setCardOwner] = useState("");
+  const [dayExpire, setDayExpire] = useState("");
   const [cardNumber, setCardNumber] = useState("");
   const [address, setAddress] = useState("");
   const current = new Date();
@@ -36,7 +36,7 @@ const CartTotal = ({ cartItem, setCartItem }) => {
       await addDoc(collection(db, "orders"), {
         user_id: user?.uid,
         paymentMethod: paymentMethod,
-        cardOwner: cardOwner,
+        dayExpire: dayExpire,
         cardNumber: cardNumber,
         address: address,
         totalPrice: totalPrice,
@@ -49,7 +49,7 @@ const CartTotal = ({ cartItem, setCartItem }) => {
       setCartItem([]);
       setAddress("");
       setCardNumber("");
-      setCardOwner("");
+      setDayExpire("");
     }
   }
   const errorToast = (text) => toast.error(`${text}`);
@@ -99,11 +99,10 @@ const CartTotal = ({ cartItem, setCartItem }) => {
                   <input
                     type="radio"
                     name="payment-method"
-                    value="Thẻ tín dụng"
+                    value="VISA"
                     onChange={(e) => setPaymentMethod(e.target.value)}
                   />
-                  <i className="fa-solid fa-credit-card"></i>
-                  <p>Thẻ tín dụng</p>
+                  <i class="fa-brands fa-cc-visa"></i> <p>VISA</p>
                 </label>
                 <label className="payment-input">
                   <input
@@ -116,23 +115,23 @@ const CartTotal = ({ cartItem, setCartItem }) => {
                   <p>Tiền mặt</p>
                 </label>
               </div>
-              {paymentMethod === "Thẻ tín dụng" ? (
+              {paymentMethod === "VISA" ? (
                 <>
                   <div className="input-holder">
-                    <label>Tên chủ thẻ</label>
                     <input
-                      value={cardOwner}
+                      value={cardNumber}
                       type="text"
-                      onChange={(e) => setCardOwner(e.target.value)}
+                      placeholder="Số thẻ *"
+                      onChange={(e) => setCardNumber(e.target.value)}
                       required
                     />
                   </div>
                   <div className="input-holder">
-                    <label>Số thẻ</label>
                     <input
-                      value={cardNumber}
+                      value={dayExpire}
                       type="text"
-                      onChange={(e) => setCardNumber(e.target.value)}
+                      placeholder="Ngày hết hạn (MM/YY)"
+                      onChange={(e) => setDayExpire(e.target.value)}
                       required
                     />
                   </div>
@@ -148,12 +147,12 @@ const CartTotal = ({ cartItem, setCartItem }) => {
                 ""
               )}
               <div className="input-holder address-holder">
-                <label>Địa chỉ nhận hàng</label>
                 <input
                   value={address}
                   type="text"
                   onChange={(e) => setAddress(e.target.value)}
                   required
+                  placeholder="Địa chỉ nhận hàng"
                   maxLength="50"
                 />
               </div>

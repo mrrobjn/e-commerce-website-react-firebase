@@ -7,6 +7,7 @@ export const ProductContext = createContext()
 export const ProductProvider = ({ children }) => {
     const [products, setProducts] = useState([])
     const [searchResult, setSearchResult] = useState([])
+    const [productFilter, setProductFilter] = useState(products)
     const errorToast = (text) => toast.error(`${text}`);
     const successToast = (text) => toast.success(`${text}`);
     useEffect(() => {
@@ -65,8 +66,15 @@ export const ProductProvider = ({ children }) => {
         })
         setSearchResult(productFilter)
     }
+    // filter product by type
+    const filterProduct = (item) => {
+        const result = products.filter((product) => {
+            return product.data.category_id === item
+        })
+        setProductFilter(result)
+    }
     return (
-        <ProductContext.Provider value={{ products, addProduct, deleteProduct, searchProduct, searchResult }}>
+        <ProductContext.Provider value={{ products, addProduct, deleteProduct, searchProduct, searchResult, filterProduct, productFilter, setProductFilter }}>
             {children}
         </ProductContext.Provider>
     )

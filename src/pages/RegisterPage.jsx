@@ -3,7 +3,7 @@ import FormCover from "~/components/FormCover";
 import Register from "~/components/Register";
 import Footer from "~/layout/Footer";
 import "~~/pages/RegisterPage.scss";
-const RegisterPage = ({ setProductFilter, cartItem }) => {
+const RegisterPage = ({  cartItem }) => {
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
@@ -11,7 +11,6 @@ const RegisterPage = ({ setProductFilter, cartItem }) => {
     <>
       <div
         className="page-container"
-        setProductFilter={setProductFilter}
         cartItem={cartItem}
       >
         <section className="register-section">

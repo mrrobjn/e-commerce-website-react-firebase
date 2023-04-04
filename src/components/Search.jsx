@@ -3,8 +3,8 @@ import { Link } from "react-router-dom";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { auth } from "~/firebase";
 import { ProductContext } from "~/context/ProductContext";
-const Search = ({ cartItem, setProductFilter }) => {
-  const { products, searchProduct, searchResult } = useContext(ProductContext);
+const Search = ({ cartItem }) => {
+  const { products, searchProduct, searchResult,setProductFilter } = useContext(ProductContext);
   const [input, setInput] = useState("");
   const [user] = useAuthState(auth);
   const handleChange = (e) => {

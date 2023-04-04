@@ -9,7 +9,7 @@ const AdminOrders = () => {
   const users = useContext(UserContext);
   return (
     <div className="admin-order-container">
-       <ToastContainer
+      <ToastContainer
         position="top-right"
         autoClose={3000}
         hideProgressBar={false}
@@ -35,8 +35,8 @@ const AdminOrders = () => {
                 <th>Ngày</th>
                 <th>Giờ</th>
                 <th>Thanh toán</th>
-                <th>Chủ thẻ</th>
                 <th>Số thẻ</th>
+                <th>Ngày hết hạn</th>
                 <th>Sản phẩm</th>
                 <th>Số lượng</th>
                 <th>Tổng tiền (Vnđ)</th>
@@ -54,9 +54,9 @@ const AdminOrders = () => {
                 }/${date.getDate()}/${date.getFullYear()}`;
                 const hours = date.getHours();
                 const minutes = date.getMinutes();
-                const formattedTime = `${hours % 12}:${minutes < 10 ? "0" : ""}${minutes} ${
-                  hours >= 12 ? "PM" : "AM"
-                }`;
+                const formattedTime = `${hours % 12}:${
+                  minutes < 10 ? "0" : ""
+                }${minutes} ${hours >= 12 ? "PM" : "AM"}`;
                 return (
                   <tr key={order.id}>
                     <td>{index + 1}</td>
@@ -65,11 +65,11 @@ const AdminOrders = () => {
                     <td className="date">{formattedDate}</td>
                     <td className="time">{formattedTime}</td>
                     <td className="payment">{order.data.paymentMethod}</td>
-                    <td className="card-owner">
-                      {order.data.cardOwner || "#"}
-                    </td>
                     <td className="card-number">
                       {order.data.cardNumber || "#"}
+                    </td>
+                    <td className="card-owner">
+                      {order.data.dayExpire || "#"}
                     </td>
                     <td className="product">
                       {order.data.arrayProducts.map((product, index) => {
@@ -84,6 +84,9 @@ const AdminOrders = () => {
                     <td className="total">{order.data.totalPrice}</td>
                     <td className="action">
                       <select
+                        style={{
+                          color: order.data.status === "true" ? "green" : "red",
+                        }}
                         defaultValue={order.data.status}
                         onChange={(e) => updateStatus(order.id, e.target.value)}
                       >

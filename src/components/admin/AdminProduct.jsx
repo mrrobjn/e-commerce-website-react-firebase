@@ -56,8 +56,8 @@ const AdminProduct = () => {
                     <td className="title">{product.data.title}</td>
                     <td className="price">{product.data.price}</td>
                     <td className="discount">{product.data.discount}</td>
-                    <td className="category">{category.data.name}</td>
-                    <td className="brand">{brand.data.name}</td>
+                    <td className="category">{category?.data.name}</td>
+                    <td className="brand">{brand?.data.name}</td>
                     <td className="action">
                       <button
                         type="button"
