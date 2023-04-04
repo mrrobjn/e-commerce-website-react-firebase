@@ -8,7 +8,7 @@ import { ProductContext } from "~/context/ProductContext";
 import { useEffect } from "react";
 const FlashDeal = ({ addToCart }) => {
   const [loading, setLoading] = useState(true);
-  const {products} = useContext(ProductContext);
+  const { products } = useContext(ProductContext);
   useEffect(() => {
     products.length >= 1 && setLoading(false);
   }, [products]);
@@ -27,14 +27,18 @@ const FlashDeal = ({ addToCart }) => {
             : null
         }
       >
-        {loading?<Loading/> : <div className="flash-container">
-          <div className="flash-heading">
-            <h1>
-              F<i className="fa-solid fa-bolt"></i>ash Deals
-            </h1>
+        {loading ? (
+          <Loading />
+        ) : (
+          <div className="flash-container">
+            <div className="flash-heading">
+              <h1>
+                F<i className="fa-solid fa-bolt"></i>ash Deals
+              </h1>
+            </div>
+            <FlashCard products={products} addToCart={addToCart} />
           </div>
-          <FlashCard products={products} addToCart={addToCart} />
-        </div>}
+        )}
       </section>
     </>
   );

@@ -9,7 +9,7 @@ const ProductDetail = ({ addToCartQty }) => {
   const [loading, setLoading] = useState(true);
   const {products} = useContext(ProductContext);
   const {categories} = useContext(CategoriesContext);
-  const brands = useContext(BrandsContext);
+  const {brands} = useContext(BrandsContext);
   useEffect (()=>{
     products.length >= 1 && setLoading(false);
   },[products])

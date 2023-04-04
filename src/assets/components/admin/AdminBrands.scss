@@ -1,4 +1,4 @@
-.admin-categories-container {
+.admin-brands-container {
   width: 80%;
   .heading {
     text-align: center;
@@ -24,6 +24,7 @@
       input {
         padding: 5px 10px;
         border: 1px solid #ccc;
+        height: 100%;
       }
       button {
         border: none;
@@ -44,7 +45,8 @@
     border-radius: 5px;
     box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
     padding: 30px;
-    table {width: 100%;
+    table {
+      width: 100%;
       text-align: center;
       border-collapse: collapse;
       font-size: 14px;
@@ -67,8 +69,14 @@
           .index {
             width: 10%;
           }
+          .logo {
+            width: 5%;
+            img {
+              width: 100%;
+            }
+          }
           .name {
-            width: 80%;
+            width: 75%;
           }
           .action {
             width: 10%;

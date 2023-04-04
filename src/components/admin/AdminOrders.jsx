@@ -2,12 +2,25 @@ import React, { useContext } from "react";
 import { OrderContext } from "~/context/OrderContext";
 import { UserContext } from "~/context/UserContext";
 import "~~/components/admin/AdminOrder.scss";
+import { ToastContainer } from "react-toastify";
+
 const AdminOrders = () => {
-  const orders = useContext(OrderContext);
+  const { orders, updateStatus } = useContext(OrderContext);
   const users = useContext(UserContext);
-  const status = ["Đang chờ", "Đã xác nhận", "Đã giao"];
   return (
     <div className="admin-order-container">
+       <ToastContainer
+        position="top-right"
+        autoClose={3000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="light"
+      />
       <div className="heading">
         <h1>Quản lý đơn hàng</h1>
       </div>
@@ -27,7 +40,7 @@ const AdminOrders = () => {
                 <th>Sản phẩm</th>
                 <th>Số lượng</th>
                 <th>Tổng tiền (Vnđ)</th>
-                <th>Trạng thái</th>
+                <th className="action">Trạng thái</th>
               </tr>
             </thead>
             <tbody>
@@ -35,13 +48,22 @@ const AdminOrders = () => {
                 const user = users?.find(
                   (user) => user.data.uid === order.data.user_id
                 );
+                const date = order.data.timestamp.toDate();
+                const formattedDate = `${
+                  date.getMonth() + 1
+                }/${date.getDate()}/${date.getFullYear()}`;
+                const hours = date.getHours();
+                const minutes = date.getMinutes();
+                const formattedTime = `${hours % 12}:${minutes < 10 ? "0" : ""}${minutes} ${
+                  hours >= 12 ? "PM" : "AM"
+                }`;
                 return (
                   <tr key={order.id}>
                     <td>{index + 1}</td>
                     <td className="email">{user.data.email}</td>
                     <td className="address">{order.data.address}</td>
-                    <td className="date">{order.data.date}</td>
-                    <td className="time">{order.data.time}</td>
+                    <td className="date">{formattedDate}</td>
+                    <td className="time">{formattedTime}</td>
                     <td className="payment">{order.data.paymentMethod}</td>
                     <td className="card-owner">
                       {order.data.cardOwner || "#"}
@@ -61,14 +83,12 @@ const AdminOrders = () => {
                     </td>
                     <td className="total">{order.data.totalPrice}</td>
                     <td className="action">
-                      <select>
-                        {status.map((e, index) => {
-                          return (
-                            <option value={e} key={index}>
-                              {e}
-                            </option>
-                          );
-                        })}
+                      <select
+                        defaultValue={order.data.status}
+                        onChange={(e) => updateStatus(order.id, e.target.value)}
+                      >
+                        <option value="false">Đang chờ</option>
+                        <option value="true">Đã xác nhận</option>
                       </select>
                     </td>
                   </tr>

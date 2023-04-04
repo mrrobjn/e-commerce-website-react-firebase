@@ -8,7 +8,7 @@ import { useEffect } from "react";
 import { useState } from "react";
 const OfficialBrands = () => {
   const [loading, setLoading] = useState(true);
-  const brands = useContext(BrandsContext);
+  const {brands} = useContext(BrandsContext);
   useEffect(() => {
     brands.length >= 1 && setLoading(false);
   }, [brands]);

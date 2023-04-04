@@ -6,7 +6,7 @@ import { ToastContainer } from "react-toastify";
 import "~~/components/admin/AdminProduct.scss";
 const AdminProduct = () => {
   const { products, deleteProduct } = useContext(ProductContext);
-  const brands = useContext(BrandsContext);
+  const {brands} = useContext(BrandsContext);
   const {categories} = useContext(CategoriesContext);
 
   return (

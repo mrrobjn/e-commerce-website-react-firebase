@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { auth } from "../firebase";
-const FlashCard = ({ product, addToCart }) => {
+const FlashCard = ({ discountProduct, addToCart }) => {
   const [productName, setProductName] = useState("");
   const [productImage, setProductImage] = useState("");
   const [productPrice, setProductPrice] = useState("");
@@ -10,7 +10,7 @@ const FlashCard = ({ product, addToCart }) => {
   const [user] = useAuthState(auth);
   const navigate = useNavigate();
   useEffect(() => {
-    const { discount, image, title, price } = product.data;
+    const { discount, image, title, price } = discountProduct.data;
     setProductName(title);
     setProductImage(image);
     setProductPrice(price);
@@ -18,14 +18,12 @@ const FlashCard = ({ product, addToCart }) => {
   });
   return (
     <>
-      <div className="flash-box" key={product.id}>
+      <div className="flash-box">
         <div className="product">
-          <Link to={`/product/${product.id}`}>
+          <Link to={`/product/${discountProduct.id}`}>
             <div className="product-img">
-              {productImage && (
-                <span className="discount">{productDiscount}% Off</span>
-              )}
-              {productImage && <img src={productImage} alt="" />}
+              <span className="discount">{productDiscount}% Off</span>
+              <img src={productImage} alt="" />
             </div>
           </Link>
           <div className="product-detail">
@@ -40,7 +38,10 @@ const FlashCard = ({ product, addToCart }) => {
             <div className="price">
               {productPrice && (
                 <h4>
-                  {productPrice.toLocaleString("vi-VN", {
+                  {(
+                    (productPrice / 100) *
+                    (100 - productDiscount)
+                  ).toLocaleString("vi-VN", {
                     style: "currency",
                     currency: "VND",
                   })}
@@ -49,7 +50,9 @@ const FlashCard = ({ product, addToCart }) => {
               <button
                 className="btn"
                 onClick={
-                  user ? () => addToCart(product) : () => navigate("/login")
+                  user
+                    ? () => addToCart(discountProduct)
+                    : () => navigate("/login")
                 }
               >
                 <i className="fa-solid fa-plus"></i>

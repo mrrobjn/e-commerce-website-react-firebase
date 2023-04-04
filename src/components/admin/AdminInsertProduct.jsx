@@ -8,7 +8,7 @@ import { ProductContext } from "~/context/ProductContext";
 const AdminInsertProduct = () => {
   const { addProduct } = useContext(ProductContext);
   const {categories} = useContext(CategoriesContext);
-  const brands = useContext(BrandsContext);
+  const {brands} = useContext(BrandsContext);
   const [image, setImage] = useState("");
   const [title, setTitle] = useState("");
   const [price, setPrice] = useState("");

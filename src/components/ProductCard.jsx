@@ -7,7 +7,7 @@ import { ProductContext } from "~/context/ProductContext";
 import Loading from "~/layout/Loading";
 const ProductCard = ({ addToCart, productFilter }) => {
   const [loading, setLoading] = useState(true);
-  const {products} = useContext(ProductContext);
+  const { products } = useContext(ProductContext);
   useEffect(() => {
     products.length >= 1 && setLoading(false);
   }, [products]);
@@ -40,6 +40,13 @@ const ProductCard = ({ addToCart, productFilter }) => {
                   <div className="product">
                     <Link to={`/product/${product.id}`}>
                       <div className="product-img">
+                        {product.data.discount !== 0 ? (
+                          <span className="discount">
+                            {product.data.discount}% Off
+                          </span>
+                        ) : (
+                          ""
+                        )}
                         <img src={product.data.image} alt="" />
                       </div>
                     </Link>

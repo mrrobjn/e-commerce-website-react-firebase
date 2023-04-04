@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { db, auth } from "../firebase";
-import { addDoc, collection } from "firebase/firestore";
+import { addDoc, collection, serverTimestamp } from "firebase/firestore";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -10,20 +10,7 @@ const CartTotal = ({ cartItem, setCartItem }) => {
   const [cardOwner, setCardOwner] = useState("");
   const [cardNumber, setCardNumber] = useState("");
   const [address, setAddress] = useState("");
-  const status = false;
   const current = new Date();
-  //date
-  const date = `${current.getDate()}/${
-    current.getMonth() + 1
-  }/${current.getFullYear()}`;
-  //time
-  const time =
-    current.getHours() +
-    ":" +
-    current.getMinutes() +
-    ":" +
-    current.getSeconds();
-
   var arrayProducts = [];
   cartItem.map((product) => {
     let prd = {
@@ -53,11 +40,11 @@ const CartTotal = ({ cartItem, setCartItem }) => {
         cardNumber: cardNumber,
         address: address,
         totalPrice: totalPrice,
-        status: status,
-        date: date,
-        time: time,
+        status: "false",
         arrayProducts: arrayProducts,
+        timestamp: serverTimestamp(),
       });
+
       successToast("Đặt hàng thành công");
       setCartItem([]);
       setAddress("");

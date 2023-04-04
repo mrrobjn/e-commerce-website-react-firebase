@@ -56,8 +56,8 @@ const AdminCategories = () => {
               {categories?.map((category, index) => {
                 return (
                   <tr key={category.id}>
-                    <td>{index + 1}</td>
-                    <td>{category.data.name}</td>
+                    <td className="index">{index + 1}</td>
+                    <td className="name">{category.data.name}</td>
                     <td className="action">
                       <button
                         type="button"

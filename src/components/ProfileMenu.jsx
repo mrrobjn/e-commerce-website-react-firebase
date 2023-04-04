@@ -13,7 +13,7 @@ const ProfileMenu = () => {
       <div className="profile-menu-container">
         <div className="menu-btn-container">
           <div className="user-img">
-            <img src={user?.photoURL || "/assets/images/user.png"} alt="" />
+            <img src={logUser?.data.photoURL || "/assets/images/user.png"} alt="" />
           </div>
           <p>{logUser?.data.name|| "unknown"}</p>
           <NavLink to="/profile/userprofile" className={({ isActive }) => (isActive ? "link-active" : "link")}>

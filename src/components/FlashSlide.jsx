@@ -2,7 +2,10 @@ import React, { useContext } from "react";
 import Slider from "react-slick";
 import { ProductContext } from "~/context/ProductContext";
 import FlashCard from "./FlashCard";
-const FlashSlide = ({ addToCart,products}) => {
+const FlashSlide = ({ addToCart, products }) => {
+  const discountProducts = products?.filter(
+    (prd) => prd.data.discount !== 0
+  );
   const NextArrow = (props) => {
     const { onClick } = props;
     return (
@@ -37,16 +40,15 @@ const FlashSlide = ({ addToCart,products}) => {
   return (
     <>
       <Slider {...settings}>
-        {products &&
-          products.map((product) => {
-            return (
-              <FlashCard
-                product={product}
-                addToCart={addToCart}
-                key={product.id}
-              />
-            );
-          })}
+        {discountProducts?.map((discountProduct) => {
+          return (
+            <FlashCard
+              discountProduct={discountProduct}
+              addToCart={addToCart}
+              key={discountProduct.id}
+            />
+          );
+        })}
       </Slider>
     </>
   );

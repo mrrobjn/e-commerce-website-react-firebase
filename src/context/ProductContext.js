@@ -6,6 +6,7 @@ import { deleteObject, getDownloadURL, ref, uploadBytes } from 'firebase/storage
 export const ProductContext = createContext()
 export const ProductProvider = ({ children }) => {
     const [products, setProducts] = useState([])
+    const [searchResult, setSearchResult] = useState([])
     const errorToast = (text) => toast.error(`${text}`);
     const successToast = (text) => toast.success(`${text}`);
     useEffect(() => {
@@ -58,8 +59,14 @@ export const ProductProvider = ({ children }) => {
             errorToast(error.message);
         });
     };
+    const searchProduct = (input) => {
+        const productFilter = products.filter((product) => {
+            return product.data.title.toLowerCase().includes(input.toLowerCase())
+        })
+        setSearchResult(productFilter)
+    }
     return (
-        <ProductContext.Provider value={{ products, addProduct, deleteProduct }}>
+        <ProductContext.Provider value={{ products, addProduct, deleteProduct, searchProduct, searchResult }}>
             {children}
         </ProductContext.Provider>
     )

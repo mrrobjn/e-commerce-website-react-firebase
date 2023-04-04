@@ -26,7 +26,7 @@ const Head = () => {
           {user && logUser ? (
             <>
               <div className="user-avt">
-                <img src={user?.photoURL || "/assets/images/user.png"} alt="" />
+                <img src={logUser.data.photoURL || "/assets/images/user.png"} alt="" />
               </div>
               <div className="dropdown">
                 <span>{logUser.data.name || "unknown"}</span>

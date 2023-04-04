@@ -6,16 +6,13 @@ import { auth } from "../firebase";
 import { OrderContext } from "~/context/OrderContext";
 const PurchaseHistory = () => {
   const [user, loading] = useAuthState(auth);
-  const [orderWithUser, setOrderWithUser] = useState([]);
+  const { orders } = useContext(OrderContext);
   const navigate = useNavigate();
-  const orders = useContext(OrderContext);
-  const getOrderByUser = () => {
-    const orderRef = orders.filter((order) => order.data.user_id === user?.uid);
-    setOrderWithUser(orderRef);
-  };
+  const orderWithUser = orders?.filter(
+    (order) => order.data.user_id === user?.uid
+  );
   useEffect(() => {
     window.scrollTo(0, 0);
-    getOrderByUser();
     if (!user) return navigate("/login");
   }, [user, loading]);
   return (
@@ -35,46 +32,46 @@ const PurchaseHistory = () => {
             </tr>
           </thead>
           <tbody className="order-history">
-            {orderWithUser &&
-              orderWithUser.map((order,index) => {
-                return (
-                  <tr
-                    key={order.id}
-                    onClick={() => navigate(`/profile/purchasehistory/${order.id}`)}
-                  >
-                    <td>{index+1}</td>
-                    <td className="date">{order.data.date}</td>
-                    <td className="total">
-                      {order.data.totalPrice.toLocaleString("vi-VN", {
-                        style: "currency",
-                        currency: "VND",
-                      })}
-                    </td>
-                    <td className="payment-method">
-                      {order.data.paymentMethod}
-                    </td>
-                    <td className="status">
-                      <span
-                        className={
-                          order.data.status === false
-                            ? "not-confirm"
-                            : "confirm"
-                        }
-                      >
-                        {order.data.status === false ? (
-                          <i className="fa-solid fa-xmark"></i>
-                        ) : (
-                          <i className="fa-solid fa-check"></i>
-                        )}
-                        {" "}
-                        {order.data.status === false
-                          ? "Đang chờ"
-                          : "Đã xác nhận"}
-                      </span>
-                    </td>
-                  </tr>
-                );
-              })}
+            {orderWithUser?.map((order, index) => {
+              const date = order.data.timestamp.toDate()
+              const formattedDate = `${date.getMonth() + 1}/${date.getDate()}/${date.getFullYear()}`;
+              return (
+                <tr
+                  key={order.id}
+                  onClick={() =>
+                    navigate(`/profile/purchasehistory/${order.id}`)
+                  }
+                >
+                  <td>{index + 1}</td>
+                  <td className="date">{formattedDate}</td>
+                  <td className="total">
+                    {order.data.totalPrice.toLocaleString("vi-VN", {
+                      style: "currency",
+                      currency: "VND",
+                    })}
+                  </td>
+                  <td className="payment-method">{order.data.paymentMethod}</td>
+                  <td className="status">
+                    <span
+                      className={
+                        order.data.status === "false"
+                          ? "not-confirm"
+                          : "confirm"
+                      }
+                    >
+                      {order.data.status === "false" ? (
+                        <i className="fa-solid fa-xmark"></i>
+                      ) : (
+                        <i className="fa-solid fa-check"></i>
+                      )}{" "}
+                      {order.data.status === "false"
+                        ? "Đang chờ"
+                        : "Đã xác nhận"}
+                    </span>
+                  </td>
+                </tr>
+              );
+            })}
           </tbody>
         </table>
       </div>

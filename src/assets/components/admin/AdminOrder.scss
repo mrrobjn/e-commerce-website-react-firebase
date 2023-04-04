@@ -1,5 +1,5 @@
 .admin-order-container {
-  width: 85%;
+  width: 80%;
   .heading {
     text-align: center;
     padding: 20px 0;
@@ -30,6 +30,11 @@
               background-color: #333;
               padding: 10px;
             }
+            .action{
+              position: sticky;
+              right: 0;
+              
+            }
           }
         }
         tbody {
@@ -56,6 +61,11 @@
             .total {
               color: #ea5867;
               font-weight: bold;
+            }
+            .action{
+              position: sticky;
+              right: 0;
+              background-color: #f2f2f2;
             }
           }
           tr:nth-child(even) {
