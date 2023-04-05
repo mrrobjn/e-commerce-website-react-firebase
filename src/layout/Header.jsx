@@ -1,11 +1,11 @@
 import Head from "../components/Head";
 import Search from "~/components/Search";
 import '~~/layout/Header.scss'
-const Header = ({ cartItem, setProductFilter, }) => {
+const Header = () => {
   return (
     <section id="header">
       <Head/>
-      <Search cartItem={cartItem} setProductFilter={setProductFilter}/>
+      <Search/>
     </section>
   );
 };

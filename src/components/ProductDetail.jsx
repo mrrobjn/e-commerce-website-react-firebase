@@ -7,12 +7,12 @@ import Loading from "~/layout/Loading";
 const ProductDetail = () => {
   const [quantity, setQuantity] = useState(1);
   const [loading, setLoading] = useState(true);
-  const {products,addToCartQty} = useContext(ProductContext);
-  const {categories} = useContext(CategoriesContext);
-  const {brands} = useContext(BrandsContext);
-  useEffect (()=>{
+  const { products, addToCartQty } = useContext(ProductContext);
+  const { categories } = useContext(CategoriesContext);
+  const { brands } = useContext(BrandsContext);
+  useEffect(() => {
     products.length >= 1 && setLoading(false);
-  },[products])
+  }, [products]);
   // change quantity
   const increaseQty = () => {
     setQuantity(quantity + 1);
@@ -35,18 +35,19 @@ const ProductDetail = () => {
     product && brands.find((brand) => brand.id === product.data.brand_id);
 
   return (
-    <section className="single-product-section" 
-    style={
-      loading
-        ? {
-            display: "flex",
-            justifyContent: "center",
-            alignItems: "center",
-            background: "#fff",
-            height:430
-          }
-        : null
-    }
+    <section
+      className="single-product-section"
+      style={
+        loading
+          ? {
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center",
+              background: "#fff",
+              height: 430,
+            }
+          : null
+      }
     >
       {loading ? (
         <Loading />
@@ -74,12 +75,37 @@ const ProductDetail = () => {
                 <i className="fa-solid fa-star"></i>
                 <i className="fa-solid fa-star"></i> (0 đánh giá)
               </div>
-              <h5 className="price">
-                {((product.data.price/100)*(100-product.data.discount)).toLocaleString("vi-VN", {
-                  style: "currency",
-                  currency: "VND",
-                })}
-              </h5>
+              <div className="price-box">
+                {product.data.discount !== 0 ? (
+                  <>
+                    <p className="price">
+                      {(
+                        (product.data.price / 100) *
+                        (100 - product.data.discount)
+                      ).toLocaleString("vi-VN", {
+                        style: "currency",
+                        currency: "VND",
+                      })}
+                    </p>
+                    <p className="old-price">
+                      {product.data.price.toLocaleString("vi-VN", {
+                        style: "currency",
+                        currency: "VND",
+                      })}
+                    </p>
+                    <p className="discount">-{product.data.discount}%</p>
+                  </>
+                ) : (
+                  <div className="prd-price">
+                    <p className="price">
+                      {product.data.price.toLocaleString("vi-VN", {
+                        style: "currency",
+                        currency: "VND",
+                      })}
+                    </p>
+                  </div>
+                )}
+              </div>
             </div>
             <div className="quantity-box">
               <button

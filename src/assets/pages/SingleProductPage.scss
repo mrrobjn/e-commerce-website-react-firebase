@@ -24,7 +24,7 @@
       h3 {
         font-weight: 600;
         font-size: 20px;
-        }
+      }
       .detail-box {
         p {
           font-size: 14px;
@@ -36,10 +36,22 @@
         .rate {
           color: #ff4500;
         }
-        .price {
+        .price-box {
           margin: 10px 0;
-          font-size: 30px;
-          color: #ea5867;
+          display: flex;
+          align-items: center;
+          .price {
+            font-weight: bold;
+            font-size: 30px;
+            color: #ea5867;
+          }
+          .old-price {
+            text-decoration: line-through;
+            margin-left: 10px;
+          }
+          .discount{
+            margin-left: 10px;
+          }
         }
       }
       .quantity-box {
@@ -76,13 +88,13 @@
     }
   }
 }
-.description-container{
+.description-container {
   background-color: #fff;
   margin: 20px 0;
   min-height: 200px;
-  .box{
+  .box {
     padding: 20px 40px;
-    h1{
+    h1 {
       font-size: 20px;
       margin-bottom: 10px;
     }
