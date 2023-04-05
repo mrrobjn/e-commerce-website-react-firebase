@@ -7,7 +7,6 @@ import { query, collection, where, onSnapshot } from "firebase/firestore";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { getDownloadURL, ref, uploadBytes } from "firebase/storage";
-import { updateProfile } from "firebase/auth";
 const UserProfile = () => {
   const [user, loading] = useAuthState(auth);
   const [userName, setUserName] = useState("");

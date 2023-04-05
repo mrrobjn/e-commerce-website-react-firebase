@@ -5,13 +5,13 @@ import ResetPassword from "~/components/ResetPassword";
 import Footer from "~/layout/Footer";
 import { useEffect } from "react";
 import Header from "~/layout/Header";
-const ResetPasswordPage = ({ cartItem }) => {
+const ResetPasswordPage = () => {
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
   return (
     <>
-      <Header cartItem={cartItem} />
+      <Header  />
       <div className="page-container">
         <section className="reset-password-section">
           <ToastContainer

@@ -92,7 +92,7 @@ const OrderDetail = () => {
                 </tr>
                 <tr>
                   <td className="detail-title">Thành tiền: </td>
-                  <td style={{ color: "#ea5867" }}>
+                  <td style={{ color: "#ea5867", fontWeight: "bold" }}>
                     {orderInfo.data.totalPrice.toLocaleString("vi-VN", {
                       style: "currency",
                       currency: "VND",

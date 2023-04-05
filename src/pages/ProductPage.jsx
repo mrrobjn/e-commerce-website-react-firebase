@@ -5,21 +5,17 @@ import "~~/pages/ProductPage.scss";
 import Footer from "~/layout/Footer";
 import Header from "~/layout/Header";
 
-const Product = ({
-  addToCart,
-  cartItem,
-}) => {
+const Product = () => {
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
   return (
     <>
-      <Header cartItem={cartItem}/>
+      <Header />
       <div className="page-container">
         <section className="product-page-section">
-          <Categories
-          />
-          <ProductCard  addToCart={addToCart} />
+          <Categories />
+          <ProductCard />
         </section>
       </div>
       <Footer />

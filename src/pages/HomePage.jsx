@@ -6,20 +6,20 @@ import "~~/pages/HomePage.scss";
 import OfficialBrands from "~/components/OfficialBrands";
 import Footer from "~/layout/Footer";
 import Header from "~/layout/Header";
-const Homepage = ({ addToCart, cartItem }) => {
+const Homepage = () => {
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
 
   return (
     <>
-      <Header cartItem={cartItem} />
+      <Header />
       <div className="page-container">
         <section id="homepage">
           <HomeCategories />
           <div className="container">
             <Slider />
-            <FlashDeal addToCart={addToCart} />
+            <FlashDeal />
             <OfficialBrands />
           </div>
         </section>

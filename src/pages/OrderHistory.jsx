@@ -4,10 +4,10 @@ import ProfileMenu from "~/components/ProfileMenu";
 import Footer from "~/layout/Footer";
 import Header from "~/layout/Header";
 
-const OrderHistory = ({cartItem,setProductFilter}) => {
+const OrderHistory = () => {
   return (
     <>
-    <Header cartItem={cartItem} setProductFilter={setProductFilter}/>
+    <Header/>
      <div className="page-container">
          <section className="order-detail-section">
            <ProfileMenu />

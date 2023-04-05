@@ -12,9 +12,9 @@ const SingleProduct = ({ addToCartQty,cartItem }) => {
 
   return (
     <>
-      <Header  cartItem={cartItem} />
+      <Header />
       <div className="page-container">
-        <ProductDetail addToCartQty={addToCartQty} />
+        <ProductDetail  />
         <Description />
       </div>
       <Footer />
