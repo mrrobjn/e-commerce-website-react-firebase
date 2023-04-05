@@ -25,14 +25,17 @@ const CartHandle = () => {
               <div className="cart-details">
                 <p className="title">{product.data.title}</p>
                 <p className="price">
-                  {product.data.price.toLocaleString("vi-VN", {
+                  {(
+                    (product.data.price / 100) *
+                    (100 - product.data.discount)
+                  ).toLocaleString("vi-VN", {
                     style: "currency",
                     currency: "VND",
                   })}{" "}
                   * {product.qty}
                   <br />
                   <span>
-                    {productQty.toLocaleString("vi-VN", {
+                    {((productQty/100)*(100-product.data.discount)).toLocaleString("vi-VN", {
                       style: "currency",
                       currency: "VND",
                     })}

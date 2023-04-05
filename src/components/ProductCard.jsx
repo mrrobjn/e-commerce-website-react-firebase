@@ -61,7 +61,7 @@ const ProductCard = () => {
                       </div>
                       <div className="price">
                         <h4>
-                          {product.data.price.toLocaleString("vi-VN", {
+                          {((product.data.price/100)*(100-product.data.discount)).toLocaleString("vi-VN", {
                             style: "currency",
                             currency: "VND",
                           })}

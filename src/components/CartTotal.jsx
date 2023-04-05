@@ -26,7 +26,8 @@ const CartTotal = () => {
   });
 
   const totalPrice = cartItem.reduce(
-    (price, item) => price + item.data.price * item.qty,
+    (price, item) =>
+      ((price + item.data.price * item.qty) / 100) * (100 - item.data.discount),
     0
   );
   async function checkout(e) {

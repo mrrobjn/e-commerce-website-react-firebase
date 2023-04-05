@@ -75,7 +75,7 @@ const ProductDetail = () => {
                 <i className="fa-solid fa-star"></i> (0 đánh giá)
               </div>
               <h5 className="price">
-                {product.data.price.toLocaleString("vi-VN", {
+                {((product.data.price/100)*(100-product.data.discount)).toLocaleString("vi-VN", {
                   style: "currency",
                   currency: "VND",
                 })}

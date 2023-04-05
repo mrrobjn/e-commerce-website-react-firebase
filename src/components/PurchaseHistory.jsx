@@ -25,6 +25,7 @@ const PurchaseHistory = () => {
           <thead className="order-title">
             <tr>
               <th>#</th>
+              <th>id đơn hàng</th>
               <th className="date">Ngày đặt</th>
               <th className="total">Tổng tiền</th>
               <th className="payment-method">Thanh toán</th>
@@ -43,6 +44,7 @@ const PurchaseHistory = () => {
                   }
                 >
                   <td>{index + 1}</td>
+                  <td>{order.id}</td>
                   <td className="date">{formattedDate}</td>
                   <td className="total">
                     {order.data.totalPrice.toLocaleString("vi-VN", {
