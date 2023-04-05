@@ -33,13 +33,14 @@ export const signUp = async (name, email, phoneNo, password, dayOfBirth) => {
       name,
       dayOfBirth,
       authProvider: "local",
+      role: "user"
     });
     successToast("Đăng ký thành công")
   } catch (err) {
     errorToast(err.message);
   }
 }
-export const signIn = async ( email, password) => {
+export const signIn = async (email, password) => {
   try {
     await signInWithEmailAndPassword(auth, email, password);
   } catch (err) {

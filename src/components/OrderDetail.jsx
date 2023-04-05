@@ -12,6 +12,7 @@ const OrderDetail = () => {
   useEffect(() => {
     window.scrollTo(0, 0);
     if (!user) return navigate("/login");
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [user, loading]);
   const orderInfo = orders.find((order) => order.id === orderId);
   // map array trong order

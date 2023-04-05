@@ -38,7 +38,7 @@ const FlashCard = ({ discountProduct }) => {
                 className="btn"
                 onClick={
                   user
-                    ? () => addToCart(discount)
+                    ? () => addToCart(discountProduct)
                     : () => navigate("/login")
                 }
               >
