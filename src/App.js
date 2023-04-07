@@ -33,7 +33,7 @@ function App() {
           <Route path="userprofile" element={<UserProfile />} />
           <Route path="purchasehistory" element={<PurchaseHistory />} />
         </Route>
-        <Route path='/profile/purchasehistory/:orderId' element={<OrderHistory />} />
+        <Route path='profile/purchasehistory/:orderId' element={<OrderHistory />} />
         <Route path='product' element={<Product />} />
         <Route path='product/:productId' element={<SingleProduct />} />
         <Route path='admin' element={<AdminPage />}>
