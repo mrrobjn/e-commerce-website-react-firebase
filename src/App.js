@@ -25,9 +25,9 @@ function App() {
     <>
       <Routes>
         <Route path='/' element={<Homepage />} />
-        <Route path='/login' element={<LoginPage />} />
-        <Route path='/register' element={<RegisterPage />} />
-        <Route path='/resetpassword' element={<ResetPasswordPage />} />
+        <Route path='login' element={<LoginPage />} />
+        <Route path='register' element={<RegisterPage />} />
+        <Route path='resetpassword' element={<ResetPasswordPage />} />
         <Route path='cart' element={<Cartpage />} />
         <Route path='profile' element={<Profile />} >
           <Route path="userprofile" element={<UserProfile />} />

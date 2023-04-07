@@ -45,9 +45,9 @@ const Head = () => {
             </>
           ) : (
             <>
-              <Link to="register">Đăng kí</Link>
+              <Link to="/register">Đăng kí</Link>
               <div className="vl"></div>
-              <Link to="login">Đăng nhập</Link>
+              <Link to="/login">Đăng nhập</Link>
             </>
           )}
         </div>
