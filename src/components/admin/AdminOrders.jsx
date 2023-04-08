@@ -29,7 +29,6 @@ const AdminOrders = () => {
           <table>
             <thead>
               <tr>
-                <th>#</th>
                 <th>Email</th>
                 <th>Địa chỉ</th>
                 <th>Ngày</th>
@@ -59,7 +58,6 @@ const AdminOrders = () => {
                 }${minutes} ${hours >= 12 ? "PM" : "AM"}`;
                 return (
                   <tr key={order.id}>
-                    <td>{index + 1}</td>
                     <td className="email">{user.data.email}</td>
                     <td className="address">{order.data.address}</td>
                     <td className="date">{formattedDate}</td>
@@ -85,7 +83,7 @@ const AdminOrders = () => {
                     <td className="action">
                       <select
                         style={{
-                          color: order.data.status === "true" ? "green" : "red",
+                          color: order.data.status === "true" ? "#07bc0c" : "red",
                         }}
                         defaultValue={order.data.status}
                         onChange={(e) => updateStatus(order.id, e.target.value)}

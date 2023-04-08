@@ -1,9 +1,7 @@
 @import "../GlobalStyle";
 .cart-items {
-  margin-top: 140px;
-  margin-bottom: 10px;
   .cart-container {
-    min-height: 600px;
+    height: 600px;
     display: flex;
     justify-content: space-between;
     .cart-detail {
@@ -11,6 +9,7 @@
       background-color: #fff;
       width: 70%;
       padding-bottom: 20px;
+      border-radius: $main-border;
       .cart-header {
         display: flex;
         justify-content: space-between;
@@ -23,6 +22,9 @@
       }
       .handle-product {
         margin: 0 30px;
+        overflow-y: auto;
+        height: 85%;
+        border-bottom: 1px solid $main-color;
         .no-items {
           text-align: center;
           font-size: 30px;
@@ -79,13 +81,17 @@
             }
           }
         }
+        &::-webkit-scrollbar{
+          display: none;
+        }
       }
     }
     .cart-total {
       width: 29%;
-      height: 100%;
+      height: min-content;
       background: #fff;
       box-shadow: $main-shadow;
+      border-radius: $main-border;
       .payment {
         .total-box {
           display: flex;
@@ -131,7 +137,7 @@
                   background-color: $main-color;
                   color: #fff;
                   cursor: pointer;
-                  p{
+                  p {
                     color: #fff;
                   }
                 }

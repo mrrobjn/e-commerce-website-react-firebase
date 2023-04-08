@@ -24,7 +24,6 @@ const PurchaseHistory = () => {
         <table className="order-container">
           <thead className="order-title">
             <tr>
-              <th>#</th>
               <th>id đơn hàng</th>
               <th className="date">Ngày đặt</th>
               <th className="total">Tổng tiền</th>
@@ -43,7 +42,6 @@ const PurchaseHistory = () => {
                     navigate(`/profile/purchasehistory/${order.id}`)
                   }
                 >
-                  <td>{index + 1}</td>
                   <td>{order.id}</td>
                   <td className="date">{formattedDate}</td>
                   <td className="total">

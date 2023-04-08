@@ -1,10 +1,10 @@
 @import "../GlobalStyle";
 .single-product-section {
-  margin-top: 140px;
   margin-bottom: 10px;
   color: $text-color;
+  border-radius: $main-border;
+  background-color: #fff;
   .single-product-container {
-    background-color: #fff;
     display: flex;
     .single-product-left {
       padding: 20px;
@@ -93,6 +93,7 @@
   background-color: #fff;
   margin: 20px 0;
   min-height: 200px;
+  border-radius: $main-border;
   .box {
     padding: 20px 40px;
     h1 {

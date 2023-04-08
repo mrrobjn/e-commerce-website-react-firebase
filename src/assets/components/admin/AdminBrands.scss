@@ -1,21 +1,27 @@
 @import "../../GlobalStyle";
 .admin-brands-container {
   width: 80%;
+  height: 100vh;
   .heading {
-    text-align: center;
-    padding: 20px 0;
+  height: 10%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     h1 {
       font-size: 24px;
       text-transform: capitalize;
     }
   }
   .form-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 10%;
     background-color: #fff;
     margin: 0 40px;
     box-shadow: $main-shadow;
-    padding: 10px 0;
     margin-bottom: 10px;
-    border-radius: 5px;
+    border-radius: $main-border;
     form {
       display: flex;
       justify-content: center;
@@ -41,55 +47,62 @@
     }
   }
   .table-container {
+    height: 75%;
     margin: 0 40px;
     background: #fff;
-    border-radius: 5px;
+    border-radius: $main-border;
     box-shadow: $main-shadow;
     padding: 30px;
-    table {
-      width: 100%;
-      text-align: center;
-      border-collapse: collapse;
-      font-size: 14px;
-      thead {
-        tr {
-          th {
-            white-space: nowrap;
-            background-color: $text-color;
-            color: #fff;
-            padding: 10px;
-          }
-        }
-      }
-      tbody {
-        tr {
-          text-align: center;
-          td {
-            padding: 10px;
-          }
-          .index {
-            width: 10%;
-          }
-          .logo {
-            width: 5%;
-            img {
-              width: 100%;
-            }
-          }
-          .name {
-            width: 75%;
-          }
-          .action {
-            width: 10%;
-            button {
-              cursor: pointer;
-              color: red;
-              border: none;
+    .table-box {
+      height: 100%;
+      overflow: auto;
+      table {
+        width: 100%;
+        text-align: center;
+        border-collapse: collapse;
+        font-size: 14px;
+        thead {
+          position: sticky;
+          top: 0;
+          tr {
+            th {
+              white-space: nowrap;
+              background-color: $text-color;
+              color: #fff;
+              padding: 10px;
             }
           }
         }
-        tr:nth-child(even) {
-          background-color: $table-color;
+        tbody {
+          tr {
+            text-align: center;
+            td {
+              padding: 10px;
+            }
+            .index {
+              width: 10%;
+            }
+            .logo {
+              width: 5%;
+              img {
+                width: 100%;
+              }
+            }
+            .name {
+              width: 75%;
+            }
+            .action {
+              width: 10%;
+              button {
+                cursor: pointer;
+                color: red;
+                border: none;
+              }
+            }
+          }
+          tr:nth-child(even) {
+            background-color: $table-color;
+          }
         }
       }
     }

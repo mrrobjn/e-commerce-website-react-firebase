@@ -1,40 +1,41 @@
 @import "../../GlobalStyle";
 .admin-order-container {
   width: 80%;
+  height: 100vh;
   .heading {
-    text-align: center;
-    padding: 20px 0;
-
+    height: 10%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     h1 {
       font-size: 24px;
       text-transform: capitalize;
     }
   }
   .table-container {
+    height: 85%;
     margin: 0 40px;
     background: #fff;
-    border-radius: 5px;
+    border-radius: $main-border;
     box-shadow: $main-shadow;
     padding: 30px;
     .table-box {
-      overflow-x: auto;
+      height: 100%;
+      overflow: auto;
       table {
         font-size: 14px;
         width: 100%;
         text-align: center;
         border-collapse: collapse;
         thead {
+          position: sticky;
+          top: 0;
           tr {
             th {
               white-space: nowrap;
               color: #fff;
               background-color: $text-color;
               padding: 10px;
-            }
-            .action{
-              position: sticky;
-              right: 0;
-              
             }
           }
         }
@@ -53,21 +54,21 @@
                 padding: 5px;
               }
             }
-            .qty{
-                p {
-                    padding: 5px;
-                    font-weight: bold;
-                  }
+            .qty {
+              p {
+                padding: 5px;
+                font-weight: bold;
+              }
             }
             .total {
               color: $main-color;
               font-weight: bold;
             }
-            .action{
-              select{
+            .action {
+              select {
                 padding: 5px;
                 font-weight: bold;
-                option{
+                option {
                   color: $text-color;
                 }
               }

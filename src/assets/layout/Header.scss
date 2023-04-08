@@ -63,8 +63,9 @@
           min-width: 140px;
           box-shadow: $main-shadow;
           z-index: 1;
-          border-radius: 5px;
+          border-radius: $main-border;
           .dropdown-btn {
+            border-radius: $main-border;
             color: $text-color;
             margin: 0;
             padding: 10px;
@@ -124,6 +125,7 @@
     border: 1px solid $border-color;
     color: $text-color;
     position: relative;
+    border-radius: $main-border;
     i {
       width: 10%;
       height: 100%;
@@ -140,8 +142,6 @@
     .search-result {
       display: none;
       width: 90%;
-      max-height: 300px;
-      overflow-y: auto;
       position: absolute;
       top: 40px;
       right: 0;
@@ -205,7 +205,7 @@
       .nav-btn {
         a {
           font-size: 16px;
-          border-radius: 10px;
+          border-radius: $main-border;
           padding:10px 20px;
           color: $side-color;
           font-weight: bold;

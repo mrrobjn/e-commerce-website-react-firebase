@@ -19,7 +19,7 @@ import AdminProduct from './components/admin/AdminProduct';
 import AdminOrders from './components/admin/AdminOrders';
 import AdminCategories from './components/admin/AdminCategories';
 import AdminBrands from './components/admin/AdminBrands';
-import OrderHistory from './pages/OrderHistory';
+import OrderDetailPage from './pages/OrderDetailPage';
 function App() {
   return (
     <>
@@ -31,9 +31,9 @@ function App() {
         <Route path='cart' element={<Cartpage />} />
         <Route path='profile' element={<Profile />} >
           <Route path="userprofile" element={<UserProfile />} />
-          <Route path="purchasehistory" element={<PurchaseHistory />} />
+          <Route path="purchasehistory/*" element={<PurchaseHistory />} />
         </Route>
-        <Route path='profile/purchasehistory/:orderId' element={<OrderHistory />} />
+        <Route path='profile/purchasehistory/:orderId' element={<OrderDetailPage />} />
         <Route path='product' element={<Product />} />
         <Route path='product/:productId' element={<SingleProduct />} />
         <Route path='admin' element={<AdminPage />}>

@@ -29,7 +29,7 @@ const Search = () => {
           onChange={(e) => handleChange(e)}
         />
         <div className="search-result">
-          {searchResult?.map((product) => {
+          {searchResult?.slice(0,3).map((product) => {
             return (
               <Link key={product.id} to={`/product/${product.id}`} onClick={()=>setInput("")}>
                 <div className="prd-img">

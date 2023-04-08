@@ -1,15 +1,6 @@
 @import "../GlobalStyle";
-.order-detail-section {
-  display: flex;
-  justify-content: space-between;
-  box-shadow: $main-shadow;
-  margin-top: 140px;
-  margin-bottom: 10px;
-  min-height: 600px;
-  color: $text-color;
   .order-detail-container {
     height: auto;
-    background-color: #fff;
     width: 80%;
     .heading{
       margin: 20px 40px;
@@ -92,12 +83,11 @@
       }
     }
     .red {
-      color: red;
+      color: #ff0000;
       font-weight: bold;
     }
     .green {
-      color: green;
+      color: #07bc0c;
       font-weight: bold;
     }
   }
-}

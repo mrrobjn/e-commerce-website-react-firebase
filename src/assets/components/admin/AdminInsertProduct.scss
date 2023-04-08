@@ -1,22 +1,28 @@
 @import "../../GlobalStyle";
 .insert-product-container {
   width: 80%;
+  height: 100vh;
   .heading {
-    text-align: center;
-    padding: 20px 0;
+    height: 10%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     h1 {
       font-size: 24px;
       text-transform: capitalize;
     }
   }
   .form-container {
+    height: 85%;
     width: 600px;
     margin: auto;
     background-color: #fff;
-    border-radius: 5px;
+    border-radius: $main-border;
     box-shadow: $main-shadow;
     padding: 30px;
     form {
+      height: 100%;
+      overflow: auto;
       width:100%;
       margin: auto;
       display: flex;
@@ -33,6 +39,7 @@
         input {
           font-size: 16px;
           padding: 10px;
+          height: 40px;
           border: 1px solid $border-color;
         }
         input:invalid{
@@ -64,10 +71,9 @@
         }
       }
       button {
+        height: 40px;
         font-size: 16px;
         width: 100%;
-        margin-top: 10px;
-        padding: 10px;
         border: none;
         background-color: $text-color;
         color: #fff;

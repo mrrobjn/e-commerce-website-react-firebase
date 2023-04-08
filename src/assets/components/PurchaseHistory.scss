@@ -2,7 +2,6 @@
 .order-history-section {
   width: 80%;
   height: auto;
-  background-color: #fff;
   padding: 0 40px;
   .heading {
     margin-top: 20px;
@@ -41,12 +40,12 @@
             border-radius: 50px;
           }
           .not-confirm {
-            color: red;
-            background-color: rgb(255, 205, 205);
+            color: #ff0000;
+            background-color: #ffcdcd;
           }
           .confirm {
-            color: green;
-            background-color: rgb(206, 255, 206);
+            color: #07bc0c;
+            background-color: #ceffce;
           }
         }
       }

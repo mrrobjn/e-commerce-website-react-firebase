@@ -1,6 +1,7 @@
 @import "../GlobalStyle";
 .profile-section {
-  margin-top: 140px;
+  border-radius: $main-border;
+  background-color: #fff;
   .profile-container {
     display: flex;
     justify-content: space-between;

@@ -2,6 +2,7 @@
 
 .slide-container {
     width: 100%;
+    border-radius: $main-border;
     ul {
       position: absolute;
       bottom: 20px;
@@ -22,6 +23,8 @@
     }
     .slide {
       img {
+    border-radius: $main-border;
+
         width: 100%;
         height: 100%;
       }

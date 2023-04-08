@@ -1,63 +1,73 @@
 @import "../../GlobalStyle";
 .admin-user-container {
   width: 80%;
+  height: 100vh;
   .heading {
-    text-align: center;
-    padding: 20px 0;
+    height: 10%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     h1 {
       font-size: 24px;
       text-transform: capitalize;
     }
   }
   .table-container {
-    margin:0 40px;
+    height: 85%;
+    margin: 0 40px;
     background: #fff;
-    border-radius: 5px;
+    border-radius: $main-border;
     box-shadow: $main-shadow;
     padding: 30px;
-    table {
-      font-size: 14px;
-      width: 100%;
-      text-align: center;
-      border-collapse: collapse;
-      thead {
-        tr {
-          th {
-            position: sticky;
-            top: 0;
-            background-color: $text-color;
-            color: #fff;
-            padding: 10px;
+    .table-box {
+      height: 100%;
+      overflow: auto;
+      table {
+        font-size: 14px;
+        width: 100%;
+        text-align: center;
+        border-collapse: collapse;
+        thead {
+          position: sticky;
+          top: 0;
+          tr {
+            th {
+              white-space: nowrap;
+              background-color: $text-color;
+              color: #fff;
+              padding: 10px;
+            }
           }
         }
-      }
-      tbody {
-        tr {
-          text-align: center;
-          td {
-            padding: 10px;
+        tbody {
+          tr {
+            text-align: center;
+            td {
+              white-space: nowrap;
+              padding: 10px;
+            }
+            .index {
+              width: 5%;
+            }
+            .email {
+              width: 30%;
+            }
+            .name {
+              width: 20%;
+            }
+            .phone {
+              width: 15%;
+            }
+            .day-of-birth {
+              width: 15%;
+            }
+            .role {
+              width: 15%;
+            }
           }
-          .index {
-            width: 5%;
+          tr:nth-child(even) {
+            background-color: $table-color;
           }
-          .email {
-            width: 30%;
-          }
-          .name {
-            width: 20%;
-          }
-          .phone {
-            width: 15%;
-          }
-          .day-of-birth {
-            width: 15%;
-          }
-          .role {
-            width: 15%;
-          }
-        }
-        tr:nth-child(even) {
-          background-color: $table-color;
         }
       }
     }

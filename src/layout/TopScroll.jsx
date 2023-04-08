@@ -24,6 +24,7 @@ const TopScroll = () => {
         className="scroll-top-btn"
         onClick={() => scrollTop()}
         style={{ display: visible ? "block" : "none" }}
+        title=""
       >
         <i className="fa-solid fa-arrow-up"></i>
       </button>

@@ -1,4 +1,4 @@
-import { collection, doc, onSnapshot, updateDoc } from 'firebase/firestore'
+import { collection, doc, onSnapshot, orderBy, query, updateDoc } from 'firebase/firestore'
 import React, { createContext, useEffect, useState } from 'react'
 import { db } from '~/firebase'
 import { toast } from "react-toastify";
@@ -11,7 +11,8 @@ export const OrderProvider = ({ children }) => {
   useEffect(() => {
     async function getOrders() {
       const orderRef = collection(db, "orders");
-      onSnapshot(orderRef, (querySnapshot) => {
+      const q = query(orderRef, orderBy("timestamp","desc"))
+      onSnapshot(q, (querySnapshot) => {
         const orderss = querySnapshot.docs.map((doc) => ({
           data: doc.data(),
           id: doc.id,

@@ -5,7 +5,7 @@ const AdminSideBar = () => {
   return (
     <div className="admin-sidebar">
       <div className="heading">
-        <Link to="/">Quay về</Link>
+        <Link to="/"><i className="fa-solid fa-arrow-left"></i></Link>
         <h1>admin</h1>
       </div>
       <div className="sidebar-btn">

@@ -2,6 +2,7 @@
 .flash-background {
   background-color: $main-color;
   margin-top: 10px;
+  border-radius: $main-border;
   .flash-container {
     padding: 20px;
     .flash-heading {
@@ -51,6 +52,7 @@
     padding: 10px;
     position: relative;
     transition: 0.3s;
+    border-radius: $main-border;
     .product-img {
       width: 100%;
       height: 173px;

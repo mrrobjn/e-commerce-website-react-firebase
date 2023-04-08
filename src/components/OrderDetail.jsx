@@ -20,11 +20,10 @@ const OrderDetail = () => {
     orderInfo && orderInfo.data.arrayProducts.map((products) => products);
   // format date & time
   const date = orderInfo?.data.timestamp.toDate();
-  const formattedDate = `${
-    date.getMonth() + 1
-  }/${date.getDate()}/${date.getFullYear()}`;
-  const hours = date.getHours();
-  const minutes = date.getMinutes();
+  const formattedDate =
+    date && `${date.getMonth() + 1}/${date.getDate()}/${date.getFullYear()}`;
+  const hours = date?.getHours();
+  const minutes = date?.getMinutes();
   const formattedTime = `${hours % 12}:${minutes < 10 ? "0" : ""}${minutes} ${
     hours >= 12 ? "PM" : "AM"
   }`;

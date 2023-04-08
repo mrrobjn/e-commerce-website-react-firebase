@@ -1,9 +1,9 @@
 @import "../GlobalStyle";
-
 .brand-section {
   background-color: #fff;
   margin-top: 10px;
   color: $text-color;
+  border-radius: $main-border;
   .brand-container {
     padding: 20px;
     .brand-header {

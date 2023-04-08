@@ -3,8 +3,8 @@ import OrderDetail from "~/components/OrderDetail";
 import ProfileMenu from "~/components/ProfileMenu";
 import Footer from "~/layout/Footer";
 import Header from "~/layout/Header";
-
-const OrderHistory = () => {
+import '~~/pages/OrderDetailPage.scss'
+const OrderDetailPage = () => {
   return (
     <>
     <Header/>
@@ -19,4 +19,4 @@ const OrderHistory = () => {
   );
 };
 
-export default OrderHistory;
+export default OrderDetailPage;

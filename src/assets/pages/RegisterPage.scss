@@ -1,11 +1,11 @@
 @import "../GlobalStyle";
 .register-section {
-  margin: 140px 0;
   .register-container {
     height: auto;
     display: flex;
     .form-container {
       background-color: #fff;
+      border-radius: $main-border;
       box-shadow: $main-shadow;
       width: 40%;
       display: flex;
@@ -37,7 +37,7 @@
               outline: none;
               font-size: 14px;
               margin-top: 10px;
-              border: 1px solid $text-color;
+              border: 1px solid $border-color;
             }
           }
         }
@@ -59,7 +59,7 @@
               outline: none;
               font-size: 14px;
               margin-top: 10px;
-              border: 1px solid $text-color;
+              border: 1px solid $border-color;
             }
           }
         }
@@ -70,7 +70,6 @@
           height: 40px;
           color: #fff;
           border: none;
-          border-radius: 5px;
           background: $side-color;
           font-weight: bold;
         }

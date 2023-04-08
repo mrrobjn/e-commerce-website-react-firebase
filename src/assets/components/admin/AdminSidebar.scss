@@ -2,9 +2,12 @@
 .admin-sidebar {
   width: 20%;
   background-color: #fff;
-  overflow-y: scroll;
   box-shadow: $main-shadow;
+  overflow-y: auto;
+  height: 100vh;
   .heading {
+    position: sticky;
+    top: 0;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -14,6 +17,7 @@
       color: $main-color;
       font-weight: bold;
       text-decoration: underline;
+      font-size: 24px;
     }
     h1 {
       color: $text-color;
@@ -39,4 +43,7 @@
       color: $text-color;
     }
   }
+}
+.admin-sidebar::-webkit-scrollbar {
+  display: none;
 }
