@@ -1,7 +1,9 @@
+@import "../GlobalStyle";
+
 .brand-section {
   background-color: #fff;
   margin-top: 10px;
-  color: #333;
+  color: $text-color;
   .brand-container {
     padding: 20px;
     .brand-header {
@@ -46,7 +48,7 @@
     top: 0;
     width: 40px;
     height: 40px;
-    background-color: #007bff;
+    background-color: $side-color;
     border-radius: 50px;
     transition: 0.5s;
     z-index: 5;
@@ -59,7 +61,7 @@
     }
     &:hover {
       cursor: pointer;
-      background-color: #ea5867;
+      background-color: $main-color;
     }
   }
   .control-btn .next {

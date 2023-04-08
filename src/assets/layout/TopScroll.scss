@@ -1,3 +1,4 @@
+@import "../GlobalStyle";
 .scroll-top-btn{
     position: fixed;
     padding: 10px;
@@ -9,7 +10,7 @@
     bottom: 20px;
     border-style: none;
     color: #fff;
-    background-color: #007bff;
+    background-color: $side-color;
     z-index: 10;
     &:hover{
         cursor: pointer;

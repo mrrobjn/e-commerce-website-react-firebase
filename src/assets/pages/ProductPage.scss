@@ -1,9 +1,10 @@
+@import "../GlobalStyle";
 .product-page-section {
   display: flex;
   justify-content: space-between;
   margin-bottom: 10px;
   margin-top: 140px;
-  color: #333;
+  color: $text-color;
   .category {
     width: 20%;
     height: auto;
@@ -21,23 +22,22 @@
     }
     .box:hover p {
       cursor: pointer;
-      color: #ea5867;
+      color: $main-color;
     }
   }
   .product-section {
     width: 80%;
-    height: auto;
+    height: 100%;
     display: flex;
     flex-wrap: wrap;
     .no-items {
-      background-color: #fff;
       display: flex;
       justify-content: center;
       align-items: center;
       font-size: 30px;
-      color: #ea5867;
+      color: $main-color;
       width: 100%;
-      height: auto;
+      min-height: 600px;
       text-transform: capitalize;
       margin-left: 5px;
     }
@@ -58,7 +58,7 @@
             position: absolute;
             top: 10px;
             left: 10px;
-            background-color: #ea5867;
+            background-color: $main-color;
             color: #fff;
             border-radius: 50px;
             font-size: 12px;
@@ -91,12 +91,12 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            color: #ea5867;
+            color: $main-color;
           }
         }
       }
       .product:hover {
-        box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+        box-shadow: $main-shadow;
       }
     }
   }

@@ -1,3 +1,4 @@
+@import "../../GlobalStyle";
 .admin-categories-container {
   width: 80%;
   .heading {
@@ -11,7 +12,7 @@
   .form-container {
     background-color: #fff;
     margin: 0 40px;
-    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+    box-shadow: $main-shadow;
     padding: 10px 0;
     margin-bottom: 10px;
     border-radius: 5px;
@@ -23,11 +24,11 @@
       }
       input {
         padding: 5px 10px;
-        border: 1px solid #ccc;
+        border: 1px solid $border-color;
       }
       button {
         border: none;
-        background: #333;
+        background: $text-color;
         color: #fff;
         padding: 5px 20px;
         margin-left: 5px;
@@ -42,7 +43,7 @@
     margin: 0 40px;
     background: #fff;
     border-radius: 5px;
-    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+    box-shadow: $main-shadow;
     padding: 30px;
     table {width: 100%;
       text-align: center;
@@ -52,7 +53,7 @@
         tr {
           th {
             white-space: nowrap;
-            background-color: #333;
+            background-color: $text-color;
             color: #fff;
             padding: 10px;
           }
@@ -80,12 +81,9 @@
           }
         }
         tr:nth-child(even) {
-          background-color: #f2f2f2;
+          background-color: $table-color;
         }
       }
     }
-  }
-  .table-container::-webkit-scrollbar {
-    display: none;
   }
 }

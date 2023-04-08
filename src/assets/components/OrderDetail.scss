@@ -1,11 +1,12 @@
+@import "../GlobalStyle";
 .order-detail-section {
   display: flex;
   justify-content: space-between;
-  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+  box-shadow: $main-shadow;
   margin-top: 140px;
   margin-bottom: 10px;
   min-height: 600px;
-  color: #333;
+  color: $text-color;
   .order-detail-container {
     height: auto;
     background-color: #fff;
@@ -27,7 +28,7 @@
         .title {
           font-weight: bold;
           color: #fff;
-          background: #007bff;
+          background: $side-color;
           th {
             padding: 10px 0;
           }
@@ -66,7 +67,7 @@
           }
         }
         tr:nth-child(even){
-          background-color: #f2f2f2;
+          background-color: $table-color;
         }
       }
     }
@@ -78,7 +79,7 @@
         border-collapse: collapse;
         tr {
           td {
-            border: 1px solid #ccc;
+            border: 1px solid $border-color;
             padding: 10px;
           }
           .detail-title{

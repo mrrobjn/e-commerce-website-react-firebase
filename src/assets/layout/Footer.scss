@@ -1,54 +1,4 @@
-// .notify-register-section {
-//   margin-top: 10px;
-//   background-color: #9fa7ab;
-//   .notify-register {
-//     border-top-right-radius: 10px;
-//     border-top-left-radius: 10px;
-
-//     .input-container {
-//       display: flex;
-//       justify-content: center;
-//       padding: 20px 0;
-//       label {
-//         color: #fff;
-//         font-size: 20px;
-//         line-height: 41.5px;
-//         text-transform: uppercase;
-//         margin-right: 20px;
-//       }
-//       input {
-//         width: 40%;
-//         outline: none;
-//         padding: 10px 20px;
-//         border: none;
-//         border-top-left-radius: 5px;
-//         border-bottom-left-radius: 5px;
-//         color: #9fa7ab;
-//       }
-//       .register-btn {
-//         background-color: #fff;
-//         width: 100px;
-//         border-top-right-radius: 5px;
-//         border-bottom-right-radius: 5px;
-//         display: flex;
-//         justify-content: center;
-//         align-items: center;
-//         button {
-//           background-color: #316bb3;
-//           color: #fff;
-//           transition: 0.3s;
-//           font-weight: 600;
-//           font-size: 14px;
-//           width: 90%;
-//           height: 85%;
-//           &:hover {
-//             background-color: #ea5867;
-//           }
-//         }
-//       }
-//     }
-//   }
-// }
+@import "../GlobalStyle";
 .footer-section {
   width: 100%;
   background-color: #fff;
@@ -62,7 +12,7 @@
       width: 30%;
       .logo {
         padding-top: 10px;
-        color: #ea5867;
+        color: $main-color;
         font-weight: bolder;
         font-size: 50px;
       }
@@ -80,7 +30,7 @@
           border-radius: 50px;
           width: 30px;
           height: 30px;
-          background-color: #9fa7ab;
+          background-color: $border-color;
           cursor: pointer;
           i {
             font-size: 16px;
@@ -120,7 +70,7 @@
               font-size: 14px;
               transition: 0.5s;
               &:hover {
-                color: #ea5867;
+                color: $main-color;
                 cursor: pointer;
                 transform: translateX(10%);
               }

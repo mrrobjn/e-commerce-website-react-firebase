@@ -1,3 +1,4 @@
+@import "../../GlobalStyle";
 .admin-product-container {
   width: 80%;
   .heading {
@@ -12,7 +13,7 @@
     margin: 0 40px;
     background: #fff;
     border-radius: 5px;
-    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+    box-shadow: $main-shadow;
     padding: 30px;
     table {
       width: 100%;
@@ -23,7 +24,7 @@
         tr {
           th {
             white-space: nowrap;
-            background-color: #333;
+            background-color: $text-color;
             color: #fff;
             padding: 10px;
           }
@@ -49,7 +50,7 @@
           }
           .price {
             width: 15%;
-            color: #ea5867;
+            color: $main-color;
             font-weight: bold;
           }
           .discount {
@@ -71,13 +72,9 @@
           }
         }
         tr:nth-child(even) {
-          background-color: #f2f2f2;
+          background-color: $table-color;
         }
       }
     }
   }
-  .table-container::-webkit-scrollbar {
-    display: none;
-}
-
 }

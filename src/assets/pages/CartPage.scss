@@ -1,3 +1,4 @@
+@import "../GlobalStyle";
 .cart-items {
   margin-top: 140px;
   margin-bottom: 10px;
@@ -6,7 +7,7 @@
     display: flex;
     justify-content: space-between;
     .cart-detail {
-      box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+      box-shadow: $main-shadow;
       background-color: #fff;
       width: 70%;
       padding-bottom: 20px;
@@ -15,7 +16,7 @@
         justify-content: space-between;
         margin: 0 30px;
         padding: 20px 0;
-        border-bottom: 1px solid #ea5867;
+        border-bottom: 1px solid $main-color;
         h1 {
           font-size: 20px;
         }
@@ -25,14 +26,14 @@
         .no-items {
           text-align: center;
           font-size: 30px;
-          color: #ea5867;
+          color: $main-color;
           padding: 20% 0;
         }
         .cart-product {
           padding: 20px 0;
           background-color: #fff;
           display: flex;
-          border-bottom: 1px solid #ea5867;
+          border-bottom: 1px solid $main-color;
           justify-content: space-between;
           .img {
             width: 15%;
@@ -56,7 +57,7 @@
               margin-bottom: 10px;
               color: #808080;
               span {
-                color: #ea5867;
+                color: $main-color;
                 font-weight: bold;
                 margin-left: 10px;
               }
@@ -84,20 +85,20 @@
       width: 29%;
       height: 100%;
       background: #fff;
-      box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+      box-shadow: $main-shadow;
       .payment {
         .total-box {
           display: flex;
           justify-content: space-between;
           padding: 20px 0;
           margin: 0 20px;
-          border-bottom: 1px solid #ea5867;
+          border-bottom: 1px solid $main-color;
           h1 {
             font-size: 20px;
           }
           span {
             font-size: 20px;
-            color: #ea5867;
+            color: $main-color;
           }
         }
         .payment-box {
@@ -112,22 +113,22 @@
                 width: 30%;
                 padding: 5px;
                 border-radius: 5px;
-                border: 2px solid #ea5867;
+                border: 2px solid $main-color;
                 position: relative;
                 transition: 0.3s;
-                color: #ea5867;
+                color: $main-color;
                 input {
                   position: absolute;
                   top: 5px;
                   right: 5px;
-                  color: #ea5867;
+                  color: $main-color;
                 }
                 p {
-                  color: #ea5867;
+                  color: $main-color;
                   padding-top: 5px;
                 }
                 &:hover {
-                  background-color: #ea5867;
+                  background-color: $main-color;
                   color: #fff;
                   cursor: pointer;
                   p{
@@ -157,7 +158,7 @@
               padding: 10px;
               margin-bottom: 10px;
               border: none;
-              border-bottom: 1px solid #ccc;
+              border-bottom: 1px solid $border-color;
             }
           }
           .address-holder {
@@ -168,7 +169,7 @@
           }
           .cart-btn {
             margin: 10px 0;
-            background-color: #ea5867;
+            background-color: $main-color;
             color: #fff;
             width: 100%;
             border: none;

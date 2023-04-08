@@ -1,3 +1,4 @@
+@import "../GlobalStyle";
 .login-section {
   margin: 140px 0;
   .login-container {
@@ -5,7 +6,7 @@
     display: flex;
     .form-container {
       background-color: #fff;
-      box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+      box-shadow: $main-shadow;
       width: 40%;
       display: flex;
       justify-content: center;
@@ -14,7 +15,7 @@
         width: 70%;
         h1 {
           padding-bottom: 20px;
-          color: #333;
+          color: $text-color;
           font-size: 30px;
           text-align: center;
         }
@@ -24,7 +25,7 @@
           display: flex;
           justify-content: center;
           align-items: center;
-          background-color: #007bff;
+          background-color: $side-color;
           padding: 15px;
           margin-top: 20px;
           position: relative;
@@ -55,11 +56,11 @@
           .login-line {
             width: 40%;
             height: 1px;
-            background-color: #333;
+            background-color: $text-color;
             margin: auto;
           }
           p {
-            color: #333;
+            color: $text-color;
           }
         }
 
@@ -69,7 +70,7 @@
           flex-direction: column;
           label {
             font-size: 14px;
-            color: #333;
+            color: $text-color;
           }
           input {
             width: 100%;
@@ -78,7 +79,7 @@
             outline: none;
             font-size: 14px;
             margin-top: 10px;
-            border: 1px solid #333;
+            border: 1px solid $text-color;
           }
         }
         .save-forgot-password {
@@ -88,10 +89,10 @@
           font-size: 14px;
           .save-password {
             display: flex;
-            color: #333;
+            color: $text-color;
           }
           .forgot-password {
-            color: #007bff;
+            color: $side-color;
           }
           .forgot-password:hover {
             cursor: pointer;
@@ -105,7 +106,7 @@
           height: 40px;
           color: #fff;
           border: none;
-          background: #007bff;
+          background: $side-color;
           font-weight: bold;
           cursor: pointer;
         }
@@ -114,9 +115,9 @@
           p {
             margin-top: 20px;
             font-size: 14px;
-            color: #333;
+            color: $text-color;
             .to-sign-up-btn {
-              color: #007bff;
+              color: $side-color;
               cursor: pointer;
             }
           }

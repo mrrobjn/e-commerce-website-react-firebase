@@ -1,3 +1,4 @@
+@import "../GlobalStyle";
 .user-profile-container {
   width: 80%;
   background-color: #fff;
@@ -26,13 +27,13 @@
           padding: 10px;
           margin: 10px 0;
           border-radius: 5px;
-          border: 1px solid #ccc;
+          border: 1px solid $border-color;
         }
         button {
           width: 25%;
           background-color: #fff;
           border: none;
-          color: #007bff;
+          color: $side-color;
           cursor: pointer;
           font-weight: bold;
           margin: 10px 0;

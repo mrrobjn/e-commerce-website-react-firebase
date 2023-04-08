@@ -1,5 +1,6 @@
+@import "../GlobalStyle";
 .flash-background {
-  background-color: #ea5867;
+  background-color: $main-color;
   margin-top: 10px;
   .flash-container {
     padding: 20px;
@@ -18,7 +19,7 @@
       top: 40%;
       width: 40px;
       height: 40px;
-      background-color: #007bff;
+      background-color: $side-color;
       border-radius: 50px;
       transition: 0.5s;
       z-index: 5;
@@ -31,7 +32,7 @@
       }
       &:hover {
         cursor: pointer;
-        background-color: #ea5867;
+        background-color: $main-color;
       }
     }
     .control-btn .next {
@@ -57,7 +58,7 @@
         position: absolute;
         top: 10px;
         left: 10px;
-        background-color: #ea5867;
+        background-color: $main-color;
         color: #fff;
         border-radius: 50px;
         font-size: 12px;
@@ -91,11 +92,8 @@
         display: flex;
         justify-content: space-between;
         align-items: center;
-        color: #ea5867;
+        color: $main-color;
       }
     }
-  }
-  .product:hover {
-    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
   }
 }

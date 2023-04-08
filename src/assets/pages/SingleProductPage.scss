@@ -1,7 +1,8 @@
+@import "../GlobalStyle";
 .single-product-section {
   margin-top: 140px;
   margin-bottom: 10px;
-  color: #333;
+  color: $text-color;
   .single-product-container {
     background-color: #fff;
     display: flex;
@@ -43,7 +44,7 @@
           .price {
             font-weight: bold;
             font-size: 30px;
-            color: #ea5867;
+            color: $main-color;
           }
           .old-price {
             text-decoration: line-through;
@@ -58,7 +59,7 @@
         margin: 10px 0;
         display: flex;
         justify-content: space-evenly;
-        border: 2px solid #ea5867;
+        border: 2px solid $main-color;
         width: 130px;
         border-radius: 5px;
         .descrease-value-btn {
@@ -79,7 +80,7 @@
       }
       .add-to-cart-btn {
         color: #fff;
-        background-color: #ea5867;
+        background-color: $main-color;
         margin: 10px 0;
         width: 200px;
         border-radius: 5px;

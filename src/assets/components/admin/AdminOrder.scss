@@ -1,3 +1,4 @@
+@import "../../GlobalStyle";
 .admin-order-container {
   width: 80%;
   .heading {
@@ -13,7 +14,7 @@
     margin: 0 40px;
     background: #fff;
     border-radius: 5px;
-    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+    box-shadow: $main-shadow;
     padding: 30px;
     .table-box {
       overflow-x: auto;
@@ -27,7 +28,7 @@
             th {
               white-space: nowrap;
               color: #fff;
-              background-color: #333;
+              background-color: $text-color;
               padding: 10px;
             }
             .action{
@@ -59,20 +60,21 @@
                   }
             }
             .total {
-              color: #ea5867;
+              color: $main-color;
               font-weight: bold;
             }
             .action{
               select{
                 padding: 5px;
+                font-weight: bold;
                 option{
-                  color: #333;
+                  color: $text-color;
                 }
               }
             }
           }
           tr:nth-child(even) {
-            background-color: #f2f2f2;
+            background-color: $table-color;
           }
         }
       }

@@ -1,8 +1,9 @@
+@import "../../GlobalStyle";
 .admin-sidebar {
   width: 20%;
   background-color: #fff;
   overflow-y: scroll;
-  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+  box-shadow: $main-shadow;
   .heading {
     display: flex;
     justify-content: space-between;
@@ -10,12 +11,12 @@
     background: #fff;
     padding: 20px;
     a{
-      color: #ea5867;
+      color: $main-color;
       font-weight: bold;
       text-decoration: underline;
     }
     h1 {
-      color: #333;
+      color: $text-color;
       font-size: 24px;
       text-transform: uppercase;
     }
@@ -26,19 +27,16 @@
     flex-direction: column;
     font-size: 18px;
     a {
-      color: #333;
+      color: $text-color;
       font-weight: bold;
-      padding: 20px 20px 20px 20px;
+      padding: 20px;
       transition: 0.3s;
       cursor: pointer;
       text-transform: capitalize;
     }
     .link-active {
-      background-color: #f2f2f2;
-      color: #333;
+      background-color: $table-color;
+      color: $text-color;
     }
   }
-}
-.admin-sidebar::-webkit-scrollbar {
-  display: none;
 }

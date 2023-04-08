@@ -1,10 +1,11 @@
+@import "../GlobalStyle";
 .profile-section {
   margin-top: 140px;
   .profile-container {
     display: flex;
     justify-content: space-between;
     margin-bottom: 10px;
-    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+    box-shadow: $main-shadow;
     height: 600px;
   }
 }

@@ -1,3 +1,4 @@
+@import "../GlobalStyle";
 .order-history-section {
   width: 80%;
   height: auto;
@@ -18,7 +19,7 @@
     text-align: center;
     thead {
       tr {
-        background: #007bff;
+        background: $side-color;
         color: #fff;
         th {
           padding: 10px;
@@ -50,7 +51,7 @@
         }
       }
       tr:nth-child(even) {
-        background-color: #f2f2f2;
+        background-color: $table-color;
       }
     }
   }
