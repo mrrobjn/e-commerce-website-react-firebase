@@ -22,14 +22,14 @@ const googleProvider = new GoogleAuthProvider();
 const errorToast = (text) => toast.error(`${text}`);
 const successToast = (text) => toast.success(`${text}`);
 
-export const signUp = async (name, email, phoneNo, password, dayOfBirth) => {
+export const signUp = async (name, email, phoneNumber, password, dayOfBirth) => {
   try {
     const res = await createUserWithEmailAndPassword(auth, email, password);
     const user = res.user;
     await addDoc(collection(db, "users"), {
       uid: user.uid,
       email,
-      phoneNo,
+      phoneNumber,
       name,
       dayOfBirth,
       authProvider: "local",
