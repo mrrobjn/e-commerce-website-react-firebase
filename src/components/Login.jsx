@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { signIn, auth,signInWithGoogle } from "../firebase";
+import { toast, ToastContainer } from "react-toastify";
+
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -11,6 +13,18 @@ const Login = () => {
   return (
     <>
       <div className="form-container">
+      <ToastContainer
+          position="top-right"
+          autoClose={3000}
+          hideProgressBar={false}
+          newestOnTop={false}
+          closeOnClick
+          rtl={false}
+          pauseOnFocusLoss
+          draggable
+          pauseOnHover
+          theme="light"
+        />
         <form onSubmit={handleSubmit}>
           <h1>Đăng nhập</h1>
           <button className="google-login" type="button" onClick={signInWithGoogle}>

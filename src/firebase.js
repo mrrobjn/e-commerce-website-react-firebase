@@ -44,7 +44,7 @@ export const signIn = async (email, password) => {
   try {
     await signInWithEmailAndPassword(auth, email, password);
   } catch (err) {
-    console.log(err.message);
+    errorToast(err.message);
   }
 };
 export const signInWithGoogle = async () => {
