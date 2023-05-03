@@ -40,7 +40,7 @@ export const signUp = async (name, email, phoneNumber, password, dayOfBirth) => 
     errorToast(err.message);
   }
 }
-export const signIn = async (email, password) => {
+export const signIn = async (auth,email, password) => {
   try {
     await signInWithEmailAndPassword(auth, email, password);
   } catch (err) {
