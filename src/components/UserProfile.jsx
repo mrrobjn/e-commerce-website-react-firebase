@@ -104,13 +104,6 @@ const UserProfile = () => {
     const photoURL = await getDownloadURL(imgRef).catch((err) => {
       errorToast(err.message);
     });
-    // updateProfile(auth.currentUser, { photoURL })
-    //   .then(() => {
-    //     successToast("Cập nhật thành công");
-    //   })
-    //   .catch((err) => {
-    //     errorToast(err.message);
-    //   });
     const docRef = doc(db, "users", userId);
     try {
       await updateDoc(docRef, {
