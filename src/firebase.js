@@ -58,6 +58,7 @@ export const signInWithGoogle = async () => {
         uid: user.uid,
         authProvider: "google",
         email: user.email,
+        role:"user",
       });
     }
   } catch (err) {

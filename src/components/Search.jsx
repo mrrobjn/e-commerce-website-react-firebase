@@ -15,7 +15,7 @@ const Search = () => {
     <div className="search">
       <div className="logo">
         <Link to="/">
-          EC<i className="fa-solid fa-cart-shopping"></i>
+          SS
         </Link>
       </div>
       {/* search bar */}

@@ -6,13 +6,13 @@ const Footer = () => {
         <footer className="footer">
           <div className="left-box">
             <div className="logo">
-              EC<i className="fa-solid fa-cart-shopping"></i>
+              SS
             </div>
             <div className="footer-note">
               <p>
-                ECW.com nhận đặt hàng trực tuyến và giao hàng tận nơi. KHÔNG hỗ
+                SS.com nhận đặt hàng trực tuyến và giao hàng tận nơi. KHÔNG hỗ
                 trợ đặt mua và nhận hàng trực tiếp tại văn phòng cũng như tất cả
-                Hệ Thống ECW trên toàn quốc.{" "}
+                Hệ Thống SS trên toàn quốc.{" "}
               </p>
             </div>
             <div className="footer-icons">
@@ -48,7 +48,7 @@ const Footer = () => {
                   <a href='/'> Điều khoản sử dụng</a>
                   <a href='/'> Chính sách bảo mật thông tin cá nhân</a>
                   <a href='/'> Chính sách bảo mật thanh toán</a>
-                  <a href='/'> Giới thiệu ECW</a>
+                  <a href='/'> Giới thiệu SS</a>
                   <a href='/'> Hệ thống trung tâm</a>
                 </div>
               </div>

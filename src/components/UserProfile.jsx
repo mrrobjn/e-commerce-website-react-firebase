@@ -9,7 +9,7 @@ import "react-toastify/dist/ReactToastify.css";
 import { getDownloadURL, ref, uploadBytes } from "firebase/storage";
 const UserProfile = () => {
   const [user, loading] = useAuthState(auth);
-  const [userName, setUserName] = useState("");
+  const [userName,setUserName]=useState("")
   const [userDayOfBirth, setUserDayOfBirth] = useState("");
   const [userPhoneNumber, setUserPhoneNumber] = useState("");
   const [userId, setUserId] = useState("");
